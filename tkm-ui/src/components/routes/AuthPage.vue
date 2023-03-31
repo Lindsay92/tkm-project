@@ -1,5 +1,5 @@
 <template>
-    <h2 class="text-center m-3">S'enregistrer</h2>
+    <h1 class="text-center m-3">S'enregistrer</h1>
 
     <form class="container col-12 col-md-4 p-3">
     
@@ -25,7 +25,7 @@
                     <input type="text" id="password" class="form-control">
                 </div>
         
-                <button type="submit" class="btn btn-secondary">S'enregistrer</button>
+                <button type="submit" class="btn btn btn-outline-dark mt-3 mb-3">S'enregistrer</button>
 
     </form>
 </template>

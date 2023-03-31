@@ -1,3 +1,7 @@
+<script>
+import { RouterLink } from 'vue-router';
+</script>
+
 <template>
     <h1 class="text-center m-3">Se connecter</h1>
         <section class="row justify-content-center">
@@ -12,8 +16,7 @@
                 <input type="password" class="form-control" id="password">
             </div>
     
-
-            <button type="submit" disabled class="btn btn-secondary">Envoyer</button>
+            <button type="submit" class="btn btn-outline-dark mb-3 mt-3">Envoyer</button>
         </form>
 
             <p class="text-center m-3">

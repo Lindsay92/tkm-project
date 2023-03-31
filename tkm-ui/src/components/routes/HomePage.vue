@@ -1,3 +1,11 @@
+<script>
+import { RouterLink } from 'vue-router';
+
+// export default {
+//         name: 'home',
+//     };
+</script>
+
 <template>
     <h1 class="text-center m-5">La Guyane Française, un pays au mille visages !</h1>
 

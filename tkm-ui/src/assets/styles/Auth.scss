@@ -5,18 +5,7 @@ $title-font-stack: "Indie flower";
 $item-font-stack: "Oswald";
 $main-color: black;
 
-h1, .link {
+h1 {
     font-family: $item-font-stack, cursive;
 }
 
-/********LINKS******/
-
-.link {
-    text-decoration: none;
-    color:$main-color;
-}
-
-.link:hover{
-    text-decoration: underline;
-    color: lightslategray;
-}

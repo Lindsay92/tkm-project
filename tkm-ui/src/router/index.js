@@ -6,27 +6,27 @@ const router = createRouter({
     {
       path:'/',
       name: 'home',
-      component: () => import('../components/routes/Home.vue')
+      component: () => import('../components/routes/HomePage.vue')
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import('../components/routes/About.vue')
+      component: () => import('../components/routes/AboutPage.vue')
     },
     {
       path: '/activities',
       name: 'activities',
-      component: () => import('../components/routes/Activities.vue')
+      component: () => import('../components/routes/ActivitiesList.vue')
     },
     {
       path: '/login',
       name: 'login',
-      component: () => import('../components/routes/Login.vue')
+      component: () => import('../components/routes/LoginPage.vue')
     },
     {
       path: '/auth',
       name: 'authenfication',
-      component: () => import('../components/routes/Auth.vue')
+      component: () => import('../components/routes/AuthPage.vue')
     }
   ]
 })
