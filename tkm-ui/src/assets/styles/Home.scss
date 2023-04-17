@@ -5,7 +5,7 @@ $title-font-stack: "Indie flower";
 $item-font-stack: "Oswald";
 $main-color: black;
 
-h1, .activity-list {
+h1, .activity-list .slogan {
     font-family: $item-font-stack, cursive;
 }
 
@@ -39,9 +39,6 @@ h1, .activity-list {
 h2{
     font-family: 'Indie Flower', cursive;
 }
-// .navbar .color{
-//     background-color: lightslategray;
-// }
 
 .card-img-top:hover{
     box-shadow: 10px 5px 5px #887766;

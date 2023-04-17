@@ -1,0 +1,24 @@
+
+[
+    {
+        "id": 1,
+        "imageUrl": "src/assets/images/accueilImage/forest.jpg",
+        "alt": "Forêt Amazonienne",
+        "title" : "Activités Naturelles" ,
+        "prez": "Envie de découvrir une faune exceptionnelle, une biodiversité incroyable, des plages à perte de vue, des criques secrètes, des couchés de soleil flamboyants..."
+    },
+    {
+        "id": 2,
+        "imageUrl": "src/assets/images/accueilImage/house.jpg" ,
+        "alt":"Une maison créole",
+        "title" : "Activités Culturelles" ,
+        "prez": "Envie d'apprendre et de découvrir les différentes communautés guyanaises, l'artisanat local, les coutumes du pays, d'échanger avec les habitants... "
+    },
+    {
+        "id": 3,
+        "imageUrl": "src/assets/images/accueilImage/spices.jpg",
+        "alt": "Du piment",
+        "title" : "Restaurants et marchés" ,
+        "prez": "Envie de sentir les épices au marché de Cayenne, de goûter les différents plats familiaux tout en s'abandonnant à un petit verre de rhum 'La Belle Cabresse'..."
+    }
+]

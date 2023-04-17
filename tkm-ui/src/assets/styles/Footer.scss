@@ -19,15 +19,13 @@ span {
 
 .link-footer:hover{
     text-decoration: underline;
-    // color: lightslategray;
 }
 
 .footer{
     background-color: $background;
 }
 
-// footer {
-//     display: flex;
-//     flex-direction: flex;
-//     margin-top: auto;
-// }
+footer {
+    position: relative;
+    margin-top: 12%; 
+}

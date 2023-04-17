@@ -1,6 +1,6 @@
 <template>
   
-    <div class=" row align-items-center fw-semibold text-center m-5  justify-content-center">
+    <div class=" row align-items-center text-center m-5  justify-content-center">
 
       <p class="mb-5">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus repellat, obcaecati totam
         voluptate delectus maxime neque quasi, vel tenetur cumque nesciunt earum. Facere atque beatae et? Vero eum unde

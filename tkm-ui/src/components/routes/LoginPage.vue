@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router';
 <template>
     <h1 class="text-center m-3">Se connecter</h1>
         <section class="row justify-content-center">
-        <form class="col-md-6 ">
+        <form class="col-md-6">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email">
