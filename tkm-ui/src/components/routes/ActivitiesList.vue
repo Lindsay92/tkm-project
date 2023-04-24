@@ -32,10 +32,9 @@ export default {
             </div>
                 
             <section class="row ">
-
-                <div class="col-md-4 d-flex justify-content-center fw-semibold text-center" v-for="activity in activities">
+                <div class="col-12 col-md-4 d-flex justify-content-center fw-semibold text-center" v-for="activity in activities">
                     <!-- TEST <img src="src/assets/images/accueilImage/forest.jpg">  -->
-                    <div class="card m-1 fw-normal">
+                    <div class="card w-100 shadow m-1 fw-normal">
                         <img src="src/assets/images/accueilImage/forest.jpg">   
                         <!--VOIR COMMENT CHARGER IMAGES-->               
                             <!-- <img :src="activity.imageUrl" :alt="sticker.name">                    -->
@@ -55,19 +54,18 @@ export default {
                                     </p>
                                 </div>
 
-                                <a href=""><img src="src/assets/images/heart.svg"></a>
+                                <a href=""><img src="src/assets/images/heart.svg" title="Ajouter à mon carnet"></a>
                             </div>
-                        
                     </div>
 
                 </div>
-            
             </section>
+
                 <div class="row">
-                    <div class="d-flex justify-content-end m-3">
-                        <button class="btnColor" id="scrollUp">
-                            <a href="#top"><img class="btn" src="src/assets/images/arrow-up.svg"/></a>
-                        </button>
+                    <div class="d-flex justify-content-end p-4">
+                        <span class="btnColor" id="scrollUp">
+                            <a href="#top"><img src="src/assets/images/arrow-up-circle.svg"/></a>
+                        </span>
                     </div>
                 </div>
 
