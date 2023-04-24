@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-    <h1 class="text-center m-3">Se connecter</h1>
+    <h1 class="text-center m-5">Se connecter</h1>
         <section class="row justify-content-center">
             <form class="col-12 col-md-6">
                 <div class="mb-3">

@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-center m-3">S'enregistrer</h1>
+    <h1 class="text-center m-5">S'enregistrer</h1>
 
         <form class="container col-12 col-md-6 p-3">
             <div class="mb-3">

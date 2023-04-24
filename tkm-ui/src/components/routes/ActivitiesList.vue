@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-    <h1 class="text-center m-4">Les activités et restaurants proposés</h1>
+    <h1 class="text-center m-5">Les activités et restaurants proposés</h1>
 
             <section class="m-5">
                 <div class="input-group">
