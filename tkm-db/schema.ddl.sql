@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS activities;
+
+CREATE TABLE activities (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	description VARCHAR(1000) NOT NULL,
+	image_url VARCHAR(300) UNIQUE NOT NULL,
+	location VARCHAR(200) NOT NULL,
+    link_url VARCHAR(300) NOT NULL,
+    created_at DATE NOT NULL
+);
