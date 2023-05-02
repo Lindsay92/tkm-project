@@ -1,22 +1,26 @@
 package co.simplon.tkm.dtos;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class ActivityCreateDto {
 	
-	@NotEmpty
+	@NotBlank
+	@Size(max = 250)
 	private String name;
 	
-	@NotEmpty
+	@NotBlank
+	@Size(max = 1000)
 	private String description;
 	
-	@NotEmpty
+	@NotBlank
 	private String imageUrl;
 	
-	@NotEmpty
+	@NotBlank
 	private String location;
 	
-	@NotEmpty
+	@NotBlank
 	private String linkUrl;
 		
 	
