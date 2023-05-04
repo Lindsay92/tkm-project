@@ -1,4 +1,10 @@
 DELETE FROM activities;
+DELETE FROM account;
+
+INSERT INTO account
+	(first_name, last_name, email, password)
+	VALUES
+	('Lindsay', 'user', 'user@simplon.com', 'test');
 
 INSERT INTO activities
 	(name, description, image_url, location, link_url, created_at)
