@@ -56,8 +56,8 @@ public class Credentials {
 
 	@Override
 	public String toString() {
-		return "Credentials [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password="
-				+ password + "]";
+		return "Credentials [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password={protected}"
+				+ "]";
 	}
 
 }

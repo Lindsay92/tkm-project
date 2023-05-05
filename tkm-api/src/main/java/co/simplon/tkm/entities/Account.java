@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "account")
+@Table(name = "accounts")
 public class Account extends AbstractEntity {
 	
 	@Column(name = "first_name")
@@ -71,8 +71,8 @@ public class Account extends AbstractEntity {
 
 	@Override
 	public String toString() {
-		return "Account [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password="
-				+ password + "]";
+		return "Accounts [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password={protected}"
+				+ "]";
 	}
 
 }

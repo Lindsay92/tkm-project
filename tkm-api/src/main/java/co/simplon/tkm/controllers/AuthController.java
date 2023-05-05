@@ -26,7 +26,7 @@ public class AuthController {
     @PostMapping("/sign-in")
     public TokenInfo signIn(
 	    @RequestBody Credentials inputs) {
-	return service.signIn(inputs);
-    }
+    	return service.signIn(inputs);
+    	}
 
 }

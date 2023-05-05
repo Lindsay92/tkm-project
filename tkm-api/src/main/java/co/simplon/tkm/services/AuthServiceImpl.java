@@ -25,6 +25,8 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public void signUp(Credentials inputs) {
     	Account account = new Account();
+    	account.setFirstName(inputs.getFirstName());
+    	account.setLastName(inputs.getLastName());
     	account.setEmail(inputs.getEmail());
 
     	String hashPassword = authHelper

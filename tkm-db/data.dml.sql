@@ -1,7 +1,7 @@
 DELETE FROM activities;
-DELETE FROM account;
+DELETE FROM accounts;
 
-INSERT INTO account
+INSERT INTO accounts
 	(first_name, last_name, email, password)
 	VALUES
 	('Lindsay', 'user', 'user@simplon.com', 'test');
