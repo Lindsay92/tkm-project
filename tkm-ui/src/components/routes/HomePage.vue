@@ -18,12 +18,18 @@ export default {
 <template>
     <h1 class="text-center m-5">La Guyane Française, un pays au mille visages !</h1>
 
-    <p class="text-center slogan m-3 "> <span class="medium">Tout Koulèr Mélanjé</span> est une application qui fait référence à la diversité du territoire guyanais. Un pays pluriculturel où se mélange différentes communautés (des Amérindiens, des Hmongs, des Brésiliens, des Chinois, des Guyanais, des Businengés…). <br>
-    Ce pays méconnu et ayant parfois une mauvaise réputation se révèle comme une terre accueillante offrant une expérience exceptionnelle et mémorable. <br>
-    <br>Que vous soyez seul, en famille ou entre amis, <span class="medium">Tout Koulèr Mélanjé</span> a pour objectif de vous faire découvrir ou redécouvrir la richesse de la Guyane Française à travers différentes activités. Avec un carnet à votre disposition, vous pourrez ajouter dans votre liste de favoris les activités souhaitées, prendre contact avec les organisateurs, obtenir les informations nécessaires et échanger vos expériences inoubliables entre abonnés. </p>
+    <p class="text-center slogan m-3 "> <span class="medium">Tout Koulèr Mélanjé</span> est une application qui fait référence à la diversité du territoire guyanais. Un pays pluriculturel où se mélange différentes communautés telles que des Amérindiens, des Hmongs, des Brésiliens, des Guyanais, des Businengés... 
+        <br>
+    Ce pays méconnu et ayant parfois une mauvaise réputation se révèle comme une terre accueillante et offrant une expérience exceptionnelle et mémorable.  
+        <br>
+        <br>
+    Que vous soyez seul(e), en famille ou entre ami(e)s, <span class="medium">Tout Koulèr Mélanjé</span> a pour objectif de vous faire découvrir ou redécouvrir la richesse de la Guyane Française à travers différentes activités ou enore par la gastronomie guyanaise. 
+        <br>
+        <br>
+    Ajouter dans votre carnet de voyage les activités souhaitées et partager vos expériences inoubliables entre abonnés. </p>
 
     <div class="m-4">
-        <p class="text-center fs-5 fw-bold activity-list"><RouterLink to="/login" class="link-title"> "Authentifiez-vous pour voir les activités et les restaurants"</RouterLink>
+        <p class="text-center fs-5 fw-bold activity-list"><RouterLink to="/activities" class="link-title"> "Voir les activités et les restaurants"</RouterLink>
         </p>
     </div>
 

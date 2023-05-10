@@ -27,6 +27,11 @@ const router = createRouter({
       path: '/auth',
       name: 'authenfication',
       component: () => import('../components/routes/AuthPage.vue')
+    },
+    {
+      path: '/admin/activities/create',
+      name: 'activities-create',
+      component: () => import('../components/admin/Create.vue')
     }
   ]
 })

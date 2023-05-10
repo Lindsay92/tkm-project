@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.simplon.tkm.dtos.ActivityCreateDto;
 import co.simplon.tkm.dtos.ActivityView;
@@ -13,6 +14,7 @@ import co.simplon.tkm.entities.Activity;
 import co.simplon.tkm.repositories.ActivityRepository;
 
 @Service
+@Transactional(readOnly = true) //toutes mes classes sont en lecture par défaut
 public class ActivityServiceImpl implements ActivityService {
 	
 	private ActivityRepository activities;
@@ -22,6 +24,7 @@ public class ActivityServiceImpl implements ActivityService {
 	}
 	
 	@Override
+	@Transactional //mean "read only" = false
 	public void create(@Valid ActivityCreateDto inputs) {
 		
 		Activity activity = new Activity();

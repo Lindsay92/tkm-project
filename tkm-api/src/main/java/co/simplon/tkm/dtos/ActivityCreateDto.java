@@ -18,6 +18,7 @@ public class ActivityCreateDto {
 	private String imageUrl;
 	
 	@NotBlank
+	@Size(max = 100)
 	private String location;
 	
 	@NotBlank
