@@ -1,15 +1,18 @@
 <script>
+import { useRoute } from 'vue-router';
 import { useVuelidate } from '@Vuelidate/core';
 import { required, maxLength } from "@vuelidate/validators";
 
 export default {
     setup(){
         return{
+            route: useRoute(),
             validator : useVuelidate({ $autoDirty: true }),
         }
     },
     data(){
         return {
+            id: this.route.params.id,
             baseUrl: import.meta.env.VITE_IMG_BASE_URL,
             inputs: {
                 name: null,
@@ -35,21 +38,28 @@ export default {
         async submit() {
             const response = await this.validator.$validate();
             if (response) {
-                this.$axios.post('/activities', this.inputs);
-                Object.assign(this.$data.inputs, this.$options.data().inputs);
+                this.$axios.put(`/activities/${this.id}`, this.inputs);
                 this.validator.$reset();
+                this.$router.push({ name: 'activities-edit'})
             } else {
                 console.log('erreur')
             }
-
         },
+
+        async getActivities(){
+                const response = await this.$axios.get(`/activities/${this.id}/for-update`);
+                this.inputs = response.body;
+            }
+    },
+    beforeMount() {
+        this.getActivities();
     }
 
 };
 </script>
 
 <template>
-    <h1 class="mt-3">Create a new activity</h1>
+    <h1 class="mt-3">Update an activity</h1>
     <form novalidate @submit.prevent="submit">
         <div class="row mb-3">
             <div class="col-12">
@@ -96,7 +106,13 @@ export default {
         </div>
 
         <div class="d-grid d-md-flex justify-content-md-end mb-3">
-            <button type="submit" class="btn btn-dark" :disabled="validator.$invalid">Envoyer</button>
+            <button type="submit" class="btn btn-dark" :disabled="validator.$invalid">Sauvegarder</button>
         </div>
+
+        <div class="d-grid d-md-flex justify-content-md-end mb-3">
+            <button class="btn btn-light"><RouterLink :to="{name: 'activities-edit'}">Retour</RouterLink></button>
+        </div>
+
+        
     </form>
 </template>

@@ -32,6 +32,16 @@ const router = createRouter({
       path: '/admin/activities/create',
       name: 'activities-create',
       component: () => import('../components/admin/Create.vue')
+    },
+    {
+      path: '/admin/activities/:id/update',
+      name: 'activity-update',
+      component: () => import('../components/admin/Update.vue')
+    }, 
+    {
+      path: '/admin/activities',
+      name: 'activities-edit',
+      component: () => import('../components/admin/Edit.vue')
     }
   ]
 })

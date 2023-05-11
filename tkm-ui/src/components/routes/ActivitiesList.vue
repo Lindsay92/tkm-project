@@ -9,7 +9,7 @@ export default {
     methods: {
         async initActivities() {
             const response = await this.$axios.get('/activities');
-            this.activities = response.data;
+            this.activities = response.body;
         }
     },
     beforeMount() {

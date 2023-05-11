@@ -3,8 +3,8 @@ package co.simplon.tkm.dtos;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class ActivityCreateDto {
-	
+public class ActivityUpdateDto {
+
 	@NotBlank
 	@Size(max = 250)
 	private String name;
@@ -24,7 +24,7 @@ public class ActivityCreateDto {
 	private String linkUrl;
 		
 	
-	public ActivityCreateDto() {
+	public ActivityUpdateDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

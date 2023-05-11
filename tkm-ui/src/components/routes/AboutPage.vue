@@ -7,7 +7,7 @@
         voluptate!"</p>
 
       <div class="polaroid col-12 col-md-6">
-        <img src="src/assets/images/accueilImage/lezard.jpg" alt="" class="image">
+        <img src="public/images/lezard.jpg" alt="" class="image">
         <div class="container">
           <p>titre</p>
         </div>
@@ -24,7 +24,7 @@
       </div>
 
       <div class="polaroid col-12 col-md-6">
-        <img src="src/assets/images/accueilImage/flower2.jpg" alt="" class="image">
+        <img src="public/images/flower2.jpg" alt="" class="image"> <!--Instead of /public/images/flower2.jpg, use /images/flower2.jpg.-->
         <div class="container">
           <p>titre</p>
         </div>
