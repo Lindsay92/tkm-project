@@ -33,7 +33,7 @@ export default {
             </div> -->
                 
             <section class="row ">
-                <div class="col-12 col-md-4 d-flex justify-content-center fw-semibold text-center" v-for="activity in activities">
+                <div class="col-12 col-md-4 d-flex justify-content-center fw-semibold text-center" v-for="activity in activities" :key="activity.id">
                     <div class="card w-100 shadow m-1 fw-normal">          
                             <img :src="baseUrl + activity.imageUrl" :alt="activity.name">                   
                             
@@ -48,7 +48,8 @@ export default {
                                         <a v-bind:href="activity.linkUrl" target="_blank" class="link-title">Accès au site</a>
                                     </p>
                                 </div>
-                                <a href=""><img src="src/assets/heart.svg" title="Ajouter à mon carnet"></a>
+                                <!-- <a href=""><img src="src/assets/heart.svg" title="Ajouter à mon carnet"></a> -->
+                                <a href=""><i class="bi bi-suit-heart" title="Ajouter à mon carnet"></i></a>
                             </div>
                     </div>
                 </div>

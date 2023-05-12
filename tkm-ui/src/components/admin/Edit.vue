@@ -37,25 +37,21 @@ export default {
                 <tr class="text-center align-middle">
                     <th scope="col">Image</th>
                     <th class="col" scope="col">Name</th>
-                    <th class="col" scope="col">Description</th>
-                    <th scope="col">ImageUrl</th>
-                    <th class=""  scope="col">LinkUrl</th>
-                    <!-- <th scope="col">Date added</th> -->
+                    <th scope="col">Description</th>
+                    <th scope="col">Date added</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
-            <tbody class="text-nowrap  align-middle">
-                <tr v-for="activity in activities">
-                    <td class="text-center"><img :src="baseUrl + activity.imageUrl" class="img-fluid"
-                            :alt="activity.name">
+            <tbody class="text-nowrap align-middle text-center">
+                <tr v-for="activity in activities" :key="activity.id">
+                    <td>
+                        <img :src="baseUrl + activity.imageUrl" class="img-fluid w-50"
+                                :alt="activity.name">
                     </td>
                     <td>{{ activity.name }}</td>
                     <td>{{ activity.description }}</td>
-                    <td>{{ activity.imageUrl }}</td>
-                    <td>{{ activity.linkUrl }}</td>
-                    <!-- <td>date</td> -->
-                    <!-- <td>{{ this.$fmt.date(activity.createdAt) }}</td> -->
+                    <td>{{ this.$fmt.date(activity.createdAt) }}</td>
                     <td class="text-center">
                         <RouterLink :to="{ name: 'activity-update', params: { id: activity.id } }" title="Update activity">
                             <i class="bi bi-pencil-square text-primary"></i>

@@ -34,6 +34,7 @@
                 <div>
                     <RouterLink to="/login">
                         <img src="src/assets/user.svg">
+                    
                     </RouterLink>
                 </div>
             </div>

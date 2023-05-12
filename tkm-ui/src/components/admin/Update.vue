@@ -105,12 +105,12 @@ export default {
             </div>
         </div>
 
-        <div class="d-grid d-md-flex justify-content-md-end mb-3">
+        <div class="d-md-flex justify-content-md-end mb-3">
             <button type="submit" class="btn btn-dark" :disabled="validator.$invalid">Sauvegarder</button>
         </div>
 
-        <div class="d-grid d-md-flex justify-content-md-end mb-3">
-            <button class="btn btn-light"><RouterLink :to="{name: 'activities-edit'}">Retour</RouterLink></button>
+        <div class="d-md-flex justify-content-md-end mb-3">
+            <button class="btn btn-dark"><RouterLink :to="{name: 'activities-edit'}" class="text-decoration-none link text-light">Retour</RouterLink></button>
         </div>
 
         
