@@ -40,12 +40,11 @@ export default {
             if (response) {
                 this.$axios.put(`/activities/${this.id}`, this.inputs);
                 this.validator.$reset();
-                this.$router.push({ name: 'activities-edit'})
+                this.$router.push({ name: 'activities-edit' })
             } else {
                 console.log('erreur')
             }
         },
-
         async getActivities(){
                 const response = await this.$axios.get(`/activities/${this.id}/for-update`);
                 this.inputs = response.body;
@@ -112,7 +111,5 @@ export default {
         <div class="d-md-flex justify-content-md-end mb-3">
             <button class="btn btn-dark"><RouterLink :to="{name: 'activities-edit'}" class="text-decoration-none link text-light">Retour</RouterLink></button>
         </div>
-
-        
     </form>
 </template>

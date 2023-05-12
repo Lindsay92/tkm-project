@@ -6,9 +6,9 @@
                 <label for="firstName" class="form-label">Prénom*</label>
                 <input type="text"  id="firstName"
                     class="form-control">
-                    <span class="invalid-feedback">
+                    <!-- <span class="invalid-feedback">
                         <p>message d'erreur</p>
-                    </span>
+                    </span> -->
             </div>
             <div class="mb-3">
                 <label for="lastName" class="form-label">Nom*</label>
@@ -25,6 +25,5 @@
             </div>
         
             <button type="submit" class="btn btn btn-outline-dark mt-3 mb-3">S'enregistrer</button>
-
         </form>
 </template>

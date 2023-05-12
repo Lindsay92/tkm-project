@@ -41,10 +41,8 @@ export default {
             } else {
                 console.log('erreur')
             }
-
         },
     }
-
 };
 </script>
 

@@ -10,7 +10,6 @@ export default {
     async beforeMount() {
         const response = await fetch('/data/homeActivities.json');
         this.homeActivities = await response.json();
-
     }
 }
 </script>

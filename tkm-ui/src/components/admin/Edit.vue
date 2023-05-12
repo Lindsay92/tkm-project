@@ -29,6 +29,7 @@ export default {
     }
 }
 </script>
+
 <template>
     <h1>Edit activities</h1>
     <div class="table-responsive">
@@ -36,9 +37,9 @@ export default {
             <thead>
                 <tr class="text-center align-middle">
                     <th scope="col">Image</th>
-                    <th class="col" scope="col">Name</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Date added</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
                 </tr>

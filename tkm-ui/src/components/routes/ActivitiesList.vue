@@ -27,10 +27,6 @@ export default {
                     <input type="text" class="form-control">
                 </div>
             </section>
-
-            <!-- <div v-for="activity in activities">
-                Test : {{ activity.name }}
-            </div> -->
                 
             <section class="row ">
                 <div class="col-12 col-md-4 d-flex justify-content-center fw-semibold text-center" v-for="activity in activities" :key="activity.id">

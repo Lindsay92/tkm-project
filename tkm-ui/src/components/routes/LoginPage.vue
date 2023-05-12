@@ -16,12 +16,11 @@ import { RouterLink } from 'vue-router';
                     <input type="password" class="form-control" id="password">
                 </div>
         
-                <button type="submit" class="btn btn-outline-dark mb-3 mt-3">Envoyer</button>
+                <button type="submit" class="btn btn-outline-dark mb-3 mt-3">Se connecter</button>
             </form>
 
             <p class="text-center m-3">
                 <RouterLink to= "/auth" class="link">Si vous n’avez pas de compte, cliquez sur le lien</RouterLink>
             </p>    
         </section>
-
 </template>
