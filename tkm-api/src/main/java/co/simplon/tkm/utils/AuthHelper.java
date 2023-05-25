@@ -8,8 +8,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
-
-
 public class AuthHelper {
 	
 	private final String issuer;
@@ -18,18 +16,18 @@ public class AuthHelper {
     private final PasswordEncoder encoder;
 
     public AuthHelper(Builder builder) {
-	this.issuer = builder.issuer;
-	this.algorithm = builder.algorithm;
-	this.encoder = builder.passwordEncoder;
-	this.expiration = builder.expiration;
+		this.issuer = builder.issuer;
+		this.algorithm = builder.algorithm;
+		this.encoder = builder.passwordEncoder;
+		this.expiration = builder.expiration;
     }
 
     public String encode(String password) {
-	return encoder.encode(password);
+    	return encoder.encode(password);
     }
 
     public Boolean matches(String candidate, String hash) {
-	return encoder.matches(candidate, hash);
+    	return encoder.matches(candidate, hash);
     }
 
     public String createJWT(List<String> roles,

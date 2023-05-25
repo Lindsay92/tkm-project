@@ -58,7 +58,7 @@ export default {
 </script>
 
 <template>
-    <h1 class="mt-3">Update an activity</h1>
+    <h1 class="text-center m-5">Mettre à jour une activité</h1>
     <form novalidate @submit.prevent="submit">
         <div class="row mb-3">
             <div class="col-12">

@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-    <h1>Edit activities</h1>
+    <h1 class="text-center m-5">La liste des activities</h1>
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>

@@ -47,7 +47,7 @@ export default {
 </script>
 
 <template>
-    <h1 class="mt-3">Create a new activity</h1>
+    <h1 class="text-center m-5">Formulaire de création d'une nouvelle activité</h1>
     <form novalidate @submit.prevent="submit">
         <div class="row mb-3">
             <div class="col-12">

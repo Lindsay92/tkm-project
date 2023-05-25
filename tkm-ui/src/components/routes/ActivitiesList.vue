@@ -3,9 +3,20 @@ export default {
     data() {
         return {
             baseUrl: import.meta.env.VITE_IMG_BASE_URL,
-            activities: []
+            activities: [],
+            inputFilter:""
         }
     },
+
+    computed: {
+        filterActivities() {
+            let filterActivities = this.activities.filter((activity) => {
+                return activity.name.toLocaleLowerCase().includes(this.inputFilter.toLocaleLowerCase());
+            });
+            return filterActivities;
+        }
+    },
+    
     methods: {
         async initActivities() {
             const response = await this.$axios.get('/activities');
@@ -24,12 +35,12 @@ export default {
             <section class="m-5">
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon1">Filtrer</span>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" v-model="inputFilter">
                 </div>
             </section>
                 
             <section class="row ">
-                <div class="col-12 col-md-4 d-flex justify-content-center fw-semibold text-center" v-for="activity in activities" :key="activity.id">
+                <div class="col-12 col-md-4 d-flex justify-content-center fw-semibold text-center" v-for="activity in filterActivities" :key="activity.id">
                     <div class="card w-100 shadow m-1 fw-normal">          
                             <img :src="baseUrl + activity.imageUrl" :alt="activity.name">                   
                             
