@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.tkm.dtos.ActivityAdminView;
 import co.simplon.tkm.dtos.ActivityCreateDto;
+import co.simplon.tkm.dtos.ActivityDetailView;
 import co.simplon.tkm.dtos.ActivityForUpdate;
 import co.simplon.tkm.dtos.ActivityUpdateDto;
 import co.simplon.tkm.dtos.ActivityView;
@@ -57,4 +58,10 @@ public class ActivityController {
 	public Collection<ActivityAdminView> getAllForEdit() {
 		return service.getAllForEdit();
 	}
+	
+	@GetMapping("/{id}/detail")
+	public ActivityDetailView detail(@PathVariable("id") Long id) {
+		return service.detail(id);
+	}
+	
 }

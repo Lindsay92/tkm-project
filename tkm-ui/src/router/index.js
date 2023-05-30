@@ -14,9 +14,19 @@ const router = createRouter({
       component: () => import('../components/routes/AboutPage.vue')
     },
     {
+      path: '/map',
+      name: 'map',
+      component: () => import('../components/routes/MapPage.vue')
+    },
+    {
       path: '/activities',
       name: 'activities',
       component: () => import('../components/routes/ActivitiesList.vue')
+    },
+    {
+      path: '/activities/:id/detail',
+      name: 'activity-detail',
+      component: () => import('../components/routes/ActivityDetail.vue')
     },
     {
       path: '/login',

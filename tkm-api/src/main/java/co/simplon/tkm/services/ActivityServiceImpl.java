@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import co.simplon.tkm.dtos.ActivityAdminView;
 import co.simplon.tkm.dtos.ActivityCreateDto;
+import co.simplon.tkm.dtos.ActivityDetailView;
 import co.simplon.tkm.dtos.ActivityForUpdate;
 import co.simplon.tkm.dtos.ActivityUpdateDto;
 import co.simplon.tkm.dtos.ActivityView;
@@ -75,4 +76,9 @@ public class ActivityServiceImpl implements ActivityService {
 	public Collection<ActivityAdminView> getAllForEdit() {
 		return activities.findAllProjectedByOrderByCreatedAtDescName();
 	}
+	
+	@Override
+    public ActivityDetailView detail(Long id) {
+	return activities.findProjectedDetailById(id);
+    }
 }

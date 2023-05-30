@@ -24,16 +24,17 @@
                             </RouterLink>
                         </li>
                         <li class="nav-item">
-                            <a class="lien-menu nav-link active" href="">
+                            <RouterLink to="/map" class="lien-menu nav-link active">
                                 Carte
-                            </a>
+                            </RouterLink>
                         </li>
                     </ul>
                 </div>
 
                 <div>
-                    <RouterLink to="/login">
-                        <img src="src/assets/user.svg">
+                    <RouterLink to="/login" class="lien-menu nav-link active">
+                        <!-- <img src="src/assets/user.svg"> -->
+                        <i class="bi bi-person-fill"></i>
                     </RouterLink>
                 </div>
             </div>
