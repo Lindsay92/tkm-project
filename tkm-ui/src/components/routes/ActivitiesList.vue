@@ -4,16 +4,6 @@ export default {
         return {
             baseUrl: import.meta.env.VITE_IMG_BASE_URL,
             activities: [],
-            inputFilter:""
-        }
-    },
-
-    computed: {
-        filterActivities() {
-            let filterActivities = this.activities.filter((activity) => {
-                return activity.name.toLocaleLowerCase().includes(this.inputFilter.toLocaleLowerCase());
-            });
-            return filterActivities;
         }
     },
     
@@ -40,31 +30,27 @@ export default {
         </section>
                 
         <section class="row">
-            <div class="col-12 col-md-4 d-flex justify-content-center fw-semibold text-center" v-for="activity in filterActivities" :key="activity.id">
+            <div class="col-12 col-md-4 d-flex justify-content-center fw-semibold text-center" v-for="activity in activities" :key="activity.id">
                 <div class="card w-100 shadow m-1 fw-normal">          
                     <img :src="baseUrl + activity.imageUrl" :alt="activity.name">                   
                             
-                <div class="card-body my-1">
-                    <h2>{{ activity.name }}</h2>
-                        <!-- <p class="card-text">{{ activity.description}}</p> -->
-                        <div>
-                            <p>{{ activity.location}}</p>
-                        </div>
-                        <div>
-                            <p class="fst-italic text-uppercase"> 
-                                <a v-bind:href="activity.linkUrl" target="_blank" class="link-title">Accès au site</a>
-                            </p>
-                        </div>
-                        <a href="" class="link"><i class="bi bi-suit-heart" title="Ajouter à mon carnet"></i></a>
-                </div>
+                    <div class="card-body my-1">
+                        <h2>{{ activity.name }}</h2>
+                            <div>
+                                <p>{{ activity.location}}</p>
+                            </div>
+                            <div>
+                                <p class="fst-italic text-uppercase"> 
+                                    <a v-bind:href="activity.linkUrl" target="_blank" class="link-title">Accès au site</a>
+                                </p>
+                            </div>
+                            <a href="" class="link"><i class="bi bi-suit-heart" title="Ajouter à mon carnet"></i></a>
+                    </div>
 
-                <div class="d-flex flex-wrap justify-content-around mb-3">
-                    <RouterLink :to=" { name: 'activity-detail', params: { id: activity.id } }" class="link"><span >Voir détail</span> <i class="bi bi-box-arrow-up-right"></i>
-                    </RouterLink>
-
-                    <a href="" class="link"><span >Localisation</span> <i class="bi bi-geo-alt"></i>
-                    </a>
-                </div>
+                    <p class=" mb-3">
+                        <RouterLink :to=" { name: 'activity-detail', params: { id: activity.id } }" class="link"><span >Détail et localisation</span> <i class="bi bi-box-arrow-up-right"></i>
+                        </RouterLink>
+                    </p>
                 
                 </div>
             </div>

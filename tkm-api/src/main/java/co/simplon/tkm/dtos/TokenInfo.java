@@ -7,7 +7,6 @@ public class TokenInfo {
 
     public TokenInfo() {
     	super();
-	// TODO Auto-generated constructor stub
     }
 
     public String getToken() {

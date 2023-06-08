@@ -26,7 +26,6 @@ public class ActivityUpdateDto {
 	
 	public ActivityUpdateDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getName() {

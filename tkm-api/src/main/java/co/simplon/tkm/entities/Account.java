@@ -22,8 +22,7 @@ public class Account extends AbstractEntity {
 //    private List<String> roles;
 
     public Account() {
-	super();
-	// TODO Auto-generated constructor stub
+    	super();
     }
 
 	public String getFirstName() {

@@ -15,6 +15,8 @@ public interface ActivityService {
 	
 	void update(Long id, ActivityUpdateDto inputs);
 	
+	void delete(Long id);
+	
 	Collection<ActivityView> getAll();
 
 	ActivityForUpdate forUpdate(Long id);
@@ -22,6 +24,8 @@ public interface ActivityService {
 	Collection<ActivityAdminView> getAllForEdit();
 
 	ActivityDetailView detail(Long id);
+
+	
 
 
 }

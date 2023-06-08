@@ -13,16 +13,14 @@ export default {
             const response = await this.$axios.get('/activities/for-edit');
             this.activities = response.body;
         },
-        // async remove(id) {
-        //     const resp = await this.$http.delete(`/stickers/${id}`);
-        //     if (resp.status === 204) {
-        //         this.$toast.success('toast-global', 'Sticker deleted with success.');
-        //         await this.initStickers();
-        //     } else {
-        //         console.error(resp);
-        //         this.$toast.error('toast-global', 'Server error.');
-        //     }
-        // }
+        async remove(id) {
+            const response = await this.$axios.delete(`/activities/${id}`);
+            if (response) {
+                await this.initActivities();
+            } else {
+                console.error("error");    
+            }
+        }
     },
     beforeMount() {
         this.initActivities();
@@ -58,8 +56,11 @@ export default {
                             <i class="bi bi-pencil-square text-primary"></i>
                         </RouterLink>
                     </td>
-                    <td class="text-center"><a href="#" @click="remove(activity.id)"><i
-                                class="bi bi-trash3 text-danger"></i></a></td>
+                    <td class="text-center">
+                        <a href="#" @click="remove(activity.id)">
+                            <i class="bi bi-trash3 text-danger"></i>
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>

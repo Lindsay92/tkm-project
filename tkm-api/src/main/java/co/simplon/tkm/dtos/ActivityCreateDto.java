@@ -26,7 +26,6 @@ public class ActivityCreateDto {
 	
 	public ActivityCreateDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getName() {

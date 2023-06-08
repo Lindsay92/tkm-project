@@ -68,6 +68,12 @@ public class ActivityServiceImpl implements ActivityService {
 	}
 	
 	@Override
+	@Transactional
+	public void delete(Long id) {
+		activities.deleteById(id);
+	}
+	
+	@Override
 	public Collection<ActivityView> getAll() {
 		return activities.findAllProjectedBy();
 	}
