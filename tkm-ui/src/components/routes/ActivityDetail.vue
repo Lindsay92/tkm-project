@@ -3,9 +3,12 @@ import { useRoute } from 'vue-router';
 
 export default {
     setup() {
+        const key = import.meta.env.VITE_MAPS_EMBED_API_KEY;
         return {
-            route: useRoute()
+            route: useRoute(),
+            mapsUrl: `https://www.google.com/maps/embed/v1/place?key=${key}`
         }
+        
     },
     data() {
         return {
@@ -28,26 +31,36 @@ export default {
 
 <template>
 
-    <h1 class="text-center m-3">{{ activity.name }}</h1>
+    <h1 class="text-center mt-3 mb-5">{{ activity.name }}</h1>
     
-    <section class="row text-center">
-        <div class="col-12 col-md-6 my-3 align-items-center justify-content-center">
-            <img :src="baseUrl + activity.imageUrl" class="img-fluid w-75" :alt="activity.name">
-        </div>
-
+    <section class="row d-flex align-items-center justify-content-center text-center my-3">
         <div
-            class="col-12 col-md-6 my-3 align-items-center justify-content-center fs-5">{{ activity.description }}
+            class="col-12 col-md-6">{{ activity.description }}
+        </div>
+        <div class="col-12 col-md-6">
+            <img :src="baseUrl + activity.imageUrl" class="img-fluid w-100 rounded border border-5" :alt="activity.name">
         </div>
     </section>
 
-    <div class="fst-italic m-2 text-center fs-5">
+    <div class="fst-italic fs-5 mt-5 mb-5 text-center">
         <p> 
             <a v-bind:href="activity.linkUrl" target="_blank" class="link-title">Pour accèder au site du prestataire, cliquez-ici <i class="bi bi-box-arrow-up-right"></i></a> 
         </p>
-        <p> 
-            <a href="" class="link"><span >Localisation</span> <i class="bi bi-geo-alt"></i></a>
-        </p>
     </div>
+
+    <h2 class="text-center">Localisation</h2>
+    
+    <section class="col-12 mb-5">
+        <div class="ratio ratio-16x9 border rounded-2 shadow-sm w-75 mx-auto">
+            <iframe loading="lazy" 
+                    frameborder="0" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen  
+                    :src="mapsUrl + `&q=${activity.name},Cayenne+Guyane&language=fr`" 
+                    title="Carte de géolocalisation">
+            </iframe>
+        </div>
+    </section>
 
     <div class="text-end">
         <button class="btn btn-dark">

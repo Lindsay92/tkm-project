@@ -3,8 +3,8 @@
     setup() {
         const key = import.meta.env.VITE_MAPS_EMBED_API_KEY;
         return {
-            // mapsUrl: `https://www.google.com/maps/embed/v1/view?key=${key}&center= 4.9370748,-52.3346534&zoom=15&language=fr`
-            mapsUrl: `https://www.google.com/maps/embed/v1/place?key=${key}&q=musée+Cayenne,Cayenne+Guyane&language=fr`
+            mapsUrl: `https://www.google.com/maps/embed/v1/view?key=${key}&center= 4.9370748,-52.3346534&zoom=15&language=fr`
+            // mapsUrl: `https://www.google.com/maps/embed/v1/place?key=${key}&q=musée+Cayenne,Cayenne+Guyane&language=fr`
         }
     }
 };
@@ -12,7 +12,7 @@
 
 <template>
 
-<h1 class="text-center m-5">Retrouvez les activités sur la carte</h1>
+<h1 class="text-center m-5">Carte de géocalisation de la Guyane Française</h1>
 <div class="text-center mb-3">
         <button class="btn btn-dark">
             <RouterLink :to="{name: 'activities'}" class="text-decoration-none link text-light">Retour à la liste</RouterLink>
@@ -22,7 +22,8 @@
     <div class="col-12">
         <div class="ratio ratio-16x9 border rounded-2 shadow-sm">
             <iframe loading="lazy" 
-                    frameborder="0" style="border:0"
+                    frameborder="0" 
+                    style="border:0"
                     referrerpolicy="no-referrer-when-downgrade"
                     allowfullscreen  
                     :src="mapsUrl" 

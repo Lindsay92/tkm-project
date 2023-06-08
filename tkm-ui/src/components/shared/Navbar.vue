@@ -18,13 +18,11 @@
                                 Accueil
                             </router-link>
                         </li>
-                        <span>.</span>
                         <li class="nav-item">
                             <RouterLink to="/about" class="lien-menu nav-link active">
                                 A propos
                             </RouterLink>
                         </li>
-                        <span>.</span>
                         <li class="nav-item">
                             <RouterLink to="/map" class="lien-menu nav-link active">
                                 Carte
