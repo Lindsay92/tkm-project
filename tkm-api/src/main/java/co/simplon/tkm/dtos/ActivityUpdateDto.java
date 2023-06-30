@@ -1,7 +1,13 @@
 package co.simplon.tkm.dtos;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import co.simplon.tkm.customValidation.FileSize;
+import co.simplon.tkm.customValidation.FileType;
 
 public class ActivityUpdateDto {
 
@@ -13,8 +19,10 @@ public class ActivityUpdateDto {
 	@Size(max = 1000)
 	private String description;
 	
-	@NotBlank
-	private String imageUrl;
+	@NotNull
+	@FileSize
+	@FileType
+	private MultipartFile imageUrl;
 	
 	@NotBlank
 	@Size(max = 100)
@@ -44,11 +52,11 @@ public class ActivityUpdateDto {
 		this.description = description;
 	}
 
-	public String getImageUrl() {
+	public MultipartFile getImageUrl() {
 		return imageUrl;
 	}
 
-	public void setImageUrl(String imageUrl) {
+	public void setImageUrl(MultipartFile imageUrl) {
 		this.imageUrl = imageUrl;
 	}
 

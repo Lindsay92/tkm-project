@@ -1,12 +1,19 @@
 package co.simplon.tkm.services;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.UUID;
 
-import javax.validation.Valid;
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import co.simplon.tkm.dtos.ActivityAdminView;
 import co.simplon.tkm.dtos.ActivityCreateDto;
@@ -23,25 +30,35 @@ public class ActivityServiceImpl implements ActivityService {
 	
 	private ActivityRepository activities;
 	
+	@Value("${tkm.api.uploads.location}")
+    private String uploadDir;
+	
 	public ActivityServiceImpl(ActivityRepository activities) {
 		this.activities = activities;
 	}
 	
 	@Override
 	@Transactional //mean "read only" = false
-	public void create(@Valid ActivityCreateDto inputs) {
+	public void create(ActivityCreateDto inputs) {
 		
 		Activity activity = new Activity();
 		
 		activity.setName(inputs.getName());
 		activity.setDescription(inputs.getDescription());
-		activity.setImageUrl(inputs.getImageUrl());
+		MultipartFile image = inputs.getImageUrl();
+		String baseName = UUID.randomUUID().toString();
+	    String fileName = baseName
+		    + inputs.getImageUrl().getOriginalFilename();
+	    store(image, fileName);
+		activity.setImageUrl(fileName);
 		activity.setLocation(inputs.getLocation());
 		activity.setLinkUrl(inputs.getLinkUrl());
 		LocalDateTime createdAt = LocalDateTime.now();
 		activity.setCreatedAt(createdAt);
 		
-		this.activities.save(activity);
+		
+		//this.activities.save(activity);
+		activities.save(activity);
 		
 	}
 	
@@ -53,13 +70,36 @@ public class ActivityServiceImpl implements ActivityService {
 		
 		activity.setName(inputs.getName());
 		activity.setDescription(inputs.getDescription());
-		activity.setImageUrl(inputs.getImageUrl());
+		
+		if((inputs.getImageUrl() != null)) {
+			Path oldImage = Paths.get(uploadDir, activity.getImageUrl());
+			MultipartFile image = inputs.getImageUrl();
+		    String baseName = UUID.randomUUID().toString();
+		    String fileName = baseName
+			    + inputs.getImageUrl().getOriginalFilename();
+		    activity.setImageUrl(fileName);
+		    store(image, fileName);
+		    oldImage.toFile().delete();
+		}
+//		activity.setImageUrl(inputs.getImageUrl());
+		
 		activity.setLocation(inputs.getLocation());
 		activity.setLinkUrl(inputs.getLinkUrl());
 		LocalDateTime createdAt = LocalDateTime.now();
 		activity.setCreatedAt(createdAt);
 		
 		activities.save(activity);
+	}
+	
+	private void store(MultipartFile image, String fileName) {
+		Path uploadPath = Paths.get(uploadDir);
+		Path target = uploadPath.resolve(fileName);
+		try (InputStream in = image.getInputStream()) {
+			Files.copy(in, target, StandardCopyOption.REPLACE_EXISTING);	
+		} catch (IOException ex) {
+			throw new RuntimeException(ex);
+		}
+		
 	}
 	
 	@Override

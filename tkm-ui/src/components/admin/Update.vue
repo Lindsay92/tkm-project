@@ -28,7 +28,10 @@ export default {
             inputs: {
                 name: { required, maxLength: maxLength(100) },
                 description: { required, maxLength: maxLength(1000) },
-                imageUrl: { required, maxLength: maxLength(100) },
+                imageUrl: { maxValue: (imageUrl) => {
+                    return imageUrl === null || imageUrl.size < 512000
+                    }
+                },
                 location: { required, maxlength: maxLength(100) },
                 linkUrl: { required, maxLength: maxLength(100) }
             }
@@ -38,7 +41,10 @@ export default {
         async submit() {
             const response = await this.validator.$validate();
             if (response) {
-                this.$axios.put(`/activities/${this.id}`, this.inputs);
+                const formData = new FormData();
+                formData.append("imageUlr", this.inputs.imageUrl);
+                
+                this.$axios.put(`/activities/${this.id}`, this.inputs, formData);
                 this.validator.$reset();
                 this.$router.push({ name: 'activities-edit' })
             } else {
@@ -48,7 +54,10 @@ export default {
         async getActivities(){
                 const response = await this.$axios.get(`/activities/${this.id}/for-update`);
                 this.inputs = response.body;
-            }
+            },
+            UpdateFileUpload(event) {
+            this.inputs.imageUrl = event.target.files[0]
+        }
     },
     beforeMount() {
         this.getActivities();
@@ -78,9 +87,19 @@ export default {
             <div class="col-12">
                 <label for="imageUrl" class="form-label required">Image</label>
                 <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-image"></i></span>
-                    <input v-model.trim="inputs.imageUrl" id="imageUrl" name="imageUrl" type="text" maxlength="100"
-                        class="form-control" :class="{ 'is-invalid': validator.inputs.imageUrl.$error }">
+                   <!-- <span class="input-group-text"><i class="bi bi-image"></i></span> -->
+                    <!-- <input v-model.trim="inputs.imageUrl" id="imageUrl" name="imageUrl" type="text" maxlength="100"
+                        class="form-control" :class="{ 'is-invalid': validator.inputs.imageUrl.$error }"> -->
+                    <input id="imageUrl" 
+                            name="imageUrl" 
+                            type="file"
+                            class="form-control" 
+                            :class="{ 'is-invalid': validator.inputs.imageUrl.$error }"
+                            accept= "image/png,image/gif,image/jpeg"
+                            @change="UpdateFileUpload">
+                                <!-- <div class="form-text text-danger" v-if="validator.inputs.imageUrl.$error">
+                                    Image size must be less than 500ko
+                                </div> -->
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -35,13 +36,13 @@ public class ActivityController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void create(@Valid @RequestBody ActivityCreateDto inputs) {
+	public void create(@ModelAttribute @Valid ActivityCreateDto inputs) {
 		service.create(inputs);
 	}
 	
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void update(@PathVariable("id") Long id, @Valid @RequestBody ActivityUpdateDto inputs) {
+	public void update(@PathVariable("id") Long id, @ModelAttribute @Valid ActivityUpdateDto inputs) {
 		service.update(id, inputs);
 	}
 	
