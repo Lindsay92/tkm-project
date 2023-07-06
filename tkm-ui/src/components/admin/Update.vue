@@ -44,6 +44,8 @@ export default {
                 const formData = new FormData();
                 formData.append("imageUlr", this.inputs.imageUrl);
                 
+
+                
                 this.$axios.put(`/activities/${this.id}`, this.inputs, formData);
                 this.validator.$reset();
                 this.$router.push({ name: 'activities-edit' })

@@ -80,10 +80,7 @@ export default {
         <div class="row mb-3">
             <div class="col-12">
                 <label for="imageUrl" class="form-label required">Image</label>
-                <div class="input-group">
-                    <!-- <span class="input-group-text"><i class="bi bi-image"></i></span> -->
-                    <!-- <input v-model.trim="inputs.imageUrl" id="imageUrl" name="imageUrl" type="text" maxlength="100"
-                        class="form-control" :class="{ 'is-invalid': validator.inputs.imageUrl.$error }"> -->
+                <div class="input-group" >
                     <input id="imageUrl" 
                             name="imageUrl" 
                             type="file"
@@ -91,13 +88,12 @@ export default {
                             @change="fileUpload"
                             class="form-control" 
                             :class="{ 'is-invalid': validator.inputs.imageUrl.$error }">
-                                <div class="form-text text-danger" v-if="validator.inputs.imageUrl.$error">
-                                    Image size must be less than 500ko
-                                </div> 
+                    <div class="form-text text-danger" v-if="validator.inputs.imageUrl.$error">
+                        Image size must be less than 500ko
+                    </div> 
                 </div>
             </div>
         </div>
-        
         
         <div class="row mb-3">
             <div class="col-12">
