@@ -65,7 +65,7 @@ export default {
     <form novalidate @submit.prevent="submit">
         <div class="row mb-3">
             <div class="col-12">
-                <label for="name" class="form-label required">Name</label>
+                <label for="name" class="form-label required">Nom de l'activité</label>
                 <input v-model.trim="inputs.name" id="name" name="name" type="text" maxlength="250" class="form-control" :class="{ 'is-invalid': validator.inputs.name.$error }">
             </div>
         </div>
@@ -115,6 +115,9 @@ export default {
 
         <div class="d-grid d-md-flex justify-content-md-end mb-3">
             <button type="submit" class="btn btn-dark" :disabled="validator.$invalid">Envoyer</button>
+        </div>
+        <div class="d-md-flex justify-content-md-end mb-3">
+            <button class="btn btn-dark"><RouterLink :to="{name: 'activities-edit'}" class="text-decoration-none link text-light">Retour sur la liste des activités</RouterLink></button>
         </div>
     </form>
 </template>

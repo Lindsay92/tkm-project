@@ -7,7 +7,7 @@ export default {
     setup(){
         return{
             route: useRoute(),
-            validator : useVuelidate({ $autoDirty: true }),
+            validator : useVuelidate({ $autoDirty: false }),
         }
     },
     data(){
@@ -42,11 +42,13 @@ export default {
             const response = await this.validator.$validate();
             if (response) {
                 const formData = new FormData();
-                formData.append("imageUlr", this.inputs.imageUrl);
+                formData.append("name", this.inputs.name);
+                formData.append("description", this.inputs.description);
+                formData.append("imageUrl", this.inputs.imageUrl);
+                formData.append("location", this.inputs.location);
+                formData.append("linkUrl", this.inputs.linkUrl);
                 
-
-                
-                this.$axios.put(`/activities/${this.id}`, this.inputs, formData);
+                this.$axios.put(`/activities/${this.id}`, formData);
                 this.validator.$reset();
                 this.$router.push({ name: 'activities-edit' })
             } else {
@@ -57,7 +59,8 @@ export default {
                 const response = await this.$axios.get(`/activities/${this.id}/for-update`);
                 this.inputs = response.body;
             },
-            UpdateFileUpload(event) {
+            
+        updateFileUpload(event) {
             this.inputs.imageUrl = event.target.files[0]
         }
     },
@@ -89,23 +92,19 @@ export default {
             <div class="col-12">
                 <label for="imageUrl" class="form-label required">Image</label>
                 <div class="input-group">
-                   <!-- <span class="input-group-text"><i class="bi bi-image"></i></span> -->
-                    <!-- <input v-model.trim="inputs.imageUrl" id="imageUrl" name="imageUrl" type="text" maxlength="100"
-                        class="form-control" :class="{ 'is-invalid': validator.inputs.imageUrl.$error }"> -->
-                    <input id="imageUrl" 
+                    <input  id="imageUrl" 
                             name="imageUrl" 
                             type="file"
                             class="form-control" 
                             :class="{ 'is-invalid': validator.inputs.imageUrl.$error }"
                             accept= "image/png,image/gif,image/jpeg"
-                            @change="UpdateFileUpload">
-                                <!-- <div class="form-text text-danger" v-if="validator.inputs.imageUrl.$error">
-                                    Image size must be less than 500ko
-                                </div> -->
+                            @change="updateFileUpload">
+                            <div class="form-text text-danger" v-if="validator.inputs.imageUrl.$error">
+                            Image size must be less than 500ko
+                            </div>
                 </div>
             </div>
         </div>
-        
         
         <div class="row mb-3">
             <div class="col-12">
@@ -130,7 +129,7 @@ export default {
         </div>
 
         <div class="d-md-flex justify-content-md-end mb-3">
-            <button class="btn btn-dark"><RouterLink :to="{name: 'activities-edit'}" class="text-decoration-none link text-light">Retour</RouterLink></button>
+            <button class="btn btn-dark"><RouterLink :to="{name: 'activities-edit'}" class="text-decoration-none link text-light">Retour sur la liste des activités</RouterLink></button>
         </div>
     </form>
 </template>

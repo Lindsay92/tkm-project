@@ -38,7 +38,7 @@ public class ActivityServiceImpl implements ActivityService {
 	}
 	
 	@Override
-	@Transactional //mean "read only" = false
+	@Transactional 
 	public void create(ActivityCreateDto inputs) {
 		
 		Activity activity = new Activity();
@@ -56,8 +56,6 @@ public class ActivityServiceImpl implements ActivityService {
 		LocalDateTime createdAt = LocalDateTime.now();
 		activity.setCreatedAt(createdAt);
 		
-		
-		//this.activities.save(activity);
 		activities.save(activity);
 		
 	}

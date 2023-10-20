@@ -48,7 +48,8 @@ export default {
                     </div>
 
                     <p class=" mb-3">
-                        <RouterLink :to=" { name: 'activity-detail', params: { id: activity.id } }" class="link"><span >Détail et localisation</span> <i class="bi bi-box-arrow-up-right"></i>
+                        <RouterLink :to=" { name: 'activity-detail', params: { id: activity.id } }" class="link"><span >Détail et localisation</span> 
+                            <i class="bi bi-box-arrow-up-right"></i>
                         </RouterLink>
                     </p>
                 

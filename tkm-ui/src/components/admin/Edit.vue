@@ -30,22 +30,25 @@ export default {
 
 <template>
     <h1 class="text-center m-5">La liste des activities</h1>
+    <div class="d-md-flex justify-content-start m-3">
+        <button class="btn btn-dark"><RouterLink :to="{name: 'activities-create'}" class="text-decoration-none link text-light">Créer une nouvelle activité</RouterLink></button>
+    </div>
     <div class="table-responsive">
-        <table class="table table-hover">
+        <table class="table table-hover table-sm">
             <thead>
                 <tr class="text-center align-middle">
                     <th scope="col">Image</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Description</th>
+                    <th scope="col" class="overflow-auto">Description</th>
                     <th scope="col">Date</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
-            <tbody class="text-nowrap align-middle text-center">
+            <tbody class="text-wrap align-middle text-center table-group-divider">
                 <tr v-for="activity in activities" :key="activity.id">
-                    <td>
-                        <img :src="baseUrl + activity.imageUrl" class="img-fluid w-50"
+                    <td width="200">
+                        <img :src="baseUrl + activity.imageUrl" class="img-fluid w-25"
                                 :alt="activity.name">
                     </td>
                     <td>{{ activity.name }}</td>
