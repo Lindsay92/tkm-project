@@ -32,36 +32,37 @@ export default {
         <section class="row">
             <div class="col-12 col-md-4 d-flex justify-content-center fw-semibold text-center" v-for="activity in activities" :key="activity.id">
                 <div class="card w-100 shadow m-1 fw-normal">          
-                    <img :src="baseUrl + activity.imageUrl" :alt="activity.name">                   
-                            
-                    <div class="card-body my-1">
-                        <h2>{{ activity.name }}</h2>
-                            <div>
-                                <p>{{ activity.location}}</p>
-                            </div>
-                            <div>
-                                <p class="fst-italic text-uppercase"> 
-                                    <a v-bind:href="activity.linkUrl" target="_blank" class="link-title">Accès au site</a>
-                                </p>
-                            </div>
-                            <a href="" class="link"><i class="bi bi-suit-heart" title="Ajouter à mon carnet"></i></a>
-                    </div>
+                    <img class="img-thumbnail" :src="baseUrl + activity.imageUrl" :alt="activity.name">    
+                        <div class="d-flex justify-content-end mt-3 me-3">
+                            <h2>
+                                <a href="" class="link" title="Ajouter à mes favoris">
+                                    <i class="bi bi-heart"></i>
+                                </a>
+                            </h2>
+                        </div>   
 
-                    <p class=" mb-3">
-                        <RouterLink :to=" { name: 'activity-detail', params: { id: activity.id } }" class="link"><span >Détail et localisation</span> 
-                            <i class="bi bi-box-arrow-up-right"></i>
-                        </RouterLink>
-                    </p>
-                
+                    <div class="card-body my-1">
+                        <h2 class="activityName">{{ activity.name }}</h2>
+                        <p>{{ activity.location}}</p>
+                        <p class="fst-italic text-uppercase"> 
+                            <a v-bind:href="activity.linkUrl" target="_blank" class="link-title">Réservation</a>
+                        </p>  
+                        <p class=" mb-3">
+                            <RouterLink :to=" { name: 'activity-detail', params: { id: activity.id } }" class="link"><span >Plus d'info </span> 
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </RouterLink>
+                        </p>  
+                    </div>
                 </div>
             </div>
-            </section>
+        </section>
 
             <div class="row">
                 <div class="d-flex justify-content-end p-4">
                     <span class="btnColor" id="scrollUp">
                         <a href="#top"><img src="src/assets/arrow-up-circle.svg"/></a>
-                        </span>
+                    </span>
                 </div>
             </div>
 </template>
+

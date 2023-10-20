@@ -12,14 +12,14 @@
 
 <template>
 
-<h1 class="text-center m-5">Carte de géocalisation de la Guyane Française</h1>
-<div class="text-center mb-3">
+<h1 class="text-center m-5">Carte de la Guyane Française</h1>
+<div class="text-center mb-3 d-flex justify-content-end">
         <button class="btn btn-dark">
             <RouterLink :to="{name: 'activities'}" class="text-decoration-none link text-light">Retour à la liste</RouterLink>
         </button>
     </div>
 
-    <div class="col-12">
+    <div class="col-12 shadow m-1">
         <div class="ratio ratio-16x9 border rounded-2 shadow-sm">
             <iframe loading="lazy" 
                     frameborder="0" 

@@ -44,11 +44,11 @@ export default {
 
     <div class="fst-italic fs-5 mt-5 mb-5 text-center">
         <p> 
-            <a v-bind:href="activity.linkUrl" target="_blank" class="link-title">Pour accèder au site du prestataire, cliquez-ici <i class="bi bi-box-arrow-up-right"></i></a> 
+            <a v-bind:href="activity.linkUrl" target="_blank" class="link-title fst-italic text-uppercase">Réservation <i class="bi bi-box-arrow-up-right"></i></a> 
         </p>
     </div>
 
-    <h2 class="text-center">Localisation</h2>
+    <h2 class="text-center">Localisation de votre activité</h2>
     
     <section class="col-12 mb-5">
         <div class="ratio ratio-16x9 border rounded-2 shadow-sm w-75 mx-auto">

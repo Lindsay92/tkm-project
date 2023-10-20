@@ -19,13 +19,18 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <RouterLink to="/about" class="lien-menu nav-link active">
-                                A propos
-                            </RouterLink>
-                        </li>
+                            <router-link to="/activities" class="lien-menu nav-link active">
+                                Liste des activités
+                            </router-link>
+                        </li>   
                         <li class="nav-item">
                             <RouterLink to="/map" class="lien-menu nav-link active">
                                 Carte
+                            </RouterLink>
+                        </li>                     
+                        <li class="nav-item">
+                            <RouterLink to="/about" class="lien-menu nav-link active">
+                                A propos
                             </RouterLink>
                         </li>
                     </ul>
@@ -34,7 +39,7 @@
                 <div>
                     <RouterLink to="/login" class="lien-menu nav-link active">
                         <!-- <img src="src/assets/user.svg"> -->
-                        <i class="bi bi-person-fill"></i>
+                        <h1><i class="bi bi-person-fill w-25"></i></h1>
                     </RouterLink>
                 </div>
             </div>
