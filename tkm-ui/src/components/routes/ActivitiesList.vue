@@ -34,11 +34,11 @@ export default {
                 <div class="card w-100 shadow m-1 fw-normal">          
                     <img class="img-thumbnail" :src="baseUrl + activity.imageUrl" :alt="activity.name">    
                         <div class="d-flex justify-content-end mt-3 me-3">
-                            <h2>
+                            <!-- <h2>
                                 <a href="" class="link" title="Ajouter à mes favoris">
                                     <i class="bi bi-heart"></i>
                                 </a>
-                            </h2>
+                            </h2> -->
                         </div>   
 
                     <div class="card-body my-1">
