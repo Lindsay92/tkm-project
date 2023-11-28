@@ -4,7 +4,7 @@
 $title-font-stack: "Indie flower";
 $item-font-stack: "Oswald";
 $main-color: black;
-$background: #887766;
+$background: #88776677;
 
 /********HEADER******/
 
@@ -16,6 +16,7 @@ $background: #887766;
 
 .nav-item  {
     font-family: $item-font-stack, sans-serif;
+    font-size: larger;
 }
 
 /********LINKS******/

@@ -47,6 +47,4 @@ export default {
                 </div>
             </div>
         </section>
-
-    <p class="text-center slogan fs-1 fw-medium">Lagwiyann ka antann zot ! </p>
 </template>
