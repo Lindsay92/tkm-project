@@ -2,6 +2,8 @@ package co.simplon.tkm.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +21,12 @@ public class Account extends AbstractEntity {
 	
 	@Column(name = "password")
     private String password;
-//    private List<String> roles;
+	
+	//one role to many users
+	//many users to one role
+	@JoinColumn(name = "role_id")
+	@ManyToOne
+	private Role role;
 
     public Account() {
     	super();
@@ -57,21 +64,18 @@ public class Account extends AbstractEntity {
 		this.password = password;
 	}
 
-	
+	public Role getRole() {
+		return role;
+	}
 
-
-//    public List<String> getRoles() {
-//	return roles;
-//    }
-//
-//    public void setRoles(List<String> roles) {
-//	this.roles = roles;
-//    }
+	public void setRole(Role role) {
+		this.role = role;
+	}
 
 	@Override
 	public String toString() {
-		return "Accounts [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password={protected}"
-				+ "]";
+		return "Account [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password="
+				+ password + ", role=" + role + "]";
 	}
 
 }

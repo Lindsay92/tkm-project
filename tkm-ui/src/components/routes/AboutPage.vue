@@ -1,5 +1,4 @@
 <template>
-  
   <h1 class="text-center m-5">Carnet de voyage</h1>
     <div class=" row align-items-center text-center m-5 justify-content-center">
 

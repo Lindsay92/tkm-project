@@ -1,0 +1,133 @@
+<script>
+import { useVuelidate } from '@Vuelidate/core';
+import { required, maxLength, minLength, helpers, email } from '@vuelidate/validators';
+
+const firstNameValidator = helpers.regex(/^[a-zA-Z-éàâèêôûîç'’ ]+$/);
+const lastNameValidator = helpers.regex(/^[a-zA-Z-éàâèêôûîç'’ ]+$/);
+const passwordValidator = helpers.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@||%||!||*])(?!.* ).{8,42}/);
+
+export default {
+    setup(){
+        return {
+            validator : useVuelidate({ $autoDirty: true }),
+        }
+    },
+    data() {
+        return{
+            inputs: {
+                firstName: null,
+                lastName: null,
+                email: null,
+                password: null
+            }
+        }
+    },
+    validations() {
+        return {
+            inputs: {
+                firstName: { 
+                    required,
+                    // firstNameValidator: helpers.withMessage("Le champ est obligatoire", firstNameValidator),
+                    pattern: helpers.regex(/^[a-zA-Z-éàâèêôûîç'’ ]+$/) 
+                },
+                lastName: { 
+                    required,
+                    // lastNameValidator: helpers.withMessage("Le champ est obligatoire", lastNameValidator),
+                    patter: helpers.regex(/^[a-zA-Z-éàâèêôûîç'’ ]+$/) 
+                },
+                email: { 
+                    required, 
+                    email 
+                },
+                password: {
+                    required, 
+                    minLength: minLength(8), 
+                    maxLength: maxLength(42),
+                    // passwordValidator: helpers.withMessage("Le mot de passe doit être entre 8 - 42 caractères avec au moins une majuscule, au moins un chiffre et un caractère spécial @%*!", passwordValidator),
+                    pattern: helpers.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@||%||!||*])(?!.* ).{8,42}/)
+                }
+            }
+        }
+    },
+    methods: {
+        async submitForm() {
+            const response =  await this.$axios.post('/sign-up', this.inputs);
+            if (response) {
+                Object.assign(this.inputs, this.$options.data().inputs);
+                this.validator.$reset();
+                this.$router.push('login');
+            } else {
+                console.log('error');
+            }
+        }
+    }
+}
+</script>
+
+<template>
+    <section class="row  m-5">
+        <div class="d-flex justify-content-center">
+            <form novalidate @submit.prevent="submitForm" class=" col-md-6">
+                <legend>S'enregistrer</legend>
+                <div class="mb-3">
+                    <label for="firstName" class="form-label required">Prénom*</label>
+                    <input 
+                        v-model.trim="inputs.firstName" 
+                        id="firstName" 
+                        name="firstName" 
+                        type="text"  
+                        class="form-control" 
+                        :class="{ 'is-invalid': validator.inputs.firstName.$error }">
+                            <span class="invalid-feedback" v-if="validator.inputs.firstName.$error">
+                                <!-- <p>{{ validator.inputs.firstName.$error[0] }}</p> -->
+                                <p>Le champ obligatoire</p>
+                            </span> 
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Nom*</label>
+                    <input 
+                        v-model.trim="inputs.lastName" 
+                        name="lastName"
+                        type="text"
+                        id="lastName" 
+                        class="form-control" 
+                        :class="{ 'is-invalid': validator.inputs.lastName.$error }" >
+                            <span class="invalid-feedback" v-if="validator.inputs.lastName.$error">
+                                <!-- <p>{{ validator.inputs.lastName.$error[0] }}</p> -->
+                                <p>Le champ obligatoire</p>
+                            </span> 
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email*</label>
+                    <input 
+                        v-model.trim="inputs.email" 
+                        type="email"
+                        name="email"
+                        id="email" 
+                        class="form-control" 
+                        :class="{ 'is-invalid': validator.inputs.email.$error }">
+                            <span class="invalid-feedback" v-if="validator.inputs.email.$error">
+                                <p>Le champ est obligatoire</p>
+                            </span> 
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe*</label>
+                    <input 
+                        v-model.trim="inputs.password" 
+                        type="password" 
+                        name="password"
+                        id="password" 
+                        class="form-control" 
+                        :class="{ 'is-invalid': validator.inputs.password.$error }">
+                            <span class="invalid-feedback" v-if="validator.inputs.password.$error">
+                                <!-- <p>{{ validator.inputs.password.$error[0] }}</p> -->
+                                <p>Le mot de passe doit être entre 8 - 42 caractères avec au moins une majuscule, au moins un chiffre et un caractère spécial @%*!</p>
+                            </span> 
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn btn-outline-dark mt-3 mb-3  text-white" :disabled="validator.$invalid">S'enregistrer</button>
+                </div>  
+            </form>
+        </div>
+    </section>
+</template>

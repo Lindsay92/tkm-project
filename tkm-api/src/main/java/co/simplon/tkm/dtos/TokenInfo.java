@@ -3,32 +3,40 @@ package co.simplon.tkm.dtos;
 public class TokenInfo {
 	
 	private String token;
-//    private List<String> roles;
-
+	private String role;
+	private String firstName;
+	
     public TokenInfo() {
     	super();
     }
 
     public String getToken() {
-	return token;
+    	return token;
     }
 
     public void setToken(String token) {
-	this.token = token;
+    	this.token = token;
     }
 
-//    public List<String> getRoles() {
-//	return roles;
-//    }
-//
-//    public void setRoles(List<String> roles) {
-//	this.roles = roles;
-//    }
+	public String getRole() {
+		return role;
+	}
 
-    @Override
-    public String toString() {
-	return "{token=" + token + "}";
-    }
+	public void setRole(String role) {
+		this.role = role;
+	}
 
+	
+	public String getFirstName() {
+		return firstName;
+	}
 
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	@Override
+	public String toString() {
+		return "TokenInfo [token=" + token + ", role=" + role + ", firstName=" + firstName + "]";
+	}
 }

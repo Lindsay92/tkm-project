@@ -28,7 +28,7 @@ export default {
     Ajouter dans votre carnet de voyage les activités souhaitées et partager vos expériences inoubliables entre abonnés. </p>
 
     <div class="m-4">
-        <p class="text-center fs-5 fw-bold activity-list"><RouterLink to="/activities" class="link-title"> "Voir les activités et les restaurants"</RouterLink>
+        <p class="text-center fs-5 fw-bold activity-list"><RouterLink to="/activities" class="link-title"> "Accéder aux activités et les restaurants"</RouterLink>
         </p>
     </div>
 

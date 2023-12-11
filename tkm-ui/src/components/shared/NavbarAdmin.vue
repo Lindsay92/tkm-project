@@ -1,41 +1,16 @@
 <script>
-import { RouterLink } from 'vue-router';
 
 export default {
-    data() {
-        return {
-            //isLoggedIn: false
-            isAuthenticated: false
-        }
-    },
-    methods: {
-        signOut(){
-            localStorage.clear();
-            // this.$router.push("/login");
-            this.isAuthenticated = false;
-        }    
-    },    
-        
     beforeMount() {
-        const name = localStorage.getItem("userName");
-    }
+            const userName = localStorage.getItem("userName");
+        }
+    
 }
+
 </script>
 
 <template>
     <header>
-        <div>
-            <div class="z-0">
-                <img src="/images/banner.png" alt="" class="image">
-            </div>
-            <div class="row">
-                <div class="d-flex justify-content-end z-1 position-absolute bottom-0 start-50 translate-middle-x  ">
-                    <span class="btnColor" id="scrollUp">
-                        <a href="#bottom"><img src="src/assets/arrow-down-circle.svg"/></a>
-                    </span>
-                </div>
-            </div>
-        </div>
         <nav id="bottom" class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid color">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -72,15 +47,12 @@ export default {
                 </div>
 
                 <div>
-                    <RouterLink v-if="!isAuthenticated" to="/login" class="lien-menu nav-link active">
-                        <h1><i class="bi bi-person-fill w-25"></i></h1>
-                    </RouterLink>
+                    <p>Bonjour  {{userName}}</p>
+                    <!-- <RouterLink to="/login" class="lien-menu nav-link active"> -->
+                        <!-- <img src="src/assets/user.svg"> -->
+                        <!-- <h1><i class="bi bi-person-fill w-25"></i></h1>
+                    </RouterLink> -->
                 </div>
-                <div>
-                    <RouterLink :to="{ name: 'login'}" v-if="isAuthenticated" @click="signOut">Déconnecter
-                    </RouterLink>
-                </div>
-                <p>{{ name }}</p>
             </div>
         </nav>
     </header>

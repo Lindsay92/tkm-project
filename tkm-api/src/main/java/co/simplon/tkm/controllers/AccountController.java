@@ -9,13 +9,13 @@ import org.springframework.http.HttpStatus;
 
 import co.simplon.tkm.dtos.Credentials;
 import co.simplon.tkm.dtos.TokenInfo;
-import co.simplon.tkm.services.AuthService;
+import co.simplon.tkm.services.AccountService;
 
 @RestController
-public class AuthController {
+public class AccountController {
 	
 	@Autowired
-    private AuthService service;
+    private AccountService service;
 
     @PostMapping("/sign-up")
     @ResponseStatus(HttpStatus.NO_CONTENT)

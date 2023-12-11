@@ -1,21 +1,20 @@
 package co.simplon.tkm.utils;
 
 import java.time.Instant;
-import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
-public class AuthHelper {
+public class AccountHelper {
 	
 	private final String issuer;
     private final long expiration;
     private final Algorithm algorithm;
     private final PasswordEncoder encoder;
 
-    public AuthHelper(Builder builder) {
+    public AccountHelper(Builder builder) {
 		this.issuer = builder.issuer;
 		this.algorithm = builder.algorithm;
 		this.encoder = builder.passwordEncoder;
@@ -30,7 +29,7 @@ public class AuthHelper {
     	return encoder.matches(candidate, hash);
     }
 
-    public String createJWT(List<String> roles,
+    public String createJWT(String role,
     		String name) {
     	Instant now = Instant.now();
     	Instant expirationTime = now
@@ -78,8 +77,8 @@ public class AuthHelper {
 		    return this;
 		}
 	
-		public AuthHelper build() {
-		    return new AuthHelper(this);
+		public AccountHelper build() {
+		    return new AccountHelper(this);
 		}
     }
 

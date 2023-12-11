@@ -8,7 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.auth0.jwt.algorithms.Algorithm;
 
-import co.simplon.tkm.utils.AuthHelper;
+import co.simplon.tkm.utils.AccountHelper;
 
 @Configuration
 public class SecurityConfig {
@@ -23,12 +23,12 @@ public class SecurityConfig {
 	    private long tokenExpiration;
 
 	    @Bean
-	    public AuthHelper authHelper() {
+	    public AccountHelper authHelper() {
 		Algorithm algorithm = Algorithm.HMAC256(secret);
 		PasswordEncoder encoder = new BCryptPasswordEncoder(
 			rounds);
 
-		return new AuthHelper.Builder().algorithm(algorithm)
+		return new AccountHelper.Builder().algorithm(algorithm)
 			.passwordEncoder(encoder).issuer(issuer)
 			.expiration(tokenExpiration).build();
 	    }

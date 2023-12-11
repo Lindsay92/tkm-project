@@ -1,12 +1,27 @@
 package co.simplon.tkm.dtos;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 public class Credentials {
 	
+	@NotBlank
+	@Pattern(regexp = "^[a-zA-Z-éàâèêôûîç'’ ]+$")
 	private String firstName;
+	
+	@NotBlank
+	@Pattern(regexp = "^[a-zA-Z-éàâèêôûîç'’ ]+$")
 	private String lastName;
+	
+	@NotBlank
+	@Email
+	@Pattern(regexp = "[a-zA-Z0-9-_]{1,}@[a-zA-Z0-9-_]{1,}.[a-zA-Z]{1,}")
 	private String email;
+	
+	@NotBlank
+	@Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@||%||!||*])(?!.* ).{8,42}")
     private String password;
-//  private List<String> roles;
 
     public Credentials() {
 		super();

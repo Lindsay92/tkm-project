@@ -1,12 +1,13 @@
 <script>
 import { RouterLink } from 'vue-router';
+import NavbarAdmin from '../shared/NavbarAdmin.vue';
 
 export default {
     data() {
         return {
             baseUrl: import.meta.env.VITE_IMG_BASE_URL,
             activities: []
-        }
+        };
     },
     methods: {
         async initActivities() {
@@ -17,18 +18,21 @@ export default {
             const response = await this.$axios.delete(`/activities/${id}`);
             if (response) {
                 await this.initActivities();
-            } else {
-                console.error("error");    
+            }
+            else {
+                console.error("error");
             }
         }
     },
     beforeMount() {
         this.initActivities();
-    }
+    },
+    components: { NavbarAdmin }
 }
 </script>
 
 <template>
+    <NavbarAdmin />
     <h1 class="text-center m-5">La liste des activities</h1>
     <div class="d-md-flex justify-content-start m-3">
         <button class="btn btn-dark"><RouterLink :to="{name: 'activities-create'}" class="text-decoration-none link text-light">Créer une nouvelle activité</RouterLink></button>

@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import co.simplon.tkm.entities.Account;
 
-public interface AuthRepository extends JpaRepository<Account, Long>{
+public interface AccountRepository extends JpaRepository<Account, Long>{
 	
 	Account getByEmail(String email); //id or email unique
 

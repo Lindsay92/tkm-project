@@ -30,7 +30,6 @@ export default {
 </script>
 
 <template>
-
     <h1 class="text-center mt-3 mb-5">{{ activity.name }}</h1>
     
     <section class="row d-flex align-items-center justify-content-center text-center my-3">

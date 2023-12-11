@@ -31,12 +31,12 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../components/routes/LoginPage.vue')
+      component: () => import('../components/authentication/LoginPage.vue')
     },
     {
       path: '/auth',
       name: 'authenfication',
-      component: () => import('../components/routes/AuthPage.vue')
+      component: () => import('../components/authentication/AuthPage.vue')
     },
     {
       path: '/admin/activities/create',
@@ -52,7 +52,12 @@ const router = createRouter({
       path: '/admin/activities',
       name: 'activities-edit',
       component: () => import('../components/admin/Edit.vue')
-    }
+    },
+    {
+      path: '/navbarAdmin',
+      name: 'navBarAdmin',
+      component: () => import('../components/shared/NavbarAdmin.vue')
+    },
   ]
 })
 
