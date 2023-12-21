@@ -39,8 +39,8 @@ export default {
     },
     methods: {
         async submit() {
-            const response = await this.validator.$validate();
-            if (response) {
+            const valid = await this.validator.$validate();
+            if (valid) {
                 const formData = new FormData();
                 formData.append("name", this.inputs.name);
                 formData.append("description", this.inputs.description);
@@ -49,10 +49,12 @@ export default {
                 formData.append("linkUrl", this.inputs.linkUrl);
                 
                 this.$axios.put(`/activities/${this.id}`, formData);
-                this.validator.$reset();
+                this.$toast.success('toast-global', 'L\'activité a bien été mise à jour.');
+                // this.validator.$reset();
                 this.$router.push({ name: 'activities-edit' })
             } else {
-                console.log('erreur')
+                //console.log('erreur')
+                this.$toast.error('toast-global', 'Une erreur s\'est produite.');
             }
         },
         async getActivities(){

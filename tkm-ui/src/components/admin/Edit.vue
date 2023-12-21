@@ -1,6 +1,5 @@
 <script>
 import { RouterLink } from 'vue-router';
-import NavbarAdmin from '../shared/NavbarAdmin.vue';
 
 export default {
     data() {
@@ -16,23 +15,23 @@ export default {
         },
         async remove(id) {
             const response = await this.$axios.delete(`/activities/${id}`);
-            if (response) {
+            if (response.status === 204) {
+                this.$toast.success('toast-global', 'L\'activité a bien été supprimée');
                 await this.initActivities();
             }
             else {
-                console.error("error");
+                console.error(response);
+                this.$toast.error('toast-global', 'Une erreur s\'est produite.');
             }
         }
     },
     beforeMount() {
         this.initActivities();
     },
-    components: { NavbarAdmin }
 }
 </script>
 
 <template>
-    <NavbarAdmin />
     <h1 class="text-center m-5">La liste des activities</h1>
     <div class="d-md-flex justify-content-start m-3">
         <button class="btn btn-dark"><RouterLink :to="{name: 'activities-create'}" class="text-decoration-none link text-light">Créer une nouvelle activité</RouterLink></button>

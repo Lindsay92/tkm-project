@@ -52,12 +52,12 @@ const router = createRouter({
       path: '/admin/activities',
       name: 'activities-edit',
       component: () => import('../components/admin/Edit.vue')
-    },
+    }, 
     {
-      path: '/navbarAdmin',
-      name: 'navBarAdmin',
-      component: () => import('../components/shared/NavbarAdmin.vue')
-    },
+      path: '/profile',
+      name: 'profile-user',
+      component: () => import('../components/user/Profile.vue')
+    }
   ]
 })
 

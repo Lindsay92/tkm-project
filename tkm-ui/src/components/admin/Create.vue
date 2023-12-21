@@ -36,8 +36,8 @@ export default {
     },
     methods: {
         async submit() {
-            const response = await this.validator.$validate();
-            if (response) {
+            const valid = await this.validator.$validate();
+            if (valid) {
                 const formData = new FormData();
                 formData.append("name", this.inputs.name);
                 formData.append("description", this.inputs.description);
@@ -48,9 +48,12 @@ export default {
                 this.$axios.post('/activities', formData);
                 Object.assign(this.$data.inputs, this.$options.data().inputs);
                 console.log(Object.values(formData));
-                this.validator.$reset();
+                this.$router.push('/admin/activities')
+                // this.validator.$reset();
             } else {
-                console.log('erreur')
+                // console.log('erreur')
+                console.error(response);
+                this.$toast.error('toast-global', 'Une erreur s\'est produite.');
             }
         },
         async fileUpload(event) {

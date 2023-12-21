@@ -1,15 +1,20 @@
 <script>
+import axios from 'axios';
 import { RouterLink } from 'vue-router';
 
 export default {
     data() {
         return {
             homeActivities: []
-        }
+        };
     },
     async beforeMount() {
-        const response = await fetch('/data/homeActivities.json');
-        this.homeActivities = await response.json();
+        try {
+            const response = await axios.get('/data/homeActivities.json');
+            this.homeActivities = response.data;
+        } catch (error) {
+            console.error('Une erreur s\'est produite lors de la récupération des données :', error);
+        }
     }
 }
 </script>
