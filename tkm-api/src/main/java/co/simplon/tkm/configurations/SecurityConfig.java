@@ -3,14 +3,17 @@ package co.simplon.tkm.configurations;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 import com.auth0.jwt.algorithms.Algorithm;
 
 import co.simplon.tkm.utils.AccountHelper;
 
 @Configuration
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig {
 	
 	 	@Value("${tkm.auth.rounds}")
@@ -32,5 +35,5 @@ public class SecurityConfig {
 			.passwordEncoder(encoder).issuer(issuer)
 			.expiration(tokenExpiration).build();
 	    }
-
+	    
 }

@@ -42,7 +42,7 @@ export default {
                 <tr class="text-center align-middle">
                     <th scope="col">Image</th>
                     <th scope="col">Name</th>
-                    <th scope="col" class="overflow-auto">Description</th>
+                    <!--<th scope="col" class="overflow-auto">Description</th>-->
                     <th scope="col">Date</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
@@ -55,7 +55,7 @@ export default {
                                 :alt="activity.name">
                     </td>
                     <td>{{ activity.name }}</td>
-                    <td>{{ activity.description }}</td>
+                    <!--<td>{{ activity.description }}</td>-->
                     <td>{{ this.$fmt.date(activity.createdAt) }}</td>
                     <td class="text-center">
                         <RouterLink :to="{ name: 'activity-update', params: { id: activity.id } }" title="Update activity">

@@ -17,11 +17,12 @@ export default {
             const body = data != '' ? data : null;
             if (response.data.token) {
                 const accessToken = data.token;
+                const isAuthenticated = true;
                 const role = data.role;
                 const firstName = data.firstName;
                 localStorage.clear();
                 localStorage.setItem("token", accessToken);
-                localStorage.setItem("isAuthenticated", true);
+                localStorage.setItem("isAuthenticated", isAuthenticated);
                 localStorage.setItem("role", role);
                 localStorage.setItem("userName", firstName);
             }

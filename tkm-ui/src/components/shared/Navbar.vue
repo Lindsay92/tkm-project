@@ -1,27 +1,12 @@
 <script>
-import { ref, onBeforeMount } from 'vue';
 import { RouterLink } from 'vue-router';
 
 export default {
-    // setup() {
-    //     const userName = ref('');
-
-    //     onBeforeMount(()=> {
-    //         try {
-    //     const storedUserName = localStorage.getItem('userName');
-    //     console.log('Stored userName:', storedUserName);
-    //     userName.value = storedUserName || '';
-    //   } catch (error) {
-    //     console.error('Error retrieving userName from localStorage:', error);
-    //   }
-    // });
-
-    // },
     data() {
         return {
-            isAuthenticated: localStorage.getItem('isAuthenticated'),
-            userName: localStorage.getItem('userName'),
-            role: localStorage.getItem("role")    
+        isAuthenticated : localStorage.getItem("isAuthenticated"),
+        role : localStorage.getItem("role"),
+        userName : localStorage.getItem("userName")   
         }
     },
     methods: {

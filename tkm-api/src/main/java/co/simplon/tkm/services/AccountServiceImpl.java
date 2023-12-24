@@ -40,11 +40,11 @@ public class AccountServiceImpl implements AccountService {
 		
 		if (account.getEmail().endsWith("@tkm.com")) {
 		    Role adminRole = roleRepository
-			    .getReferenceByRoleName("Administrator");
+			    .getReferenceByCodeRole("ROLE_ADMIN");
 		    account.setRole(adminRole);
 		} else {
 		    Role role = roleRepository
-			    .getReferenceByRoleName("User");
+			    .getReferenceByCodeRole("ROLE_USER");
 		    account.setRole(role);
 		}
 		

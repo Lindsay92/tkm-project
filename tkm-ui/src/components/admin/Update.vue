@@ -7,8 +7,8 @@ export default {
     setup(){
         return{
             route: useRoute(),
-            validator : useVuelidate({ $autoDirty: false }),
-        }
+            validator : useVuelidate({ $autoDirty: false }),        
+        } 
     },
     data(){
         return {

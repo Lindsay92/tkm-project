@@ -7,6 +7,8 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
 
 	//Role getReferenceById();
 
-	Role getReferenceByRoleName(String string);
+	//Role getReferenceByRoleName(String string);
+
+	Role getReferenceByCodeRole(String name);
 
 }

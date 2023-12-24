@@ -21,6 +21,5 @@ public @interface FileSize {
 	    Class<?>[] groups() default {};
 
 	    Class<? extends Payload>[] payload() default {};
-	    // TODO Auto-generated constructor stub
 
 }
