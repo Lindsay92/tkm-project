@@ -3,6 +3,9 @@
     .activityName {
         font-size: 25px;
     }
+    .btnColor {
+        display: none;
+    }
 }
 
 // Medium devices (tablets, 768px and up)
@@ -10,13 +13,18 @@
     .activityName {
         font-size: 25px;
     }
+    .btnColor {
+        display: none;
+    }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
     .activityName {
         font-size:20px;
-
+    }
+    .btnColor {
+        display: none;
     }
     
 }
@@ -26,9 +34,14 @@
     .activityName {
         font-size: 25px;
     }
+    .btnColor {
+        display: block;
+    }
 }
 
 // XX-Large devices (larger desktops, 1400px and up)
-@media (min-width: 1400px) { 
-   
+@media (min-width: 1700px) { 
+    .btnColor {
+        display: block;
+    }
 }

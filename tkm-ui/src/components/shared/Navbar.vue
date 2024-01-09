@@ -2,20 +2,29 @@
 import { RouterLink } from 'vue-router';
 
 export default {
+    
     data() {
         return {
-        isAuthenticated : localStorage.getItem("isAuthenticated"),
-        role : localStorage.getItem("role"),
-        userName : localStorage.getItem("userName")   
+            isAuthenticated : localStorage.getItem("isAuthenticated"),
+            role : localStorage.getItem("role"),
+            userName : localStorage.getItem("userName")   
         }
     },
     methods: {
+        async initAccount() {
+            this.userName = localStorage.getItem("userName")
+            this.isAuthenticated = localStorage.getItem("isAuthenticated");
+            this.role = localStorage.getItem("role");
+    },
         signOut(){
             localStorage.clear();
             this.isAuthenticated = null;
             this.userName = null;
             this.role = null;
         }
+    },
+    beforeMount(){
+        this.initAccount();
     }
 }
 </script>
@@ -100,8 +109,5 @@ export default {
                 </div>
                 
             </div>
-        </nav>
-    <p> Current value: {{ isAuthenticated }}</p>
-    <p> Current value: {{ role }}</p>
-    <p> Current value: {{ userName }}</p>
+        </nav> 
 </template>
