@@ -6,8 +6,9 @@ import Toast from "./components/shared/Toast.vue";
 </script>
 
 <template>
+
   <header>
-    <Navbar/>
+    <RouterView name="navbar"/> 
   </header>
 
   <div><Toast id="toast-global" /></div>
@@ -19,5 +20,5 @@ import Toast from "./components/shared/Toast.vue";
   <footer>
     <Footer></Footer>
   </footer>
-
+  
 </template>

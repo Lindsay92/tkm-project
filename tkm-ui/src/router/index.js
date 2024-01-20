@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -6,59 +6,150 @@ const router = createRouter({
     {
       path:'/',
       name: 'home',
-      component: () => import('../components/routes/HomePage.vue')
+      components: {
+        default: () => import('../components/routes/HomePage.vue'),
+        navbar: () => import('../components/shared/Navbar.vue')
+      }
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import('../components/routes/AboutPage.vue')
+      components: {
+        default: () => import('../components/routes/AboutPage.vue'),
+        navbar: () => import('../components/shared/Navbar.vue')
+      }
     },
     {
       path: '/map',
       name: 'map',
-      component: () => import('../components/routes/MapPage.vue')
+      components: { 
+        default: () => import('../components/routes/MapPage.vue'),
+        navbar: () => import('../components/shared/Navbar.vue')
+      }
     },
     {
       path: '/activities',
       name: 'activities',
-      component: () => import('../components/routes/ActivitiesList.vue')
+      components: { 
+        default: () => import('../components/routes/ActivitiesList.vue'),
+        navbar: () => import('../components/shared/Navbar.vue')
+      }
     },
     {
       path: '/activities/:id/detail',
       name: 'activity-detail',
-      component: () => import('../components/routes/ActivityDetail.vue')
+      components: {
+        default: () => import('../components/routes/ActivityDetail.vue'),
+        navbar: () => import('../components/shared/Navbar.vue')
+      }
     },
     {
       path: '/login',
       name: 'login',
-      component: () => import('../components/authentication/LoginPage.vue')
+      components: {
+        default: () => import('../components/authentication/LoginPage.vue'),
+        navbar: () => import('../components/shared/Navbar.vue')
+      }
     },
     {
       path: '/auth',
-      name: 'authenfication',
-      component: () => import('../components/authentication/AuthPage.vue')
+      name: 'authentication',
+      components: {
+        default: () => import('../components/authentication/AuthPage.vue'),
+        navbar: () => import('../components/shared/Navbar.vue')
+      }
     },
     {
       path: '/admin/activities/create',
       name: 'activities-create',
-      component: () => import('../components/admin/Create.vue')
+      components: {
+        default: () => import('../components/admin/Create.vue'),
+        navbar: () => import('../components/shared/NavbarAdmin.vue'),
+      },
+      meta: { requiresAuth : true }
     },
     {
       path: '/admin/activities/:id/update',
       name: 'activity-update',
-      component: () => import('../components/admin/Update.vue')
+      components: {
+        default: () => import('../components/admin/Update.vue'),
+        navbar: () => import('../components/shared/NavbarAdmin.vue')
+      },
+      meta: { requiresAuth : true }
     }, 
     {
       path: '/admin/activities',
       name: 'activities-edit',
-      component: () => import('../components/admin/Edit.vue')
+      components: {
+        default: () => import('../components/admin/Edit.vue'),
+        navbar: () => import('../components/shared/NavbarAdmin.vue')
+      },
+      meta: { requiresAuth : true }
     }, 
     {
-      path: '/profile',
+      path: '/admin/profile',
+      name: 'profile-admin',
+      component: () => import('../components/user/Profile.vue')
+    },
+    {
+      path:'/user/home',
+      name: 'user-home',
+      components: {
+        default: () => import('../components/routes/HomePage.vue'),
+        navbar: () => import('../components/shared/NavbarUser.vue')
+      },
+      meta: { requiresAuth : true }
+    },
+    {
+      path: '/user/about',
+      name: 'user-about',
+      components: {
+        default: () => import('../components/routes/AboutPage.vue'),
+        navbar: () => import('../components/shared/NavbarUser.vue')
+      },
+      meta: { requiresAuth : true }
+    },
+    {
+      path: '/user/map',
+      name: 'user-map',
+      components: { 
+        default: () => import('../components/routes/MapPage.vue'),
+        navbar: () => import('../components/shared/NavbarUser.vue')
+      },
+      meta: { requiresAuth : true }
+    },
+    {
+      path:'/user/activities',
+      name: 'user-activities',
+      components: {
+        default: () => import('../components/routes/ActivitiesList.vue'),
+        navbar: () => import('../components/shared/NavbarUser.vue')
+      },
+      meta: { requiresAuth : true }
+    },
+    {
+      path: '/user/activities/:id/detail',
+      name: 'user-activity-detail',
+      components: {
+        default: () => import('../components/routes/ActivityDetail.vue'),
+        navbar: () => import('../components/shared/NavbarUser.vue')
+      },
+      meta: { requiresAuth : true }
+    },
+    {
+      path: '/user/profile',
       name: 'profile-user',
       component: () => import('../components/user/Profile.vue')
-    }
+    },
   ]
-})
+});
 
-export default router
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && localStorage.isAuthenticated == undefined) {
+    next("/login")
+  } else {
+    next();
+  }
+});
+
+export default router;

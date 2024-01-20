@@ -8,4 +8,6 @@ public interface AccountRepository extends JpaRepository<Account, Long>{
 	
 	Account getByEmail(String email); //id or email unique
 
+	Boolean existsByEmailIgnoreCase(String string);
+
 }

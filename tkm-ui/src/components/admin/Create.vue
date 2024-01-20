@@ -45,7 +45,7 @@ export default {
                 formData.append("location", this.inputs.location);
                 formData.append("linkUrl", this.inputs.linkUrl);
 
-                this.$axios.post('/activities', formData);
+                await this.$axios.post('/activities', formData);
                 Object.assign(this.$data.inputs, this.$options.data().inputs);
                 console.log(Object.values(formData));
                 this.$router.push('/admin/activities')
@@ -120,7 +120,9 @@ export default {
             <button type="submit" class="btn btn-dark" :disabled="validator.$invalid">Envoyer</button>
         </div>
         <div class="d-md-flex justify-content-md-end mb-3">
-            <button class="btn btn-dark"><RouterLink :to="{name: 'activities-edit'}" class="text-decoration-none link text-light">Retour sur la liste des activités</RouterLink></button>
+            <button class="btn btn-dark">
+                <router-link :to="{name: 'activities-edit'}" class="text-decoration-none link text-light">Retour sur la liste des activités</router-link>
+            </button>
         </div>
     </form>
 </template>

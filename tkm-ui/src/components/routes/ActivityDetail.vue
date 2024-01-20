@@ -6,6 +6,9 @@ export default {
         const key = import.meta.env.VITE_MAPS_EMBED_API_KEY;
         return {
             route: useRoute(),
+            isAuthenticated : localStorage.getItem("isAuthenticated"),
+            role : localStorage.getItem("role"),
+            userName : localStorage.getItem("userName"),
             mapsUrl: `https://www.google.com/maps/embed/v1/place?key=${key}`
         }
         
@@ -61,9 +64,16 @@ export default {
         </div>
     </section>
 
-    <div class="text-end">
+    <div class="text-end" v-if="isAuthenticated && role == 'User'">
         <button class="btn btn-dark">
-            <RouterLink :to="{name: 'activities'}" class="text-decoration-none link text-light">Retour à la liste</RouterLink>
+            <router-link :to="{name: 'user-activities'}" class="text-decoration-none link text-light"
+            href="#top">Retour à la liste</router-link>
+        </button>
+    </div>
+    <div v-else>
+        <button class="btn btn-dark">
+            <router-link :to="{name: 'activities'}" class="text-decoration-none link text-light"
+            href="#top">Retour à la liste</router-link>
         </button>
     </div>
 

@@ -69,7 +69,6 @@ export default {
     beforeMount() {
         this.getActivities();
     }
-
 };
 </script>
 
@@ -131,7 +130,9 @@ export default {
         </div>
 
         <div class="d-md-flex justify-content-md-end mb-3">
-            <button class="btn btn-dark"><RouterLink :to="{name: 'activities-edit'}" class="text-decoration-none link text-light">Retour sur la liste des activités</RouterLink></button>
+            <button class="btn btn-dark">
+                <router-link :to="{name: 'activities-edit'}" class="text-decoration-none link text-light">Retour sur la liste des activités</router-link>
+            </button>
         </div>
     </form>
 </template>

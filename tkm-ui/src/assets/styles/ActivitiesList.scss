@@ -24,7 +24,7 @@
         font-size:20px;
     }
     .btnColor {
-        display: none;
+        display: block;
     }
     
 }
@@ -41,7 +41,5 @@
 
 // XX-Large devices (larger desktops, 1400px and up)
 @media (min-width: 1700px) { 
-    .btnColor {
-        display: block;
-    }
+
 }

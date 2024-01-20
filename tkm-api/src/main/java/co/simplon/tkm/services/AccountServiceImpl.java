@@ -83,5 +83,10 @@ public class AccountServiceImpl implements AccountService {
 		    "Wrong credentials");
 	}
   }
+    @Override
+    public Boolean existsByEmail(String email) {
+    	return this.accountRepository
+    			.existsByEmailIgnoreCase(email.toString());
+    }
 
 }

@@ -2,10 +2,6 @@
 import { useVuelidate } from '@Vuelidate/core';
 import { required, maxLength, minLength, helpers, email } from '@vuelidate/validators';
 
-const firstNameValidator = helpers.regex(/^[a-zA-Z-éàâèêôûîç'’ ]+$/);
-const lastNameValidator = helpers.regex(/^[a-zA-Z-éàâèêôûîç'’ ]+$/);
-const passwordValidator = helpers.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@||%||!||*])(?!.* ).{8,42}/);
-
 export default {
     setup(){
         return {
@@ -27,13 +23,11 @@ export default {
             inputs: {
                 firstName: { 
                     required,
-                    // firstNameValidator: helpers.withMessage("Le champ est obligatoire", firstNameValidator),
                     pattern: helpers.regex(/^[a-zA-Z-éàâèêôûîç'’ ]+$/) 
                 },
                 lastName: { 
                     required,
-                    // lastNameValidator: helpers.withMessage("Le champ est obligatoire", lastNameValidator),
-                    patter: helpers.regex(/^[a-zA-Z-éàâèêôûîç'’ ]+$/) 
+                    pattern: helpers.regex(/^[a-zA-Z-éàâèêôûîç'’ ]+$/) 
                 },
                 email: { 
                     required, 
@@ -43,7 +37,6 @@ export default {
                     required, 
                     minLength: minLength(8), 
                     maxLength: maxLength(42),
-                    // passwordValidator: helpers.withMessage("Le mot de passe doit être entre 8 - 42 caractères avec au moins une majuscule, au moins un chiffre et un caractère spécial @%*!", passwordValidator),
                     pattern: helpers.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@||%||!||*])(?!.* ).{8,42}/)
                 }
             }
@@ -79,7 +72,6 @@ export default {
                         class="form-control" 
                         :class="{ 'is-invalid': validator.inputs.firstName.$error }">
                             <span class="invalid-feedback" v-if="validator.inputs.firstName.$error">
-                                <!-- <p>{{ validator.inputs.firstName.$error[0] }}</p> -->
                                 <p>Le champ obligatoire</p>
                             </span> 
                 </div>
@@ -93,7 +85,6 @@ export default {
                         class="form-control" 
                         :class="{ 'is-invalid': validator.inputs.lastName.$error }" >
                             <span class="invalid-feedback" v-if="validator.inputs.lastName.$error">
-                                <!-- <p>{{ validator.inputs.lastName.$error[0] }}</p> -->
                                 <p>Le champ obligatoire</p>
                             </span> 
                 </div>
@@ -120,7 +111,6 @@ export default {
                         class="form-control" 
                         :class="{ 'is-invalid': validator.inputs.password.$error }">
                             <span class="invalid-feedback" v-if="validator.inputs.password.$error">
-                                <!-- <p>{{ validator.inputs.password.$error[0] }}</p> -->
                                 <p>Le mot de passe doit être entre 8 - 42 caractères avec au moins une majuscule, au moins un chiffre et un caractère spécial @%*!</p>
                             </span> 
                 </div>

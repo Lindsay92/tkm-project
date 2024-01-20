@@ -42,9 +42,9 @@ export default {
                 <!--children of the same common parent must have unique key-->
 
                 <div class="card w-100 shadow">
-                    <RouterLink to="/activities" class="link-title">
+                    <router-link to="/activities" class="link-title">
                         <img v-bind:src= "activity.imageUrl" class="card-img-top" :alt= "activity.alt">
-                    </RouterLink>
+                    </router-link>
                     <div class="card-body">
                         <h2 class="activityName">{{ activity.title }}</h2>
                         <p class="card-text">{{ activity.prez }}</p>

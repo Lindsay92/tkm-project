@@ -13,9 +13,7 @@ import javax.validation.Payload;
 @Target(ElementType.FIELD)
 @Documented
 @Constraint(validatedBy = FileSizeValidator.class)
-
 public @interface FileSize {
-	
 	 String message() default "File Size is not valid";
 
 	    Class<?>[] groups() default {};

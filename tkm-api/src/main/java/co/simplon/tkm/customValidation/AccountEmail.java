@@ -12,13 +12,12 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @Documented
-@Constraint(validatedBy = FileTypeValidator.class)
-public @interface FileType {
-	// Permet de préciser un message d'erreur quand on gère les messages coté back
-    String message() default "File type is not valid";
+@Constraint(validatedBy = AccountEmailValidator.class)
+public @interface AccountEmail {
+	String message() default "This email is already used";
+	
+	 Class<?>[] groups() default {};
 
-    Class<?>[] groups() default {};
-
-    Class<? extends Payload>[] payload() default {};
-
+	    Class<? extends Payload>[] payload() default {};
+	
 }

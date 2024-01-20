@@ -3,6 +3,9 @@ export default {
     data() {
         return {
             baseUrl: import.meta.env.VITE_IMG_BASE_URL,
+            isAuthenticated : localStorage.getItem("isAuthenticated"),
+            role : localStorage.getItem("role"),
+            userName : localStorage.getItem("userName"),
             activities: [],
         }
     },
@@ -33,13 +36,13 @@ export default {
             <div class="col-12 col-md-4 d-flex justify-content-center fw-semibold text-center" v-for="activity in activities" :key="activity.id">
                 <div class="card w-100 shadow m-1 fw-normal">          
                     <img class="img-thumbnail" :src="baseUrl + activity.imageUrl" :alt="activity.name">    
-                        <div class="d-flex justify-content-end mt-3 me-3">
-                            <!-- <h2>
-                                <a href="" class="link" title="Ajouter à mes favoris">
+                        <div class="d-flex justify-content-end mt-3 me-3" v-if="isAuthenticated && role == 'User'">
+                            <h2>
+                                <a href="" class="link" title="Ajouter à mon carnet de favoris">
                                     <i class="bi bi-heart"></i>
                                 </a>
-                            </h2> -->
-                        </div>   
+                            </h2>
+                        </div> 
 
                     <div class="card-body my-1">
                         <h2 class="activityName">{{ activity.name }}</h2>
@@ -47,11 +50,20 @@ export default {
                         <p class="fst-italic text-uppercase"> 
                             <a v-bind:href="activity.linkUrl" target="_blank" class="link-title">Réservation</a>
                         </p>  
-                        <p class=" mb-3">
-                            <RouterLink :to=" { name: 'activity-detail', params: { id: activity.id } }" class="link"><span >Plus d'info </span> 
-                                <i class="bi bi-box-arrow-up-right"></i>
-                            </RouterLink>
-                        </p>  
+                            <div v-if="isAuthenticated && role == 'User'">
+                                <p class=" mb-3">
+                                    <router-link :to=" { name: 'user-activity-detail', params: { id: activity.id } }" class="link"><span >Plus d'info </span> 
+                                        <i class="bi bi-box-arrow-up-right"></i>
+                                    </router-link>
+                                </p>  
+                            </div>
+                            <div v-else>
+                                <p class=" mb-3">
+                                    <router-link :to=" { name: 'activity-detail', params: { id: activity.id } }" class="link"><span >Plus d'info </span> 
+                                        <i class="bi bi-box-arrow-up-right"></i>
+                                    </router-link>
+                                </p>  
+                            </div>
                     </div>
                 </div>
             </div>

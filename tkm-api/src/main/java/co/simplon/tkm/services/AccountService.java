@@ -8,5 +8,7 @@ public interface AccountService {
 	public void signUp(Credentials inputs);
 
     public TokenInfo signIn(Credentials inputs);
+
+	public Boolean existsByEmail(String email);
     
 }

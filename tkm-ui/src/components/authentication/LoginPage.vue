@@ -45,7 +45,7 @@ export default {
                             // this.validator.$reset();
                             this.$router.push('admin/activities')
                         } else if (response.body.role.includes("User")) {
-                            this.$router.push("/");
+                            this.$router.push("/user/activities");
                         } else {
                             // console.log("error");
                             this.$toast.error('toast-global', 'Une erreur s\'est produite.');
@@ -58,9 +58,9 @@ export default {
 </script>
 
 <template>
-    <div class="row m-5">
-        <div class="d-flex justify-content-center d-flex align-items-center">
-            <section class="row flex-fill m-5">
+    <div class="row m-3">
+        <div class="d-flex justify-content-center align-items-center">
+            <section class="frame row flex-fill me-4">
                 <form novalidate @submit.prevent="submitForm" class=" border border-dark rounded">
                     <legend>Se connecter</legend>
                     <div class="mb-3">
@@ -94,12 +94,12 @@ export default {
                     </div>
 
                     <p class="text-center m-3">
-                    <RouterLink to= "/auth" class="link">Si vous n’avez pas de compte, cliquez sur le lien</RouterLink>
+                        <router-link to= "/auth" class="link">Si vous n’avez pas de compte, cliquez sur le lien</router-link>
                     </p>   
                 </form>
             </section>
-            <section>
-                <img src="/images/jaguar.jpg" class="rounded-4" alt="">
+            <section class="col-md-6">
+                <img src="/images/jaguar.jpg" class="loginImage rounded-4" alt="Image d'un jaguar">
             </section>
         </div>
     </div>
