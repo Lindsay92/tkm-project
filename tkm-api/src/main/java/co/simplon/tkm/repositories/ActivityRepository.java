@@ -20,5 +20,7 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
 	Collection<ActivityAdminView> findAllProjectedByOrderByCreatedAtDescName();
 
 	ActivityDetailView findProjectedDetailById(Long id);
+	
+	Activity getActivityById(Long id); 
 
 }
