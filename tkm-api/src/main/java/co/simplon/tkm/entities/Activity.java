@@ -1,9 +1,16 @@
 package co.simplon.tkm.entities;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +34,14 @@ public class Activity extends AbstractEntity {
 	
 	@Column(name = "created_at", updatable = false)
 	private LocalDateTime createdAt;
+	
+	
+//	@JoinTable(name ="likes",
+//	joinColumns = @JoinColumn(name = "activity_id"),
+//	inverseJoinColumns = @JoinColumn(name = "account_id"))
+	@ManyToMany(mappedBy = "favoriteActivities")
+//	@ManyToMany(fetch = FetchType.LAZY)
+	private Set<Account> likedByAccounts = new HashSet<>();
 	
 	public Activity() {
 		//Required no-argument constructor
@@ -79,6 +94,14 @@ public class Activity extends AbstractEntity {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+	
+//	public Set<Account> getLikedByAccounts() {
+//		return likedByAccounts;
+//	}
+//
+//	public void setLikedByAccounts(Set<Account> likedByAccounts) {
+//		this.likedByAccounts = likedByAccounts;
+//	}
 
 	@Override
 	public String toString() {

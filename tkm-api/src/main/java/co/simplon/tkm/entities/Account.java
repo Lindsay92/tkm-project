@@ -1,8 +1,14 @@
 package co.simplon.tkm.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -27,6 +33,12 @@ public class Account extends AbstractEntity {
 	@JoinColumn(name = "role_id")
 	@ManyToOne
 	private Role role;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name ="likes",
+	joinColumns = @JoinColumn(name = "account_id"),
+	inverseJoinColumns = @JoinColumn(name = "activity_id"))
+	private Set<Activity> favoriteActivities = new HashSet<>();
 
     public Account() {
     	super();
@@ -70,6 +82,15 @@ public class Account extends AbstractEntity {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	
+
+	public Set<Activity> getFavoriteActivities() {
+		return favoriteActivities;
+	}
+
+	public void setFavoriteActivities(Set<Activity> favoriteActivities) {
+		this.favoriteActivities = favoriteActivities;
 	}
 
 	@Override

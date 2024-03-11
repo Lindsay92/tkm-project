@@ -1,13 +1,17 @@
 package co.simplon.tkm.services;
 
+import java.util.Set;
+
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
 import co.simplon.tkm.dtos.Credentials;
 import co.simplon.tkm.dtos.TokenInfo;
 import co.simplon.tkm.entities.Account;
+import co.simplon.tkm.entities.Activity;
 import co.simplon.tkm.entities.Role;
 import co.simplon.tkm.repositories.AccountRepository;
+
 import co.simplon.tkm.repositories.RoleRepository;
 import co.simplon.tkm.utils.AccountHelper;
 
@@ -18,10 +22,14 @@ public class AccountServiceImpl implements AccountService {
 	private final AccountRepository accountRepository;
 	private final RoleRepository roleRepository;
 	
-	public AccountServiceImpl(AccountHelper accountHelper, AccountRepository accountRepository, RoleRepository roleRepository) {
+	
+	public AccountServiceImpl(AccountHelper accountHelper, 
+			AccountRepository accountRepository, 
+			RoleRepository roleRepository) {
 		this.accountHelper = accountHelper;
 		this.accountRepository = accountRepository;
 		this.roleRepository = roleRepository;
+		
 	}
 	
     @Override
@@ -88,5 +96,25 @@ public class AccountServiceImpl implements AccountService {
     	return this.accountRepository
     			.existsByEmailIgnoreCase(email.toString());
     }
+    
+    
+//    @Override
+//	public void saveFavorite(Long activity_id) {
+//		Activity activity = activityRepository.getReferenceById(activity_id);
+//		
+//		
+//		if (activity != null) {
+//            Like like = new Like();
+//            like.setActivity(activity);
+//            like.setAccount(account);
+//            likeRepository.save(like);
+//        }
+//	}
+    
+	@Override
+	public Set<Activity> getAll(){
+		return accountRepository.findAllFavoriteBy();
+	}
+	
 
 }
