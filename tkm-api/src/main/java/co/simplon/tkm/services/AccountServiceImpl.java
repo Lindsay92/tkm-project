@@ -112,8 +112,8 @@ public class AccountServiceImpl implements AccountService {
 //	}
     
 	@Override
-	public Set<Activity> getAll(){
-		return accountRepository.findAllFavoriteBy();
+	public Set<Account> getFavorite(Long activity_id){
+		return accountRepository.findAccountsByFavoriteActivities_Id(activity_id);
 	}
 	
 

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.10</version>
+		<version>3.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>co.simplon.tkm</groupId>
@@ -14,7 +14,8 @@
 	<name>tkm-api</name>
 	<description>Project with Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
 	</properties>
 	<dependencies>
 		<dependency>

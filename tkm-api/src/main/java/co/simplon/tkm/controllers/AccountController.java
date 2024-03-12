@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.http.HttpStatus;
 
 import co.simplon.tkm.dtos.Credentials;
 import co.simplon.tkm.dtos.TokenInfo;
+import co.simplon.tkm.entities.Account;
 import co.simplon.tkm.entities.Activity;
 import co.simplon.tkm.services.AccountService;
 
@@ -35,9 +37,9 @@ public class AccountController {
     	return service.signIn(inputs);
     }
     
-    @GetMapping
-	public Set<Activity> getAll() {
-		return service.getAll();
+    @GetMapping("/{id}/favorite")
+	public Set<Account> favorite(@PathVariable("id") Long id) {
+		return service.getFavorite(id);
 	}
 
 }

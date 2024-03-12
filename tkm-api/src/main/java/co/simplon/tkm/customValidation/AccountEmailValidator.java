@@ -1,11 +1,9 @@
 package co.simplon.tkm.customValidation;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 import org.springframework.security.authentication.BadCredentialsException;
-
 import co.simplon.tkm.services.AccountService;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class AccountEmailValidator implements ConstraintValidator<AccountEmail, String> {
 	
