@@ -6,6 +6,9 @@ import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
@@ -32,13 +35,12 @@ public class Activity extends AbstractEntity {
 	@Column(name = "created_at", updatable = false)
 	private LocalDateTime createdAt;
 	
-	
-//	@JoinTable(name ="likes",
-//	joinColumns = @JoinColumn(name = "activity_id"),
-//	inverseJoinColumns = @JoinColumn(name = "account_id"))
-	@ManyToMany(mappedBy = "favoriteActivities")
-//	@ManyToMany(fetch = FetchType.LAZY)
-	private Set<Account> likedByAccounts = new HashSet<>();
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name ="likes",
+	joinColumns = @JoinColumn(name = "activity_id"),
+	inverseJoinColumns = @JoinColumn(name = "account_id"))
+//	@ManyToMany(mappedBy = "favoriteActivities")
+	private Set<Account> likedByAccount = new HashSet<>();
 	
 	public Activity() {
 		//Required no-argument constructor
@@ -92,19 +94,14 @@ public class Activity extends AbstractEntity {
 		this.createdAt = createdAt;
 	}
 	
-//	public Set<Account> getLikedByAccounts() {
-//		return likedByAccounts;
-//	}
-//
-//	public void setLikedByAccounts(Set<Account> likedByAccounts) {
-//		this.likedByAccounts = likedByAccounts;
-//	}
-
+	
 	@Override
 	public String toString() {
 		return "Activity [name=" + name + ", description=" + description + ", imageUrl=" + imageUrl
 				+ ", location=" + location + ", linkUrl=" + linkUrl + ", createdAt=" + createdAt + "]";
 	}
+
+	
 	
 
 }

@@ -3,12 +3,14 @@ package co.simplon.tkm.dtos;
 import co.simplon.tkm.entities.Account;
 import co.simplon.tkm.entities.Activity;
 
-public interface LikeActivityView {
+public interface FavoriteView {
 	
 	Long getId();
 	
-	Account getAccount();
+	Account getFavoriteActivities();
 	
-	Activity getActivity();
+//	Activity getActivity();
+	
+	
 
 }

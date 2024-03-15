@@ -24,6 +24,6 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
 	
 	Activity getActivityById(Long id);
 	
-	Set<Activity> findActivitiesByLikedByAccounts_Id(Long account_id);
+	Set<Activity> findActivitiesByLikedByAccountId(Long account_id);
 
 }

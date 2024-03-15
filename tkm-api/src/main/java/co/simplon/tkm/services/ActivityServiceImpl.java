@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +23,7 @@ import co.simplon.tkm.dtos.ActivityForUpdate;
 import co.simplon.tkm.dtos.ActivityUpdateDto;
 import co.simplon.tkm.dtos.ActivityView;
 import co.simplon.tkm.entities.Activity;
+import co.simplon.tkm.repositories.AccountRepository;
 import co.simplon.tkm.repositories.ActivityRepository;
 
 @Service
@@ -125,4 +127,9 @@ public class ActivityServiceImpl implements ActivityService {
     public ActivityDetailView detail(Long id) {
 	return activities.findProjectedDetailById(id);
     }
+	
+	@Override
+	public Set<Activity> getFavorite(Long account_id){
+		return activities.findActivitiesByLikedByAccountId(account_id);
+	}
 }

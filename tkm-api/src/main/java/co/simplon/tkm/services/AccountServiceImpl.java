@@ -3,6 +3,7 @@ package co.simplon.tkm.services;
 import java.util.Set;
 
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import co.simplon.tkm.dtos.Credentials;
@@ -72,9 +73,12 @@ public class AccountServiceImpl implements AccountService {
 		    account.getPassword());
 	    if (match) {
 			String name = account.getEmail();
+	    	String id = account.getId().toString();
 			String role = account.getRole().getRoleName();
 			
 			String token = accountHelper.createJWT(role, name);
+//			String token = accountHelper.createJWT(role, id);
+			
 			
 			TokenInfo tokenInfo = new TokenInfo();
 			tokenInfo.setToken(token);
@@ -98,23 +102,12 @@ public class AccountServiceImpl implements AccountService {
     }
     
     
-//    @Override
-//	public void saveFavorite(Long activity_id) {
-//		Activity activity = activityRepository.getReferenceById(activity_id);
-//		
-//		
-//		if (activity != null) {
-//            Like like = new Like();
-//            like.setActivity(activity);
-//            like.setAccount(account);
-//            likeRepository.save(like);
-//        }
+//	@Override
+//	public Set<Account> getFavorite(Long activity_id){
+//////		String context = SecurityContextHolder.getContext().getAuthentication().getName();
+//////		Long userId = Long.valueOf(context);
+//		return accountRepository.findActivitiesByfavoriteActivitiesId(activity_id);	
 //	}
-    
-	@Override
-	public Set<Account> getFavorite(Long activity_id){
-		return accountRepository.findAccountsByFavoriteActivities_Id(activity_id);
-	}
 	
 
 }

@@ -16,10 +16,6 @@ public interface AccountService {
 
 	public Boolean existsByEmail(String email);
 
-	//public Set<Account> getAll();
-
-	Set<Account> getFavorite(Long activity_id);
-
-//	Collection<Activity> getAll();
+//	Set<Account> getFavorite(Long activity_id);
    
 }

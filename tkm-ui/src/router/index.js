@@ -137,9 +137,13 @@ const router = createRouter({
       meta: { requiresAuth : true }
     },
     {
-      path: '/user/profile',
+      path: '/user/activities/:id/favorite',
       name: 'profile-user',
-      component: () => import('../components/user/Profile.vue')
+      components: {
+        default: () => import('../components/user/Profile.vue'),
+        navbar: () => import('../components/shared/NavbarUser.vue')
+      },
+      meta: { requiresAuth : true }
     },
   ]
 });

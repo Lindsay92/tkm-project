@@ -35,10 +35,11 @@ public class Account extends AbstractEntity {
 	@ManyToOne
 	private Role role;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name ="likes",
-	joinColumns = @JoinColumn(name = "account_id"),
-	inverseJoinColumns = @JoinColumn(name = "activity_id"))
+//	@ManyToMany(fetch = FetchType.LAZY)
+//	@JoinTable(name ="likes",
+//	joinColumns = @JoinColumn(name = "account_id"),
+//	inverseJoinColumns = @JoinColumn(name = "activity_id"))
+	@ManyToMany(mappedBy = "likedByAccount")
 	private Set<Activity> favoriteActivities = new HashSet<>();
 	//association à la cle primaire d'activity
 

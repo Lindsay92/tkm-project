@@ -1,6 +1,8 @@
 package co.simplon.tkm.controllers;
 
 import java.util.Collection;
+import java.util.Set;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,7 @@ import co.simplon.tkm.dtos.ActivityDetailView;
 import co.simplon.tkm.dtos.ActivityForUpdate;
 import co.simplon.tkm.dtos.ActivityUpdateDto;
 import co.simplon.tkm.dtos.ActivityView;
+import co.simplon.tkm.entities.Activity;
 import co.simplon.tkm.services.ActivityService;
 import jakarta.validation.Valid;
 
@@ -67,6 +70,11 @@ public class ActivityController {
 	@GetMapping("/{id}/detail")
 	public ActivityDetailView detail(@PathVariable("id") Long id) {
 		return service.detail(id);
+	}
+	
+	@GetMapping("/{id}/favorite")
+	public Set<Activity> favorite(@PathVariable("id") Long account_id){
+		return service.getFavorite(account_id);
 	}
 	
 }

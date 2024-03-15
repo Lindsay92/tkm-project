@@ -1,12 +1,18 @@
 <script>
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 
 export default {
+    setup() {
+        return {
+            route: useRoute()
+        }
+    },
+
     data() {
         return {
             isAuthenticated : localStorage.getItem("isAuthenticated"),
             role : localStorage.getItem("role"),
-            userName : localStorage.getItem("userName")   
+            userName : localStorage.getItem("userName"),
         }
     },
     methods: {
@@ -23,7 +29,7 @@ export default {
         }
     },
     beforeMount(){
-        this.initAccount();
+        this.initAccount();   
     }
 }
 </script>
@@ -77,11 +83,23 @@ export default {
 
             <div v-if="isAuthenticated && role == 'User'">
                 <span class="nav-item"> Bienvenue {{ userName }}</span>
+                <!-- <router-link   
+                    :to="`/user/activities/${this.id}/favorite`"
+                    class="lien-menu nav-link active"><i class="bi bi-airplane"></i> 
+                        Mon carnet de favoris                       
+                </router-link> -->
+            <!-- <div v-for="activity in activities">
+                <div v-if="activity">
+                    test {{ activity.id }}
+                </div>
+            </div> -->
                 <router-link   
-                    :to="{ name: 'profile-user'}"
+                    :to="{ name: 'profile-user', params: {id: 3}}"
                     class="lien-menu nav-link active"><i class="bi bi-airplane"></i> 
                         Mon carnet de favoris                       
                 </router-link>
+
+
                 <router-link   
                     :to="{ name: 'login'}"
                     class="lien-menu nav-link active"

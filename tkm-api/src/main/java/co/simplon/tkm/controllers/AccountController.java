@@ -37,9 +37,10 @@ public class AccountController {
     	return service.signIn(inputs);
     }
     
-    @GetMapping("/{id}/favorite")
-	public Set<Account> favorite(@PathVariable("id") Long id) {
-		return service.getFavorite(id);
-	}
+//    @GetMapping("/activities/{id}/favorite")
+//	public Set<Account> favorite(@PathVariable("id") Long activity_id) {
+//		return service.getFavorite(activity_id);
+//	}
 
 }
+

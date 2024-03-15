@@ -28,10 +28,9 @@ export default {
         <section class="m-5">
             <div class="input-group">
                 <span class="input-group-text" id="basic-addon1">Filtrer</span>
-                <input type="text" class="form-control" v-model="inputFilter">
+                <input type="text" class="form-control"> <!--v-model="inputFilter"-->
             </div>
         </section>
-                
         <section class="row">
             <div class="col-12 col-md-4 d-flex justify-content-center fw-semibold text-center" v-for="activity in activities" :key="activity.id">
                 <div class="card w-100 shadow m-1 fw-normal">          
