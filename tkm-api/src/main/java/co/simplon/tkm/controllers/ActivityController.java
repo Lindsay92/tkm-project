@@ -4,12 +4,15 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +23,7 @@ import co.simplon.tkm.dtos.ActivityDetailView;
 import co.simplon.tkm.dtos.ActivityForUpdate;
 import co.simplon.tkm.dtos.ActivityUpdateDto;
 import co.simplon.tkm.dtos.ActivityView;
+import co.simplon.tkm.entities.Account;
 import co.simplon.tkm.entities.Activity;
 import co.simplon.tkm.services.ActivityService;
 import jakarta.validation.Valid;
@@ -72,9 +76,28 @@ public class ActivityController {
 		return service.detail(id);
 	}
 	
-	@GetMapping("/{id}/favorite")
-	public Set<Activity> favorite(@PathVariable("id") Long account_id){
-		return service.getFavorite(account_id);
-	}
+//	@PostMapping("/{id}/favorite")
+//	@ResponseStatus(HttpStatus.NO_CONTENT)
+//	public void addFavorite(@PathVariable("id") Long activity_id,
+//            @RequestBody Account account) {
+//		service.like(activity_id);
+//	}
 	
+//	@GetMapping("/favorite")
+//	public Set<Activity> favorite(Long account_id){
+//		return service.getFavorite(account_id);
+//	}
+	
+	
+	
+
+	@GetMapping("/{id}/favorite")
+	public Set<Activity> favorite(){
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String user = authentication.getName();
+		
+		Long userId = Long.valueOf(user);
+		
+		return service.getFavorite(userId);
+	}
 }

@@ -14,6 +14,10 @@ export default {
         async initActivities() {
             const response = await this.$axios.get('/activities');
             this.activities = response.body;
+        },
+        async click(id) {
+            const response = await this.$axios.post(`likes/${id}`);
+            this.activities = response.body;
         }
     },
     beforeMount() {
@@ -37,7 +41,7 @@ export default {
                     <img class="img-thumbnail" :src="baseUrl + activity.imageUrl" :alt="activity.name">    
                         <div class="d-flex justify-content-end mt-3 me-3" v-if="isAuthenticated && role == 'User'">
                             <h2>
-                                <a href="" class="link" title="Ajouter à mon carnet de favoris">
+                                <a href="" @click.prevent="click(id)" class="link" title="Ajouter à mon carnet de favoris" >
                                     <i class="bi bi-heart"></i>
                                 </a>
                             </h2>

@@ -13,6 +13,7 @@ export default {
             isAuthenticated : localStorage.getItem("isAuthenticated"),
             role : localStorage.getItem("role"),
             userName : localStorage.getItem("userName"),
+            id:1
         }
     },
     methods: {
@@ -94,7 +95,7 @@ export default {
                 </div>
             </div> -->
                 <router-link   
-                    :to="{ name: 'profile-user', params: {id: 3}}"
+                    :to="{ name: 'profile-user', params: {id}}"
                     class="lien-menu nav-link active"><i class="bi bi-airplane"></i> 
                         Mon carnet de favoris                       
                 </router-link>

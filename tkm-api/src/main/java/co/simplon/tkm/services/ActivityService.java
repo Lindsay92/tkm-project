@@ -29,4 +29,8 @@ public interface ActivityService {
 	
 	Set<Activity> getFavorite(Long account_id);
 
+	//void like();
+
+//	void like(Long activity_id);
+
 }

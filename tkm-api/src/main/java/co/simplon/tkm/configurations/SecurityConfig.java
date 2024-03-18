@@ -50,13 +50,18 @@ public class SecurityConfig {
 	    	http.cors(Customizer.withDefaults())
 	        .csrf(csrf -> csrf.disable()).authorizeHttpRequests(authorize -> authorize
 			.requestMatchers(
-				"/activities/sign-in", "/activities/sign-up",
+				"/sign-in", 
+				"/sign-up",
+				"/activities",
 				"/activities/{id}/detail")
 			.permitAll()
-			.requestMatchers("/activities/{id}", 
-					"/activities/favorite")
-			.hasAuthority("ROLE_ROLE_USER")
-			.requestMatchers("/activities/{id}/for-update",
+			.requestMatchers(
+					
+				"/{id}/favorite", //do not change
+				"/{id}") //do not change
+			.hasAuthority("ROLE_USER")
+			.requestMatchers(
+				"/activities/{id}/for-update",
 				"/activities/for-edit",
 				"/activities/{id}")
 			.hasAuthority("ROLE_ADMIN").anyRequest()
@@ -65,20 +70,19 @@ public class SecurityConfig {
 	                oauth2ResourceServer) -> oauth2ResourceServer
 	                    .jwt(Customizer
 	                        .withDefaults()));
-
+//	    	.oauth2ResourceServer(oauth2 -> oauth2.jwt
+//	    			(jwt -> jwt.jwtAuthenticationConverter(authenticationConverter())));
 		return http.build();
 	    }
 
 	    @Bean
 	    JwtAuthenticationConverter authenticationConverter() {
 		JwtGrantedAuthoritiesConverter authoritiesConverter = new JwtGrantedAuthoritiesConverter();
-		authoritiesConverter
-			.setAuthoritiesClaimName("role");
-		authoritiesConverter.setAuthorityPrefix("ROLE_");
+		authoritiesConverter.setAuthoritiesClaimName("role");
+//		authoritiesConverter.setAuthorityPrefix("ROLE_");
 		JwtAuthenticationConverter authenticationConverter = new JwtAuthenticationConverter();
-		authenticationConverter
-			.setJwtGrantedAuthoritiesConverter(
-				authoritiesConverter);
+		authenticationConverter.setJwtGrantedAuthoritiesConverter(authoritiesConverter);
+		
 		return authenticationConverter;
 	    }
 

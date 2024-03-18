@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -128,8 +129,19 @@ public class ActivityServiceImpl implements ActivityService {
 	return activities.findProjectedDetailById(id);
     }
 	
+	
+//	@Override
+//	public void like(Long activity_id) {
+//		 Activity activity = activities.getReferenceById(activity_id);
+//	}
+	
 	@Override
 	public Set<Activity> getFavorite(Long account_id){
-		return activities.findActivitiesByLikedByAccountId(account_id);
+		String context = SecurityContextHolder.getContext().getAuthentication().getName();
+		Long userId = Long.valueOf(context); // parseLong
+//		return activities.findActivitiesByLikedByAccountId(account_id);
+		
+		return activities.findActivitiesByLikedByAccountId(userId);
 	}
+	
 }

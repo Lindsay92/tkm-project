@@ -1,15 +1,12 @@
 package co.simplon.tkm.services;
 
-import java.util.Set;
 
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import co.simplon.tkm.dtos.Credentials;
 import co.simplon.tkm.dtos.TokenInfo;
 import co.simplon.tkm.entities.Account;
-import co.simplon.tkm.entities.Activity;
 import co.simplon.tkm.entities.Role;
 import co.simplon.tkm.repositories.AccountRepository;
 
@@ -72,12 +69,13 @@ public class AccountServiceImpl implements AccountService {
 	    boolean match = accountHelper.matches(candidate,
 		    account.getPassword());
 	    if (match) {
-			String name = account.getEmail();
-	    	String id = account.getId().toString();
+			//String name = account.getEmail();
+	    	String name = account.getId().toString();
 			String role = account.getRole().getRoleName();
 			
+			//String token = accountHelper.createJWT(role, name);
 			String token = accountHelper.createJWT(role, name);
-//			String token = accountHelper.createJWT(role, id);
+			//changement name pourid dans méthode createJWT dans accountHelper
 			
 			
 			TokenInfo tokenInfo = new TokenInfo();
@@ -103,9 +101,9 @@ public class AccountServiceImpl implements AccountService {
     
     
 //	@Override
-//	public Set<Account> getFavorite(Long activity_id){
-//////		String context = SecurityContextHolder.getContext().getAuthentication().getName();
-//////		Long userId = Long.valueOf(context);
+//	public Set<Account> getFavorite(Long activity_id){		
+//		String context = SecurityContextHolder.getContext().getAuthentication().getName();
+//		Long userId = Long.valueOf(context);
 //		return accountRepository.findActivitiesByfavoriteActivitiesId(activity_id);	
 //	}
 	
