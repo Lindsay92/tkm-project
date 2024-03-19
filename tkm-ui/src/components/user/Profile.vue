@@ -21,7 +21,7 @@ export default {
     
     methods: {
         async likeActivities() {
-            const response = await this.$axios.get(`/activities/${this.id}/favorite`);
+            const response = await this.$axios.get(`/activities/user/favorite`);
             this.favorites = response.body;
         }
     },

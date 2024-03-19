@@ -27,9 +27,9 @@ public class LikeServiceImpl implements LikeService {
 	
 	@Override
 	@Transactional
-	public void like(Long activity_id, Long account_id) {
-	    Activity activity = activities.getReferenceById(activity_id);
-	    Account account = accountRepository.getReferenceById(account_id);
+	public void like(Long activityId, Long accountId) {
+	    Activity activity = activities.getReferenceById(activityId);
+	    Account account = accountRepository.getReferenceById(accountId);
 
 	    Like like = new Like();
 	    like.setAccount(account);

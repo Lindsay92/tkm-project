@@ -56,7 +56,7 @@ public class ActivityController {
 		service.delete(id);
 	}
 	
-	@GetMapping
+	@GetMapping()
 	public Collection<ActivityView> getAll() {
 		return service.getAll();
 	}
@@ -76,28 +76,19 @@ public class ActivityController {
 		return service.detail(id);
 	}
 	
-//	@PostMapping("/{id}/favorite")
-//	@ResponseStatus(HttpStatus.NO_CONTENT)
-//	public void addFavorite(@PathVariable("id") Long activity_id,
-//            @RequestBody Account account) {
-//		service.like(activity_id);
-//	}
-	
-//	@GetMapping("/favorite")
-//	public Set<Activity> favorite(Long account_id){
-//		return service.getFavorite(account_id);
-//	}
-	
-	
-	
-
-	@GetMapping("/{id}/favorite")
-	public Set<Activity> favorite(){
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String user = authentication.getName();
-		
-		Long userId = Long.valueOf(user);
-		
-		return service.getFavorite(userId);
+	@GetMapping("/user/favorite")
+	public Set<Activity> getAllFavorite(){
+		return service.getFavorite();
 	}
+	
+//	OU =>	
+//	@GetMapping("/{id}/favorite")
+//	public Set<Activity> favorite(){
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		String user = authentication.getName();
+//		
+//		Long userId = Long.valueOf(user);
+//		
+//		return service.getFavorite(userId);
+//	}
 }

@@ -22,13 +22,13 @@ public class LikeController {
 
     @PostMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void addActivityToUserFavorites(@PathVariable("id") Long activity_id) {
+    public void addActivityToUserFavorites(@PathVariable("id") Long activityId) {
         // Récupérez l'ID de l'utilisateur authentifié à partir du contexte de sécurité
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
         Long accountId = Long.valueOf(userId);
 
         // Appelez la méthode du service pour ajouter l'activité aux favoris de l'utilisateur
-        likeService.like(activity_id, accountId);
+        likeService.like(activityId, accountId);
     }
 
 

@@ -27,10 +27,8 @@ public interface ActivityService {
 
 	ActivityDetailView detail(Long id);
 	
-	Set<Activity> getFavorite(Long account_id);
+//	Set<Activity> getFavorite(Long accountId);
 
-	//void like();
-
-//	void like(Long activity_id);
+	Set<Activity> getFavorite();
 
 }

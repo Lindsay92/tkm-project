@@ -1,3 +1,4 @@
+
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -137,7 +138,7 @@ const router = createRouter({
       meta: { requiresAuth : true }
     },
     {
-      path: '/user/activities/:id/favorite',
+      path: '/user/activities/user/favorite',
       name: 'profile-user',
       components: {
         default: () => import('../components/user/Profile.vue'),

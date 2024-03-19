@@ -52,12 +52,12 @@ public class SecurityConfig {
 			.requestMatchers(
 				"/sign-in", 
 				"/sign-up",
+				"/",
 				"/activities",
 				"/activities/{id}/detail")
 			.permitAll()
 			.requestMatchers(
-					
-				"/{id}/favorite", //do not change
+				"/user/favorite", //do not change
 				"/{id}") //do not change
 			.hasAuthority("ROLE_USER")
 			.requestMatchers(
@@ -70,8 +70,6 @@ public class SecurityConfig {
 	                oauth2ResourceServer) -> oauth2ResourceServer
 	                    .jwt(Customizer
 	                        .withDefaults()));
-//	    	.oauth2ResourceServer(oauth2 -> oauth2.jwt
-//	    			(jwt -> jwt.jwtAuthenticationConverter(authenticationConverter())));
 		return http.build();
 	    }
 

@@ -13,6 +13,6 @@ public interface AccountRepository extends JpaRepository<Account, Long>{
 
 	Boolean existsByEmailIgnoreCase(String string);
 
-	Set<Account> findActivitiesByfavoriteActivitiesId(Long account_id);
+	Set<Account> findActivitiesByfavoriteActivitiesId(Long activityId);
 
 }

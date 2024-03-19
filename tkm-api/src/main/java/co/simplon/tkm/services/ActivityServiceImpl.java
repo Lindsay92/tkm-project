@@ -129,18 +129,13 @@ public class ActivityServiceImpl implements ActivityService {
 	return activities.findProjectedDetailById(id);
     }
 	
-	
-//	@Override
-//	public void like(Long activity_id) {
-//		 Activity activity = activities.getReferenceById(activity_id);
-//	}
-	
 	@Override
-	public Set<Activity> getFavorite(Long account_id){
+	public Set<Activity> getFavorite(){
 		String context = SecurityContextHolder.getContext().getAuthentication().getName();
 		Long userId = Long.valueOf(context); // parseLong
 //		return activities.findActivitiesByLikedByAccountId(account_id);
-		
+		System.out.println(userId);
+		System.out.println("lindsay");
 		return activities.findActivitiesByLikedByAccountId(userId);
 	}
 	
