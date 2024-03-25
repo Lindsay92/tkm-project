@@ -58,7 +58,7 @@ public class SecurityConfig {
 			.permitAll()
 			.requestMatchers(
 				"/user/favorite", //do not change
-				"/{id}") //do not change
+				"/delete/{activityId}") //do not change
 			.hasAuthority("ROLE_USER")
 			.requestMatchers(
 				"/activities/{id}/for-update",

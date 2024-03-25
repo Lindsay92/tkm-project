@@ -145,7 +145,7 @@ const router = createRouter({
         navbar: () => import('../components/shared/NavbarUser.vue')
       },
       meta: { requiresAuth : true }
-    },
+    }
   ]
 });
 

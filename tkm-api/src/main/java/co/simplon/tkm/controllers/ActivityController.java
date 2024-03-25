@@ -81,14 +81,4 @@ public class ActivityController {
 		return service.getFavorite();
 	}
 	
-//	OU =>	
-//	@GetMapping("/{id}/favorite")
-//	public Set<Activity> favorite(){
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		String user = authentication.getName();
-//		
-//		Long userId = Long.valueOf(user);
-//		
-//		return service.getFavorite(userId);
-//	}
 }

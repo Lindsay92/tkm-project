@@ -37,5 +37,11 @@ public class LikeServiceImpl implements LikeService {
 
 	    likeRepository.save(like);
 	}
+	
+	@Transactional
+	public void deleteByActivityIdAndAccountId(Long activityId, Long accountId) {
+	    likeRepository.deleteByActivityIdAndAccountId(activityId, accountId);
+	}
+
 
 }

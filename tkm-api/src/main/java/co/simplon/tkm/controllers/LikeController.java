@@ -2,6 +2,8 @@ package co.simplon.tkm.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +32,16 @@ public class LikeController {
         // Appelez la méthode du service pour ajouter l'activité aux favoris de l'utilisateur
         likeService.like(activityId, accountId);
     }
+    
+    @DeleteMapping("/delete/{activityId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteActivityFromUserFavorites(@PathVariable("activityId") Long activityId) {
+        String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+        Long accountId = Long.valueOf(userId);
+        
+        likeService.deleteByActivityIdAndAccountId(activityId, accountId);
+    }
+
 
 
 }

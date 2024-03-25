@@ -13,11 +13,23 @@ export default {
     methods: {
         async initActivities() {
             const response = await this.$axios.get('/activities');
-            this.activities = response.body;
-        },
-        async click(id) {
-            const response = await this.$axios.post(`likes/${id}`);
-            this.activities = response.body;
+            this.activities = response.data.map(activity => ({
+                ...activity, 
+                isFavorite: false
+        }))
+    },
+        async toggleFavorite(id) {
+            try {
+                const response = await this.$axios.post(`/likes/${id}`);
+                if (response && response.status === 204) {
+                    const activity = this.activities.find(activity => activity.id === id);
+                    if (activity) {
+                        activity.isFavorite = !activity.isFavorite;
+                    }
+                }
+            } catch(error) {
+            console.log("erreur");
+            }
         }
     },
     beforeMount() {
@@ -40,11 +52,10 @@ export default {
                 <div class="card w-100 shadow m-1 fw-normal">          
                     <img class="img-thumbnail" :src="baseUrl + activity.imageUrl" :alt="activity.name">    
                         <div class="d-flex justify-content-end mt-3 me-3" v-if="isAuthenticated && role == 'User'">
-                            <h2>
-                                <a href="" @click.prevent="click(id)" class="link" title="Ajouter à mon carnet de favoris" >
-                                    <i class="bi bi-heart"></i>
-                                </a>
-                            </h2>
+                            <span @click="toggleFavorite(activity.id)" class="favorite-icon">
+                                <i v-if="activity.isFavorite" class="bi bi-heart-fill"></i>
+                                <i v-else class="bi bi-heart pointer"></i>
+                            </span>
                         </div> 
 
                     <div class="card-body my-1">
@@ -81,3 +92,13 @@ export default {
             </div>
 </template>
 
+<style>
+.pointer {
+  cursor: pointer;
+}
+
+.text-danger {
+    color: red;
+}
+
+</style>
