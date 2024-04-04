@@ -32,9 +32,8 @@ export default {
     <div class=" bg-body-secondary p-5 rounded">
         <h1>Tout Koulèr Mélanjé - Dashboard</h1>
         <p class="lead">
-            Gestion de l'application <br>
-            Gestion des comptes utilisateurs <br>
-            Gestion de son profil
+            Gestion des activités <br>
+            Gestion des comptes utilisateurs 
         </p>
     </div>
     

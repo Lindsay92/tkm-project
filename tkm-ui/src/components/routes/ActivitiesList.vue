@@ -52,10 +52,10 @@ export default {
                 <div class="card w-100 shadow m-1 fw-normal">          
                     <img class="img-thumbnail" :src="baseUrl + activity.imageUrl" :alt="activity.name">    
                         <div class="d-flex justify-content-end mt-3 me-3" v-if="isAuthenticated && role == 'User'">
-                            <span @click="toggleFavorite(activity.id)" class="favorite-icon">
+                            <h2 @click="toggleFavorite(activity.id)" class="favorite-icon">
                                 <i v-if="activity.isFavorite" class="bi bi-heart-fill"></i>
                                 <i v-else class="bi bi-heart pointer"></i>
-                            </span>
+                            </h2>
                         </div> 
 
                     <div class="card-body my-1">
@@ -85,16 +85,16 @@ export default {
 
             <div class="row">
                 <div class="d-flex justify-content-end p-4">
-                    <span class="btnColor" id="scrollUp">
-                        <a href="#top"><img src="src/assets/arrow-up-circle.svg"/></a>
-                    </span>
+                    <h2 class="btnColor" id="scrollUp">
+                        <a href="#top"><i class="bi bi-arrow-up-circle text-dark"></i></a>
+                    </h2>
                 </div>
             </div>
 </template>
 
 <style>
 .pointer {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 </style>

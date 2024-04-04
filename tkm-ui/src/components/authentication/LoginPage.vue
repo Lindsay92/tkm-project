@@ -45,7 +45,7 @@ export default {
                             // this.validator.$reset();
                             this.$router.push('admin/activities')
                         } else if (response.body.role.includes("User")) {
-                            this.$router.push("/user/activities");
+                            this.$router.push("/user/activities/user/favorite");
                         } else {
                             // console.log("error");
                             this.$toast.error('toast-global', 'Une erreur s\'est produite.');
