@@ -97,8 +97,4 @@ export default {
   cursor: pointer;
 }
 
-.text-danger {
-    color: red;
-}
-
 </style>
