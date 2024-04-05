@@ -58,7 +58,7 @@ export default {
 </script>
 
 <template>
-    <div class="row m-3">
+    <div class="row m-5">
         <div class="d-flex justify-content-center align-items-center">
             <section class="frame row flex-fill me-4">
                 <form novalidate @submit.prevent="submitForm" class=" border border-dark rounded">
