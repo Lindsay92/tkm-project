@@ -1,10 +1,14 @@
 <script>
 import { useRoute } from 'vue-router';
+import { useStore } from "../../plugins/store.js";
 
 export default {
-    setup() {
+    setup() {   
+        const store = useStore();
+        const route = useRoute();
         return {
-            route: useRoute()
+            store,
+            route
         }
     },
 

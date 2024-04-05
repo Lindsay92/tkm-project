@@ -41,9 +41,9 @@
 
   <div class="row">
                 <div class="d-flex justify-content-end p-4">
-                    <span class="btnColor" id="scrollUp">
-                        <a href="#top"><img src="src/assets/arrow-up-circle.svg"/></a>
-                    </span>
+                    <h2 class="btnColor" id="scrollUp">
+                        <a href="#top"><i class="bi bi-arrow-up-circle text-dark"></i></a>
+                    </h2>
                 </div>
             </div>
 </template>

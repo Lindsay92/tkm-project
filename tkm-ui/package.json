@@ -11,6 +11,7 @@
     "@vuelidate/core": "^2.0.2",
     "@vuelidate/validators": "^2.0.2",
     "dayjs": "^1.11.7",
+    "pinia": "^2.1.7",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
@@ -19,6 +20,6 @@
     "node-sass": "^8.0.0",
     "sass": "^1.60.0",
     "sass-loader": "^13.2.1",
-    "vite": "^4.1.4"
+    "vite": "^5.2.8"
   }
 }

@@ -1,5 +1,11 @@
 <script>
+import { useStore } from '../../plugins/store.js';
+
 export default {
+    setup() {
+    const store = useStore(); 
+    return { store };  
+    },
     data() {
         return {
             baseUrl: import.meta.env.VITE_IMG_BASE_URL,
@@ -15,18 +21,20 @@ export default {
             const response = await this.$axios.get('/activities');
             this.activities = response.data.map(activity => ({
                 ...activity, 
-                isFavorite: false
-        }))
+                isFavorite: this.store.isFavorite(activity.id)
+        }));
     },
         async toggleFavorite(id) {
             try {
                 const response = await this.$axios.post(`/likes/${id}`);
                 if (response && response.status === 204) {
-                    const activity = this.activities.find(activity => activity.id === id);
-                    if (activity) {
-                        activity.isFavorite = !activity.isFavorite;
+                    if (!this.store.isFavorite(id)) {
+                        this.store.addFavorite(id);
+                    } else {
+                        this.store.removeFavorite(id);
                     }
                 }
+                this.initActivities();
             } catch(error) {
             console.log("erreur");
             }
@@ -97,4 +105,4 @@ export default {
     cursor: pointer;
 }
 
-</style>
+</style>this.store.addFavorite(id)this.store.removeFavorite(activity.id)

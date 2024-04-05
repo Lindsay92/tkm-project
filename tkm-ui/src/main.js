@@ -4,8 +4,12 @@ import router from './router';
 import axios from './plugins/axios';
 import dayjs from 'dayjs';
 import toast from './plugins/toast';
+import { createPinia } from 'pinia';
 
 const app = createApp(App)
+const pinia = createPinia()
+
+app.use(pinia)
 
 app.use(router)
 
