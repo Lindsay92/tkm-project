@@ -33,8 +33,8 @@ export default {
                     } else {
                         this.store.removeFavorite(id);
                     }
+                    this.initActivities();
                 }
-                this.initActivities();
             } catch(error) {
             console.log("erreur");
             }

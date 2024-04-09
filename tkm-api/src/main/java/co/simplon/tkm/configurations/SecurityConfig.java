@@ -61,9 +61,8 @@ public class SecurityConfig {
 				"/delete/{activityId}") //do not change
 			.hasAuthority("ROLE_USER")
 			.requestMatchers(
-				"/activities/{id}/for-update",
-				"/activities/for-edit",
-				"/activities/{id}")
+				"/{id}/for-update",
+				"/for-edit")
 			.hasAuthority("ROLE_ADMIN").anyRequest()
 			.authenticated())
 	        .oauth2ResourceServer((

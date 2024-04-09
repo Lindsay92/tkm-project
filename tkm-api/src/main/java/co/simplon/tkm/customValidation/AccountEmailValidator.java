@@ -9,7 +9,7 @@ public class AccountEmailValidator implements ConstraintValidator<AccountEmail, 
 	
 	final private AccountService service;
 	
-	public AccountEmailValidator( AccountService service) {
+	public AccountEmailValidator(AccountService service) {
 		this.service = service;
 	}
 	

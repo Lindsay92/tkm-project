@@ -3,6 +3,7 @@ package co.simplon.tkm.dtos;
 import org.springframework.web.multipart.MultipartFile;
 import co.simplon.tkm.customValidation.FileSize;
 import co.simplon.tkm.customValidation.FileType;
+import co.simplon.tkm.customValidation.UniqueActivityName;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -10,6 +11,7 @@ import jakarta.validation.constraints.Size;
 public class ActivityCreateDto {
 	
 	@NotBlank
+	@UniqueActivityName
 	@Size(max = 250)
 	private String name;
 	

@@ -26,4 +26,6 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
 	
 	Set<Activity> findActivitiesByLikedByAccountId(Long accountId);
 
+	Boolean existsByName(String name);
+
 }

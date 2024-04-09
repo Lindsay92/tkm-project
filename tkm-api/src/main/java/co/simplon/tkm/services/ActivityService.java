@@ -31,4 +31,6 @@ public interface ActivityService {
 
 	Set<Activity> getFavorite();
 
+	Boolean existsByActivityName(String name);
+
 }

@@ -139,4 +139,10 @@ public class ActivityServiceImpl implements ActivityService {
 		return activities.findActivitiesByLikedByAccountId(userId);
 	}
 	
+	@Override
+	public Boolean existsByActivityName(String name) {
+		return this.activities
+			.existsByName(name);
+	}
+	
 }
