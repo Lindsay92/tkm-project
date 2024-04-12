@@ -54,15 +54,10 @@ export default {
                         </li>
                         <li class="nav-item">
                             <router-link to="" class="lien-menu nav-link active">
-                                Profil 
+                                Profil des utilisateurs
                                 <i class="bi bi-dot"></i>
                             </router-link>
-                        </li>   
-                        <li class="nav-item">
-                            <router-link to="" class="lien-menu nav-link active">
-                                Utilisateurs 
-                            </router-link>
-                        </li>                     
+                        </li>                       
                     </ul>
                 </div>
 

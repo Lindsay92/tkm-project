@@ -22,8 +22,8 @@ export default {
             this.activities = response.data.map(activity => ({
                 ...activity, 
                 isFavorite: this.store.isFavorite(activity.id)
-        }));
-    },
+            }));
+        },
         async toggleFavorite(id) {
             try {
                 const response = await this.$axios.post(`/likes/${id}`);
@@ -36,14 +36,15 @@ export default {
                     this.initActivities();
                 }
             } catch(error) {
-            console.log("erreur");
+            window.scrollTo(0, 500);
+            this.$toast.error('toast-global', 'Une erreur s\'est produite.');
             }
         }
     },
     beforeMount() {
         this.initActivities();
     }
-};
+}
 </script>
 
 <template>
@@ -74,14 +75,14 @@ export default {
                         </p>  
                             <div v-if="isAuthenticated && role == 'User'">
                                 <p class=" mb-3">
-                                    <router-link :to=" { name: 'user-activity-detail', params: { id: activity.id } }" class="link"><span >Plus d'info </span> 
+                                    <router-link :to=" { name: 'user-activity-detail', params: { id: activity.id } }" class="link"><span>Plus d'info </span> 
                                         <i class="bi bi-box-arrow-up-right"></i>
                                     </router-link>
                                 </p>  
                             </div>
                             <div v-else>
                                 <p class=" mb-3">
-                                    <router-link :to=" { name: 'activity-detail', params: { id: activity.id } }" class="link"><span >Plus d'info </span> 
+                                    <router-link :to=" { name: 'activity-detail', params: { id: activity.id } }" class="link"><span>Plus d'info </span> 
                                         <i class="bi bi-box-arrow-up-right"></i>
                                     </router-link>
                                 </p>  

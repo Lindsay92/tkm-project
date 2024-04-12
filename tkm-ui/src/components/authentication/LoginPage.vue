@@ -38,16 +38,14 @@ export default {
             const valid = await this.validator.$validate();
             if (valid) {
                 const response = await this.$axios.post('/sign-in', this.inputs);
-                //console.log(response);
                     if (response) {
                         Object.assign(this.inputs, this.$options.data().inputs);
                         if (response.body.role.includes("Administrator")){
-                            // this.validator.$reset();
                             this.$router.push('admin/activities')
                         } else if (response.body.role.includes("User")) {
                             this.$router.push("/user/activities/user/favorite");
                         } else {
-                            // console.log("error");
+                            window.scrollTo(0, 0);
                             this.$toast.error('toast-global', 'Une erreur s\'est produite.');
                         }
                     }  

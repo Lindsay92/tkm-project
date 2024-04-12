@@ -32,6 +32,7 @@ export default {
             const response = await this.$axios.delete(`/likes/delete/${id}`);
             if (response.status === 204) {
                 this.$toast.success('toast-global', 'L\'activité a bien été supprimée');
+                window.scrollTo(0, 500);
                 await this.likeActivities();
             }
             else {
@@ -47,9 +48,6 @@ export default {
 </script>
 <template>
     <h1 id="top" class="text-center mt-3 mb-5">Mon carnet de favoris</h1>
-    <p class="fs-4">
-        <router-link to= "/user/activities" class="link">Accéder à la liste des activités</router-link>
-    </p> 
         <div v-if="isAuthenticated && role == 'User'">
             <div class="table-responsive">
                 <table class="table table-hover table-sm">

@@ -23,7 +23,7 @@ export default {
     validations(){
         return {
             inputs: {
-                name: { required, maxLength: maxLength(250),  },
+                name: { required, maxLength: maxLength(250) },
                 description: { required, maxLength: maxLength(1000) },
                 imageUrl: { maxValue: (imageUrl) => {
                     return imageUrl === null || imageUrl.size < 512000
@@ -37,7 +37,7 @@ export default {
     methods: {
         async submit() {
             const valid = await this.validator.$validate();
-            if (valid && valid.status === 204) {
+            if (valid) {
                 const formData = new FormData();
                 formData.append("name", this.inputs.name);
                 formData.append("description", this.inputs.description);
@@ -47,13 +47,12 @@ export default {
 
                 await this.$axios.post('/activities', formData);
                 Object.assign(this.$data.inputs, this.$options.data().inputs);
-                console.log(Object.values(formData));
+                //console.log(Object.values(formData));
                 this.$router.push('/admin/activities')
                 this.$toast.success('toast-global', 'L\'activité a bien été créée');
-                // this.validator.$reset();
-            } else {
-                // console.log('erreur')
-                console.error(response);
+                window.scrollTo(0, 0);
+            } else if (valid.status === 400) {
+                window.scrollTo(0, 0);
                 this.$toast.error('toast-global', 'Une erreur s\'est produite.');
             }
         },
@@ -72,7 +71,6 @@ export default {
                 <label for="name" class="form-label required">Nom de l'activité</label>
                 <input v-model.trim="inputs.name" id="name" name="name" type="text" maxlength="250" class="form-control" :class="{ 'is-invalid': validator.inputs.name.$error }">
                     <span class="invalid-feedback" v-if="validator.inputs.name.$error">
-                        <!-- <p>Le champ est obligatoire</p> -->
                         <p v-if="validator.inputs.name.required">Le champ est obligatoire</p>
                         <p v-if="validator.inputs.name.maxLength">Le nom de l'activité ne doit pas dépasser 100 caractères</p>
                         <p v-if="!validator.inputs.name.required && !validator.inputs.name.maxLength">Ce nom d'activité existe déjà</p>

@@ -50,7 +50,8 @@ export default {
                 this.validator.$reset();
                 this.$router.push('login');
             } else {
-                console.log('error');
+                window.scrollTo(0, 0);
+                this.$toast.error('toast-global', 'Une erreur s\'est produite.');
             }
         }
     }

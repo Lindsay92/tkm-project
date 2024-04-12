@@ -30,7 +30,7 @@
       </div>
       
       <div class="polaroid col-12 col-md-6 m-4">
-        <img src="/images/flower2.jpg" alt="" class="image"> <!--Instead of /public/images/flower2.jpg, use /images/flower2.jpg.-->
+        <img src="/images/flower2.jpg" alt="" class="image">
         <div class="container">
           <p>Orchidée</p>
         </div>

@@ -39,8 +39,6 @@ export default {
 
         <section class=" row fw-semibold text-center m-4">
             <div class="col-12 col-md-4 p-3 d-flex justify-content-center" v-for="activity in homeActivities" :key="activity.id">
-                <!--children of the same common parent must have unique key-->
-
                 <div class="card w-100 shadow">
                     <router-link to="/activities" class="link-title">
                         <img v-bind:src= "activity.imageUrl" class="card-img-top" :alt= "activity.alt">
