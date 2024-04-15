@@ -14,7 +14,7 @@ import jakarta.validation.Payload;
 @Documented
 @Constraint(validatedBy = UniqueActivityNameValidator.class)
 public @interface UniqueActivityName {
-	String message() default "This activity is already created";
+	String message() default "Cette activité a déjà été créée";
 
 	Class<?>[] groups() default {};
 

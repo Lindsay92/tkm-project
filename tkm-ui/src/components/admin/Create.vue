@@ -45,20 +45,27 @@ export default {
                 formData.append("location", this.inputs.location);
                 formData.append("linkUrl", this.inputs.linkUrl);
 
-                await this.$axios.post('/activities', formData);
-                Object.assign(this.$data.inputs, this.$options.data().inputs);
-                //console.log(Object.values(formData));
-                this.$router.push('/admin/activities')
-                this.$toast.success('toast-global', 'L\'activité a bien été créée');
-                window.scrollTo(0, 0);
-            } else if (valid.status === 400) {
-                window.scrollTo(0, 0);
-                this.$toast.error('toast-global', 'Une erreur s\'est produite.');
+                try {
+                    await this.$axios.post('/activities', formData);
+                    Object.assign(this.$data.inputs, this.$options.data().inputs);
+                    //console.log(Object.values(formData));
+                    this.$router.push('/admin/activities')
+                    this.$toast.success('toast-global', 'L\'activité a bien été créée');
+                    window.scrollTo(0, 0);
+                } catch (error) {
+                    console.log('Erreur lors de la création de l\'activité:', error);
+                    if (error.response.data && error.response.data.messages) {
+                        this.$toast.error('toast-global', error.response.data.messages);
+                    } else {
+                        window.scrollTo(0, 0);
+                        this.$toast.error('toast-global', 'Une erreur s\'est produite.');
+                    }
+                }
             }
         },
         async fileUpload(event) {
-            this.inputs.imageUrl = event.target.files[0]
-        }
+        this.inputs.imageUrl = event.target.files[0]
+    }
     }
 };
 </script>
