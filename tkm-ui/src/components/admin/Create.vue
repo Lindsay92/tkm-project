@@ -65,7 +65,7 @@ export default {
         },
         async fileUpload(event) {
         this.inputs.imageUrl = event.target.files[0]
-    }
+        }
     }
 };
 </script>
@@ -79,8 +79,7 @@ export default {
                 <input v-model.trim="inputs.name" id="name" name="name" type="text" maxlength="250" class="form-control" :class="{ 'is-invalid': validator.inputs.name.$error }">
                     <span class="invalid-feedback" v-if="validator.inputs.name.$error">
                         <p v-if="validator.inputs.name.required">Le champ est obligatoire</p>
-                        <p v-if="validator.inputs.name.maxLength">Le nom de l'activité ne doit pas dépasser 100 caractères</p>
-                        <p v-if="!validator.inputs.name.required && !validator.inputs.name.maxLength">Ce nom d'activité existe déjà</p>
+                        <p v-if="validator.inputs.name.maxLength">Le nom de l'activité ne doit pas dépasser 250 caractères</p>
                     </span> 
             </div>
         </div>
@@ -88,7 +87,7 @@ export default {
         <div class="row mb-3">
             <div class="col-12">
                 <label for="description" class="form-label required">Description</label>
-                <textarea  v-model.trim="inputs.description" id="description" for="description" name="description" maxlength="1000"  rows="3" class="form-control" :class="{ 'is-invalid': validator.inputs.description.$error}"></textarea>
+                <textarea  v-model.trim="inputs.description" id="description" for="description" name="description" maxlength="1000"  rows="3" class="form-control" :class="{ 'is-invalid': validator.inputs.description.$error }"></textarea>
                 <span class="invalid-feedback" v-if="validator.inputs.description.$error">
                         <p>Le champ est obligatoire</p>
                     </span>
@@ -142,7 +141,7 @@ export default {
         </div>
         <div class="d-md-flex justify-content-md-end mb-3">
             <button class="btn btn-dark">
-                <router-link :to="{name: 'activities-edit'}" class="text-decoration-none link text-light">Retour sur la liste des activités</router-link>
+                <router-link :to="{ name: 'activities-edit' }" class="text-decoration-none link text-light">Retour sur la liste des activités</router-link>
             </button>
         </div>
     </form>
