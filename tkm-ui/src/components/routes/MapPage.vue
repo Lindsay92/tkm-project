@@ -14,7 +14,7 @@
 
 <h1 class="text-center m-5">Carte de la Guyane Française</h1>
 <div class="text-center mb-3 d-flex justify-content-end">
-        <button class="btn btn-dark">
+        <button class="btn btn-dark btn-lg">
             <router-link :to="{name: 'activities'}" class="text-decoration-none link text-light">Retour à la liste</router-link>
         </button>
     </div>

@@ -7,11 +7,11 @@ import org.springframework.http.HttpStatus;
 public class CustomError {
 	
 	private HttpStatus status;
-    private List<String> messages;
+    private List<String> message;
 
-    public CustomError(HttpStatus status, List<String> messages) {
+    public CustomError(HttpStatus status, List<String> message) {
     	this.status = status;
-        this.messages = messages;
+        this.message = message;
     }
 
     public HttpStatus getStatus() {
@@ -19,7 +19,7 @@ public class CustomError {
     }
 
     public List<String> getMessages() {
-        return messages;
+        return message;
     }
  
 }

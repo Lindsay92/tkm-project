@@ -40,15 +40,31 @@ export default {
             class="col-12 col-md-6">{{ activity.description }}
         </div>
         <div class="col-12 col-md-6">
-            <img :src="baseUrl + activity.imageUrl" class="img-fluid w-100 rounded border border-5" :alt="activity.name">
+            <img :src="baseUrl + activity.imageUrl" class="img-fluid w-75 rounded border border-5" :alt="activity.name">
         </div>
     </section>
 
-    <div class="fst-italic fs-5 mt-5 mb-5 text-center">
-        <p> 
-            <a v-bind:href="activity.linkUrl" target="_blank" class="link-title fst-italic text-uppercase">Réservation <i class="bi bi-box-arrow-up-right"></i></a> 
-        </p>
-    </div>
+    <section class="row d-flex align-items-center justify-content-center text-center">
+        <div class="col-12 col-md-6 fst-italic fw-bold fs-5 mt-5 mb-5">
+            <a v-bind:href="activity.linkUrl" target="_blank" class="link-title fst-italic text-uppercase">Réservation <i class="bi bi-box-arrow-up-right"></i></a>
+        </div>
+        <div class="col-12 col-md-6" v-if="isAuthenticated && role == 'User'">
+            <button class="btn btn-dark btn-lg">
+                <router-link :to="{name: 'user-activities'}" class="text-decoration-none link text-light"
+                href="#top">Retour à la liste</router-link>
+            </button>
+        </div>
+        <div class="col-12 col-md-6" v-else>
+            <button class="btn btn-dark btn-lg">
+                <router-link :to="{name: 'activities'}" class="text-decoration-none link text-light"
+                href="#top">Retour à la liste</router-link>
+            </button>
+        </div>
+    </section>
+
+
+
+
 
     <h2 class="text-center">Localisation de votre activité</h2>
     
@@ -64,7 +80,7 @@ export default {
         </div>
     </section>
 
-    <div class="text-end" v-if="isAuthenticated && role == 'User'">
+    <!-- <div class="text-end" v-if="isAuthenticated && role == 'User'">
         <button class="btn btn-dark">
             <router-link :to="{name: 'user-activities'}" class="text-decoration-none link text-light"
             href="#top">Retour à la liste</router-link>
@@ -75,6 +91,6 @@ export default {
             <router-link :to="{name: 'activities'}" class="text-decoration-none link text-light"
             href="#top">Retour à la liste</router-link>
         </button>
-    </div>
+    </div> -->
 
 </template>

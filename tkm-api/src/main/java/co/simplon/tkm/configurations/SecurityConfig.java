@@ -57,12 +57,14 @@ public class SecurityConfig {
 				"/activities/{id}/detail")
 			.permitAll()
 			.requestMatchers(
-				"/user/favorite", //do not change
-				"/delete/{activityId}") //do not change
+				"/user/favorite",
+				"/delete/{activityId}") 
 			.hasAuthority("ROLE_USER")
 			.requestMatchers(
 				"/{id}/for-update",
-				"/for-edit")
+				"/for-edit",
+				"/{id}/delete",
+				"/{id}/for-change")
 			.hasAuthority("ROLE_ADMIN").anyRequest()
 			.authenticated())
 	        .oauth2ResourceServer((
@@ -76,7 +78,6 @@ public class SecurityConfig {
 	    JwtAuthenticationConverter authenticationConverter() {
 		JwtGrantedAuthoritiesConverter authoritiesConverter = new JwtGrantedAuthoritiesConverter();
 		authoritiesConverter.setAuthoritiesClaimName("role");
-//		authoritiesConverter.setAuthorityPrefix("ROLE_");
 		JwtAuthenticationConverter authenticationConverter = new JwtAuthenticationConverter();
 		authenticationConverter.setJwtGrantedAuthoritiesConverter(authoritiesConverter);
 		

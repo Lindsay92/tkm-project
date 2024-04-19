@@ -58,7 +58,7 @@ export default {
                     </li>
                     <li class="nav-item">
                         <router-link to="/activities" class="lien-menu nav-link active">
-                                Liste des activités 
+                            Activités 
                             <i class="bi bi-dot"></i>
                         </router-link>
                     </li>   

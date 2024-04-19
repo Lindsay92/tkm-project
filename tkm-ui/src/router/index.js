@@ -146,7 +146,14 @@ const router = createRouter({
       },
       meta: { requiresAuth : true }
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return {top: 600 };
+    }
+  }
 });
 
 router.beforeEach((to, from, next) => {

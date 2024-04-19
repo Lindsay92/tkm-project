@@ -34,27 +34,23 @@ public class ActivityController {
 		this.service = service;
 	}
 	
+	//FOR ADMIN
 	@PostMapping
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void create(@ModelAttribute @Valid ActivityCreateDto inputs) {
 		service.create(inputs);
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/{id}/for-change")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void update(@PathVariable("id") Long id, @ModelAttribute @Valid ActivityUpdateDto inputs) {
 		service.update(id, inputs);
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/{id}/for-delete")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable("id") Long id) {
 		service.delete(id);
-	}
-	
-	@GetMapping()
-	public Collection<ActivityView> getAll() {
-		return service.getAll();
 	}
 	
 	@GetMapping("/{id}/for-update")
@@ -65,6 +61,12 @@ public class ActivityController {
 	@GetMapping("/for-edit")
 	public Collection<ActivityAdminView> getAllForEdit() {
 		return service.getAllForEdit();
+	}
+	
+	//FOR USER
+	@GetMapping()
+	public Collection<ActivityView> getAll() {
+		return service.getAll();
 	}
 	
 	@GetMapping("/{id}/detail")

@@ -1,4 +1,3 @@
-
 package co.simplon.tkm.repositories;
 
 import java.util.Collection;
@@ -21,8 +20,6 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
 	Collection<ActivityAdminView> findAllProjectedByOrderByCreatedAtDescName();
 
 	ActivityDetailView findProjectedDetailById(Long id);
-	
-	Activity getActivityById(Long id);
 	
 	Set<Activity> findActivitiesByLikedByAccountId(Long accountId);
 

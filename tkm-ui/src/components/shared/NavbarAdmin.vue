@@ -44,7 +44,7 @@ export default {
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse justify-content-center fs-3 text" id="navbarNav">
+                <div class="collapse navbar-collapse justify-content-center fs-3" id="navbarNav">
                     <ul class="navbar-nav navbar-nav-scroll">
                         <li class="nav-item">
                             <router-link to="/admin/activities" class="lien-menu nav-link active">
@@ -54,8 +54,7 @@ export default {
                         </li>
                         <li class="nav-item">
                             <router-link to="" class="lien-menu nav-link active">
-                                Profil des utilisateurs
-                                <i class="bi bi-dot"></i>
+                                Comptes utilisateurs
                             </router-link>
                         </li>                       
                     </ul>

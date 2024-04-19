@@ -71,7 +71,7 @@ export default {
 </script>
 
 <template>
-    <h1 class="text-center m-5">Formulaire de création d'une nouvelle activité</h1>
+    <h1 class="text-center m-5">Nouvelle activité</h1>
     <form novalidate @submit.prevent="submit">
         <div class="row mb-3">
             <div class="col-12">
@@ -114,7 +114,7 @@ export default {
         
         <div class="row mb-3">
             <div class="col-12">
-                <label for="location" class="form-label required">Lieux</label>
+                <label for="location" class="form-label required">Lieu</label>
                 <input v-model.trim="inputs.location" id="location" name="location" type="text" maxlength="100" class="form-control" :class="{ 'is-invalid': validator.inputs.location.$error }">
                     <span class="invalid-feedback" v-if="validator.inputs.location.$error">
                         <p>Le champ est obligatoire</p>

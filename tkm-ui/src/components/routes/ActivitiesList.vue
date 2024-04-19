@@ -12,7 +12,7 @@ export default {
             isAuthenticated : localStorage.getItem("isAuthenticated"),
             role : localStorage.getItem("role"),
             userName : localStorage.getItem("userName"),
-            activities: [],
+            activities: []
         }
     },
     
@@ -37,7 +37,7 @@ export default {
                 }
             } catch(error) {
             window.scrollTo(0, 500);
-            this.$toast.error('toast-global', 'Une erreur s\'est produite.');
+            this.$toast.error('toast-global', 'Cette activité est déjà dans votre carnet de favoris.');
             }
         }
     },
@@ -61,9 +61,9 @@ export default {
                 <div class="card w-100 shadow m-1 fw-normal">          
                     <img class="img-thumbnail" :src="baseUrl + activity.imageUrl" :alt="activity.name">    
                         <div class="d-flex justify-content-end mt-3 me-3" v-if="isAuthenticated && role == 'User'">
-                            <h2 @click="toggleFavorite(activity.id)" class="favorite-icon">
+                            <h2 @click="toggleFavorite(activity.id)" class="favorite-icon pointer">
                                 <i v-if="activity.isFavorite" class="bi bi-heart-fill"></i>
-                                <i v-else class="bi bi-heart pointer"></i>
+                                <i v-else class="bi bi-heart"></i>
                             </h2>
                         </div> 
 

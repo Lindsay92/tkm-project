@@ -88,7 +88,7 @@ export default {
                                 </span>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-outline-dark mb-3 mt-3 text-white" :disabled="validator.$invalid">Se connecter</button>
+                        <button type="submit" class="btn btn-outline-dark mb-3 mt-3" :disabled="validator.$invalid">Se connecter</button>
                     </div>
 
                     <p class="text-center m-3">

@@ -48,7 +48,7 @@ export default {
                 formData.append("location", this.inputs.location);
                 formData.append("linkUrl", this.inputs.linkUrl);
                 
-                this.$axios.put(`/activities/${this.id}`, formData);
+                this.$axios.put(`/activities/${this.id}/for-change`, formData);
                 window.scrollTo(0, 0);
                 this.$toast.success('toast-global', 'L\'activité a bien été mise à jour.');
                 this.$router.push({ name: 'activities-edit' })

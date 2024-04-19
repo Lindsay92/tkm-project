@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-center m-5">Carnet de voyage</h1>
+  <h1 id="top" class="text-center m-5">Carnet de voyage</h1>
     <div class=" row align-items-center text-center m-5 justify-content-center">
 
       <p class="mb-5">A 8h30 de vol de Paris et 2h des Antilles, la Guyane est une région française d’Amérique du Sud bordée par l’Océan Atlantique, située entre le Brésil et le Suriname. Terre française d’Amazonie, elle réunit à elle seule des richesses naturelles exceptionnelles, une biodiversité encore préservée, un foisonnement de cultures séculaires, des sites naturels uniques au monde, et la principale porte de l’Europe vers l’espace. </p>
