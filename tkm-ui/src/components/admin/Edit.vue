@@ -12,7 +12,6 @@ export default {
         async initActivities() {
             const response = await this.$axios.get('/activities/for-edit');
             this.activities = response.body;
-            this.initActivities();
         },
         async remove(id) {
             const response = await this.$axios.delete(`/activities/${id}/delete`);

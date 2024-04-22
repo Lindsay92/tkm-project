@@ -26,3 +26,4 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
 	Boolean existsByName(String name);
 
 }
+

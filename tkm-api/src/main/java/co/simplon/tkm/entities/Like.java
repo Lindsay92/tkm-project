@@ -1,5 +1,7 @@
 package co.simplon.tkm.entities;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -33,6 +35,27 @@ public class Like extends AbstractEntity {
 		this.activity = activity;
 	}
 
-    
+	@Override
+	public int hashCode() {
+		return Objects.hash(account, activity);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Like)) {
+			return false;
+		}
+		Like other = (Like) obj;
+		return Objects.equals(account, other.account) 
+				&& Objects.equals(activity, other.activity);
+	}
+
+	@Override
+	public String toString() {
+		return "Like [account=" + account + ", activity=" + activity + "]";
+	}    
     
 }

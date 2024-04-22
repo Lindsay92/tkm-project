@@ -31,13 +31,13 @@ import co.simplon.tkm.repositories.ActivityRepository;
 @Transactional(readOnly = true) //toutes mes classes sont en lecture par défaut
 public class ActivityServiceImpl implements ActivityService {
 	
-	private ActivityRepository activities;
+	private ActivityRepository activityRepository;
 	
 	@Value("${tkm.api.uploads.location}")
     private String uploadDir;
 	
-	public ActivityServiceImpl(ActivityRepository activities) {
-		this.activities = activities;
+	public ActivityServiceImpl(ActivityRepository activityRepository) {
+		this.activityRepository = activityRepository;
 	}
 	
 	@Override
@@ -59,7 +59,7 @@ public class ActivityServiceImpl implements ActivityService {
 		LocalDateTime createdAt = LocalDateTime.now();
 		activity.setCreatedAt(createdAt);
 		
-		activities.save(activity);
+		activityRepository.save(activity);
 		
 	}
 	
@@ -67,7 +67,7 @@ public class ActivityServiceImpl implements ActivityService {
 	@Transactional
 	public void update(Long id, ActivityUpdateDto inputs) {
 		
-		Activity activity = activities.findById(id).get();
+		Activity activity = activityRepository.findById(id).get();
 		
 		activity.setName(inputs.getName());
 		activity.setDescription(inputs.getDescription());
@@ -89,7 +89,7 @@ public class ActivityServiceImpl implements ActivityService {
 		LocalDateTime createdAt = LocalDateTime.now();
 		activity.setCreatedAt(createdAt);
 		
-		activities.save(activity);
+		activityRepository.save(activity);
 	}
 	
 	private void store(MultipartFile image, String fileName) {
@@ -105,43 +105,41 @@ public class ActivityServiceImpl implements ActivityService {
 	
 	@Override
 	public ActivityForUpdate forUpdate(Long id ) {
-		return activities.findProjectedById(id);
+		return activityRepository.findProjectedById(id);
 	}
 	
 	@Override
 	@Transactional
 	public void delete(Long id) {
-		activities.deleteById(id);
+		activityRepository.deleteById(id);
 	}
 	
 	@Override
 	public Collection<ActivityView> getAll() {
-		return activities.findAllProjectedBy();
+		return activityRepository.findAllProjectedBy();
 	}
 	
 	@Override
 	public Collection<ActivityAdminView> getAllForEdit() {
-		return activities.findAllProjectedByOrderByCreatedAtDescName();
+		return activityRepository.findAllProjectedByOrderByCreatedAtDescName();
 	}
 	
 	@Override
     public ActivityDetailView detail(Long id) {
-	return activities.findProjectedDetailById(id);
+	return activityRepository.findProjectedDetailById(id);
     }
 	
+	//to fetch the name of the authentified.
 	@Override
 	public Set<Activity> getFavorite(){
 		String context = SecurityContextHolder.getContext().getAuthentication().getName();
 		Long userId = Long.valueOf(context); // parseLong
-//		return activities.findActivitiesByLikedByAccountId(account_id);
-		System.out.println(userId);
-		System.out.println("lindsay");
-		return activities.findActivitiesByLikedByAccountId(userId);
+		return activityRepository.findActivitiesByLikedByAccountId(userId);
 	}
 	
 	@Override
 	public Boolean existsByActivityName(String name) {
-		return this.activities
+		return this.activityRepository
 			.existsByName(name);
 	}
 	

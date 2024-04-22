@@ -1,6 +1,7 @@
 package co.simplon.tkm.entities;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -94,6 +95,23 @@ public class Account extends AbstractEntity {
 
 	public void setFavoriteActivities(Set<Activity> favoriteActivities) {
 		this.favoriteActivities = favoriteActivities;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(email);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Account)) {
+			return false;
+		}
+		Account other = (Account) obj;
+		return Objects.equals(email, other.email);
 	}
 
 	@Override
