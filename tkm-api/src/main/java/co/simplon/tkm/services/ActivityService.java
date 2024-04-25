@@ -27,10 +27,6 @@ public interface ActivityService {
 
 	ActivityDetailView detail(Long id);
 	
-//	Set<Activity> getFavorite(Long accountId);
-
-	Set<Activity> getFavorite();
-
 	Boolean existsByActivityName(String name);
 
 }

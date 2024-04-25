@@ -43,7 +43,7 @@ export default {
                         if (response.body.role.includes("Administrator")){
                             this.$router.push('admin/activities')
                         } else if (response.body.role.includes("User")) {
-                            this.$router.push("/user/activities/user/favorite");
+                            this.$router.push("/user/all/favorite");
                         } else {
                             window.scrollTo(0, 0);
                             this.$toast.error('toast-global', 'Une erreur s\'est produite.');

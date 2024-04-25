@@ -76,7 +76,6 @@ public class ActivityCreateDto {
 		this.linkUrl = linkUrl;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Activity [ name=" + name + ", description=" + description + ", imageUrl=" + imageUrl

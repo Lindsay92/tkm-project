@@ -138,7 +138,7 @@ const router = createRouter({
       meta: { requiresAuth : true }
     },
     {
-      path: '/user/activities/user/favorite',
+      path: '/user/all/favorite',
       name: 'profile-user',
       components: {
         default: () => import('../components/user/Profile.vue'),

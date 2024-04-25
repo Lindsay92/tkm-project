@@ -82,8 +82,6 @@ public class ActivityServiceImpl implements ActivityService {
 		    store(image, fileName);
 		    oldImage.toFile().delete();
 		}
-//		activity.setImageUrl(inputs.getImageUrl());
-		
 		activity.setLocation(inputs.getLocation());
 		activity.setLinkUrl(inputs.getLinkUrl());
 		LocalDateTime createdAt = LocalDateTime.now();
@@ -99,8 +97,7 @@ public class ActivityServiceImpl implements ActivityService {
 			Files.copy(in, target, StandardCopyOption.REPLACE_EXISTING);	
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
-		}
-		
+		}	
 	}
 	
 	@Override
@@ -128,15 +125,7 @@ public class ActivityServiceImpl implements ActivityService {
     public ActivityDetailView detail(Long id) {
 	return activityRepository.findProjectedDetailById(id);
     }
-	
-	//to fetch the name of the authentified.
-	@Override
-	public Set<Activity> getFavorite(){
-		String context = SecurityContextHolder.getContext().getAuthentication().getName();
-		Long userId = Long.valueOf(context); // parseLong
-		return activityRepository.findActivitiesByLikedByAccountId(userId);
-	}
-	
+		
 	@Override
 	public Boolean existsByActivityName(String name) {
 		return this.activityRepository

@@ -4,6 +4,7 @@ package co.simplon.tkm.services;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
+import co.simplon.tkm.dtos.AccountView;
 import co.simplon.tkm.dtos.Credentials;
 import co.simplon.tkm.dtos.TokenInfo;
 import co.simplon.tkm.entities.Account;
@@ -40,10 +41,7 @@ public class AccountServiceImpl implements AccountService {
     	String hashPassword = accountHelper
 		.encode(inputs.getPassword());
 		account.setPassword(hashPassword);
-		
-//		Role role = roleRepository.getReferenceById(2L);
-//		account.setRole(role);
-		
+			
 		if (account.getEmail().endsWith("@tkm.com")) {
 		    Role adminRole = roleRepository
 			    .getReferenceByCodeRole("ROLE_ADMIN");
@@ -62,8 +60,8 @@ public class AccountServiceImpl implements AccountService {
     	String identifier = inputs.getEmail();
     	String candidate = inputs.getPassword();
     	
-    	Account account = accountRepository.getByEmail(identifier);
-    	
+    	AccountView account = accountRepository.getByEmail(identifier);
+    	//change from Account to AcountView
      	
 	if (account != null) {
 	    boolean match = accountHelper.matches(candidate,
@@ -73,9 +71,7 @@ public class AccountServiceImpl implements AccountService {
 	    	String name = account.getId().toString();
 			String role = account.getRole().getRoleName();
 			
-			//String token = accountHelper.createJWT(role, name);
 			String token = accountHelper.createJWT(role, name);
-			//changement name pourid dans méthode createJWT dans accountHelper
 			
 			
 			TokenInfo tokenInfo = new TokenInfo();
@@ -93,19 +89,10 @@ public class AccountServiceImpl implements AccountService {
 		    "Wrong credentials");
 	}
   }
+    
     @Override
     public Boolean existsByEmail(String email) {
     	return this.accountRepository
     			.existsByEmailIgnoreCase(email.toString());
     }
-    
-    
-//	@Override
-//	public Set<Account> getFavorite(Long activity_id){		
-//		String context = SecurityContextHolder.getContext().getAuthentication().getName();
-//		Long userId = Long.valueOf(context);
-//		return accountRepository.findActivitiesByfavoriteActivitiesId(activity_id);	
-//	}
-	
-
 }

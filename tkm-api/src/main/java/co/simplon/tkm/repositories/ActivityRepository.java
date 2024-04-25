@@ -1,7 +1,6 @@
 package co.simplon.tkm.repositories;
 
 import java.util.Collection;
-import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -21,8 +20,6 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
 
 	ActivityDetailView findProjectedDetailById(Long id);
 	
-	Set<Activity> findActivitiesByLikedByAccountId(Long accountId);
-
 	Boolean existsByName(String name);
 
 }

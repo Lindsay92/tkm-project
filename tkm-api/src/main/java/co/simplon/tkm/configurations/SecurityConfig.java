@@ -57,7 +57,7 @@ public class SecurityConfig {
 				"/activities/{id}/detail")
 			.permitAll()
 			.requestMatchers(
-				"/user/favorite",
+				"/user/all/favorite",
 				"/delete/{activityId}") 
 			.hasAuthority("ROLE_USER")
 			.requestMatchers(

@@ -1,8 +1,6 @@
 package co.simplon.tkm.entities;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,14 +34,6 @@ public class Account extends AbstractEntity {
 	@ManyToOne
 	private Role role;
 	
-//	@ManyToMany(fetch = FetchType.LAZY)
-//	@JoinTable(name ="likes",
-//	joinColumns = @JoinColumn(name = "account_id"),
-//	inverseJoinColumns = @JoinColumn(name = "activity_id"))
-	@ManyToMany(mappedBy = "likedByAccount")
-	private Set<Activity> favoriteActivities = new HashSet<>();
-	//association à la cle primaire d'activity
-
     public Account() {
     	super();
     }
@@ -87,16 +77,7 @@ public class Account extends AbstractEntity {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	
-
-	public Set<Activity> getFavoriteActivities() {
-		return favoriteActivities;
-	}
-
-	public void setFavoriteActivities(Set<Activity> favoriteActivities) {
-		this.favoriteActivities = favoriteActivities;
-	}
-	
+		
 	@Override
 	public int hashCode() {
 		return Objects.hash(email);

@@ -19,6 +19,10 @@ public class Like extends AbstractEntity {
     @JoinColumn(name = "activity_id")
     private Activity activity;
 
+	public Like() {
+		// Required no-arg constructor
+	}
+
 	public Account getAccount() {
 		return account;
 	}
