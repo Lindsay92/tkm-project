@@ -8,11 +8,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,14 +22,13 @@ import co.simplon.tkm.dtos.ActivityForUpdate;
 import co.simplon.tkm.dtos.ActivityUpdateDto;
 import co.simplon.tkm.dtos.ActivityView;
 import co.simplon.tkm.entities.Activity;
-import co.simplon.tkm.repositories.AccountRepository;
 import co.simplon.tkm.repositories.ActivityRepository;
 
 @Service
-@Transactional(readOnly = true) //toutes mes classes sont en lecture par défaut
+@Transactional(readOnly = true)
 public class ActivityServiceImpl implements ActivityService {
 	
-	private ActivityRepository activityRepository;
+	private final ActivityRepository activityRepository;
 	
 	@Value("${tkm.api.uploads.location}")
     private String uploadDir;

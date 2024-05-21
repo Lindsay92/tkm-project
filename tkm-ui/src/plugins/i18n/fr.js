@@ -1,3 +1,5 @@
+import AccountPage from "../../components/admin/AccountPage.vue";
+
 const frMessages = {
 
     homePage: {
@@ -39,6 +41,15 @@ const frMessages = {
         description3: "Concernant le shopping, de manière générale, les magasins de Guyane sont ouverts du lundi au samedi, de 9h à 12h30 et de 16h à 19h. Les épiceries et supermarchés peuvent rester ouverts plus tard en soirée jusqu'à 21h30, ainsi que le dimanche matin de 9h à 12h30.",
         image2: "Orchidée",
         description4: "Laissez-vous surprendre par la richesse du patrimoine guyanais et par sa diversité culturelle. Avec plus d’une dizaine d’ethnies représentées, la Guyane est un bouillonnement culturel unique en son genre, façonné par des siècles d’histoire et de rencontres de civilisations !",
+    },
+    accountPage: {
+        title: "Les comptes utilisateurs",
+        firstName: "Prénom",
+        lastName: "Nom",
+        email: "Email",
+        role: "Rôle",
+        delete: "Supprimer"
+
     },
 
     formAuth: {

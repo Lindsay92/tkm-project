@@ -2,7 +2,7 @@ package co.simplon.tkm.dtos;
 
 import co.simplon.tkm.entities.Role;
 
-public interface AccountView {
+public interface AccountAdminView {
 
 	Long getId();
 	
@@ -15,4 +15,5 @@ public interface AccountView {
 	String getPassword();
 	
 	Role getRole();
+	
 }

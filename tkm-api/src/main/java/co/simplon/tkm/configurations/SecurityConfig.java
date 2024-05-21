@@ -63,8 +63,11 @@ public class SecurityConfig {
 			.requestMatchers(
 				"/{id}/for-update",
 				"/for-edit",
-				"/{id}/delete",
-				"/{id}/for-change")
+				"/{id}/for-delete",
+				"/{id}/for-change"
+				//"/accounts/for-view",
+				//"/accounts/{id}/for-delete"
+				)
 			.hasAuthority("ROLE_ADMIN").anyRequest()
 			.authenticated())
 	        .oauth2ResourceServer((

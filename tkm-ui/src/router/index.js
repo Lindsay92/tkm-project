@@ -88,10 +88,19 @@ const router = createRouter({
       meta: { requiresAuth : true }
     }, 
     {
-      path: '/admin/profile',
-      name: 'profile-admin',
-      component: () => import('../components/user/Profile.vue')
+      path: '/admin/accounts',
+      name: 'accounts',
+      components: {
+        default: () => import('../components/admin/AccountPage.vue'),
+        navbar: () => import('../components/shared/NavbarAdmin.vue')
     },
+      meta: { requiresAuth : true }
+    },
+    // {
+    //   path: '/admin/profile',
+    //   name: 'profile-admin',
+    //   component: () => import('../components/user/Profile.vue')
+    // },
     {
       path:'/user/home',
       name: 'user-home',
@@ -151,7 +160,7 @@ const router = createRouter({
     if (savedPosition) {
       return savedPosition;
     } else {
-      return {top: 600 };
+      return {top: 300 };
     }
   }
 });

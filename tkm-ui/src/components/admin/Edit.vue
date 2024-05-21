@@ -14,14 +14,13 @@ export default {
             this.activities = response.body;
         },
         async remove(id) {
-            const response = await this.$axios.delete(`/activities/${id}/delete`);
+            const response = await this.$axios.delete(`/activities/${id}/for-delete`);
             if (response.status === 204) {
                 this.$toast.success('toast-global', this.$t("common.status.delete"));
                 window.scrollTo(0, 0);
                 await this.initActivities();
             }
             else {
-                console.error(response);
                 window.scrollTo(0, 0);
                 this.$toast.error('toast-global', this.$t("common.status.failure"));
             }

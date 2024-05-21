@@ -1,10 +1,11 @@
 package co.simplon.tkm.services;
 
+import java.util.Collection;
 
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
-import co.simplon.tkm.dtos.AccountView;
+import co.simplon.tkm.dtos.AccountAdminView;
 import co.simplon.tkm.dtos.Credentials;
 import co.simplon.tkm.dtos.TokenInfo;
 import co.simplon.tkm.entities.Account;
@@ -13,25 +14,26 @@ import co.simplon.tkm.repositories.AccountRepository;
 
 import co.simplon.tkm.repositories.RoleRepository;
 import co.simplon.tkm.utils.AccountHelper;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(readOnly = true)
 public class AccountServiceImpl implements AccountService {
 	
 	private final AccountHelper accountHelper;
 	private final AccountRepository accountRepository;
 	private final RoleRepository roleRepository;
 	
-	
 	public AccountServiceImpl(AccountHelper accountHelper, 
 			AccountRepository accountRepository, 
 			RoleRepository roleRepository) {
 		this.accountHelper = accountHelper;
 		this.accountRepository = accountRepository;
-		this.roleRepository = roleRepository;
-		
+		this.roleRepository = roleRepository;	
 	}
 	
     @Override
+    @Transactional
     public void signUp(Credentials inputs) {
     	Account account = new Account();
     	account.setFirstName(inputs.getFirstName());
@@ -56,11 +58,12 @@ public class AccountServiceImpl implements AccountService {
    }
     
     @Override
+    @Transactional
     public TokenInfo signIn(Credentials inputs) {
     	String identifier = inputs.getEmail();
     	String candidate = inputs.getPassword();
     	
-    	AccountView account = accountRepository.getByEmail(identifier);
+    	AccountAdminView account = accountRepository.getByEmail(identifier);
     	//change from Account to AcountView
      	
 	if (account != null) {
@@ -94,5 +97,16 @@ public class AccountServiceImpl implements AccountService {
     public Boolean existsByEmail(String email) {
     	return this.accountRepository
     			.existsByEmailIgnoreCase(email.toString());
+    }
+    
+    @Override
+    public Collection<AccountAdminView> getAllAccounts() {
+    	return accountRepository.findAllAccountsBy();
+    }
+    
+    @Override
+    @Transactional
+    public void delete(Long id) {
+    	accountRepository.deleteById(id);
     }
 }
