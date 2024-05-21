@@ -46,7 +46,7 @@ export default {
                             this.$router.push("/user/all/favorite");
                         } else {
                             window.scrollTo(0, 0);
-                            this.$toast.error('toast-global', 'Une erreur s\'est produite.');
+                            this.$toast.error('toast-global', this.$t("common.status.failure"));
                         }
                     }  
             }               
@@ -60,9 +60,11 @@ export default {
         <div class="d-flex justify-content-center align-items-center">
             <section class="frame row flex-fill me-4">
                 <form novalidate @submit.prevent="submitForm" class=" border border-dark rounded">
-                    <legend>Se connecter</legend>
+                    <legend>{{ $t('formLogin.connect') }}</legend>
                     <div class="mb-3">
-                        <label for="email" class="form-label required">Email*</label>
+                        <label for="email" class="form-label required">
+                            {{ $t('formLogin.email') }}*
+                        </label>
                         <input
                             v-model.trim="inputs.email"  
                             type="email" 
@@ -71,11 +73,11 @@ export default {
                             class="form-control"
                             :class="{ 'is-invalid': validator.inputs.email.$error }" >
                             <span class="invalid-feedback" v-if="validator.inputs.email.$error">
-                                <p>Le champ est obligatoire</p>
+                                <p>{{ $t('common.error') }}</p>
                             </span> 
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label required">Mot de passe*</label>
+                        <label for="password" class="form-label required">{{ $t('formLogin.password') }}*</label>
                         <input 
                             v-model.trim="inputs.password" 
                             type="password"
@@ -84,15 +86,19 @@ export default {
                             class="form-control"
                             :class="{ 'is-invalid': validator.inputs.password.$error }">
                                 <span class="invalid-feedback" v-if="validator.inputs.password.$error">
-                                    <p>Le mot de passe doit être entre 8 - 42 caractères avec au moins une majuscule, au moins un chiffre et un caractère spécial @%*!</p>
+                                    <p>{{ $t('common.error') }}</p>
                                 </span>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-outline-dark mb-3 mt-3" :disabled="validator.$invalid">Se connecter</button>
+                        <button type="submit" class="btn btn-outline-dark mb-3 mt-3" :disabled="validator.$invalid">
+                            {{ $t('formLogin.connect') }}
+                        </button>
                     </div>
 
                     <p class="text-center m-3">
-                        <router-link to= "/auth" class="link">Si vous n’avez pas de compte, cliquez sur le lien</router-link>
+                        <router-link to= "/auth" class="link">
+                            {{ $t('formLogin.linkAuth') }}
+                        </router-link>
                     </p>   
                 </form>
             </section>

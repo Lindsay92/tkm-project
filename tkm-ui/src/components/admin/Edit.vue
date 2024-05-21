@@ -16,14 +16,14 @@ export default {
         async remove(id) {
             const response = await this.$axios.delete(`/activities/${id}/delete`);
             if (response.status === 204) {
-                this.$toast.success('toast-global', 'L\'activité a bien été supprimée');
+                this.$toast.success('toast-global', this.$t("common.status.delete"));
                 window.scrollTo(0, 0);
                 await this.initActivities();
             }
             else {
                 console.error(response);
                 window.scrollTo(0, 0);
-                this.$toast.error('toast-global', 'Une erreur s\'est produite.');
+                this.$toast.error('toast-global', this.$t("common.status.failure"));
             }
         }
     },
@@ -34,19 +34,19 @@ export default {
 </script>
 
 <template>
-    <h1 class="text-center m-5">Les activities</h1>
+    <h1 class="text-center m-5">{{ $t('admin.edit.title') }}</h1>
     <div class="d-md-flex justify-content-start m-3">
-        <button class="btn btn-dark"><RouterLink :to="{name: 'activities-create'}" class="text-decoration-none link text-light">Créer une nouvelle activité</RouterLink></button>
+        <button class="btn btn-dark"><RouterLink :to="{name: 'activities-create'}" class="text-decoration-none link text-light">{{ $t('admin.edit.buttonCreate') }}</RouterLink></button>
     </div>
     <div class="table-responsive">
         <table class="table table-hover table-sm">
             <thead>
                 <tr class="text-center align-middle">
-                    <th scope="col">Image</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Maj</th>
-                    <th scope="col">Supprimer</th>
+                    <th scope="col">{{ $t('admin.edit.image') }}</th>
+                    <th scope="col">{{ $t('admin.edit.name') }}</th>
+                    <th scope="col">{{ $t('admin.edit.date') }}</th>
+                    <th scope="col">{{ $t('admin.edit.update') }}</th>
+                    <th scope="col">{{ $t('admin.edit.delete') }}</th>
                 </tr>
             </thead>
             <tbody class="text-wrap align-middle text-center table-group-divider">

@@ -9,16 +9,16 @@ export const useStore = defineStore({
         addFavorite(activity) {
             this.favorites.push(activity);
         },
-        removeFavorite(activityId) {
-            const index = this.favorites.indexOf(activityId);
+        removeFavorite(activity) {
+            let index = this.favorites.indexOf(activity);
             if (index !== -1) {
                 this.favorites.splice(index, 1);
             }
         },        
     },
     getters: {
-        isFavorite: state => activityId => {
-            return state.favorites.some(id => id === activityId);
+        isFavorite: state => activity => {
+            return state.favorites.some(id => id === activity);
         },
     },
 });

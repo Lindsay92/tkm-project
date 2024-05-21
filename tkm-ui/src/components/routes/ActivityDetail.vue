@@ -62,10 +62,6 @@ export default {
         </div>
     </section>
 
-
-
-
-
     <h2 class="text-center">Localisation de votre activité</h2>
     
     <section class="col-12 mb-5">

@@ -57,42 +57,42 @@ export default {
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <router-link to="/user/home" class="lien-menu nav-link active">
-                            Accueil
+                            {{ $t("shared.navbar.homePage") }}
                             <i class="bi bi-dot"></i>
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link to="/user/activities" class="lien-menu nav-link active">
-                            Activités 
+                            {{ $t("shared.navbar.activities") }} 
                             <i class="bi bi-dot"></i>
                         </router-link>
                     </li>   
                     <li class="nav-item">
                         <router-link to="/user/map" class="lien-menu nav-link active">
-                            Carte 
+                            {{ $t("shared.navbar.map") }} 
                             <i class="bi bi-dot"></i>
                         </router-link>
                     </li>                     
                     <li class="nav-item">
                         <router-link to="/user/about" class="lien-menu nav-link active">
-                            Formalités
+                            {{ $t("shared.navbar.formality") }}
                         </router-link>
                     </li>
                 </ul>
             </div>
 
             <div v-if="isAuthenticated && role == 'User'">
-                <span class="nav-item"> Bienvenue {{ userName }}</span>
+                <span class="nav-item"> {{ $t("shared.navbarAdmin.welcome") }} {{ userName }}</span>
                 <router-link   
                     :to="{name: 'profile-user'}"
                     class="lien-menu nav-link active"><i class="bi bi-airplane"></i> 
-                        Mon carnet de favoris                       
+                    {{ $t("shared.navbar.favory") }}                      
                 </router-link>
                 <router-link   
                     :to="{ name: 'login'}"
                     class="lien-menu nav-link active"
                     @click="signOut"><i class="bi bi-box-arrow-right"></i>
-                        Se déconnecter
+                    {{ $t("shared.navbarAdmin.disconnect") }}
                 </router-link>
             </div>
 

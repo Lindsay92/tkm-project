@@ -13,7 +13,9 @@ export default {
     <div :id="id" class="toast-container p-3 d-flex justify-content-center align-items-center w-100">
         <div class="toast shadow-sm">
             <div class="toast-header">
-                <strong class="text-dark me-auto">Tout Koulèr Mélanjé</strong>
+                <strong class="text-dark me-auto">
+                    {{ $t("common.toast.title") }}
+                </strong>
                 <button
                     type="button"
                     class="btn-close"

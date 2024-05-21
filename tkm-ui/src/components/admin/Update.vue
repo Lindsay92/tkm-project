@@ -50,11 +50,11 @@ export default {
                 
                 this.$axios.put(`/activities/${this.id}/for-change`, formData);
                 window.scrollTo(0, 0);
-                this.$toast.success('toast-global', 'L\'activité a bien été mise à jour.');
+                this.$toast.success('toast-global', this.$t('common.status.update'));
                 this.$router.push({ name: 'activities-edit' })
             } else {
                 window.scrollTo(0, 0);
-                this.$toast.error('toast-global', 'Une erreur s\'est produite.');
+                this.$toast.error('toast-global', this.$t('common.status.failure'));
             }
         },
         async getActivities(){
@@ -73,25 +73,31 @@ export default {
 </script>
 
 <template>
-    <h1 class="text-center m-5">Mettre à jour une activité</h1>
+    <h1 class="text-center m-5">{{ $t("admin.form.title.update") }}</h1>
     <form novalidate @submit.prevent="submit">
         <div class="row mb-3">
             <div class="col-12">
-                <label for="name" class="form-label required">Name</label>
+                <label for="name" class="form-label required">
+                    {{ $t("admin.form.name") }}
+                </label>
                 <input v-model.trim="inputs.name" id="name" name="name" type="text" maxlength="250" class="form-control" :class="{ 'is-invalid': validator.inputs.name.$error }">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-12">
-                <label for="description" class="form-label required">Description</label>
+                <label for="description" class="form-label required">   
+                    {{ $t("admin.form.description") }}
+                </label>
                 <textarea  v-model.trim="inputs.description" id="description" for="description" name="description" maxlength="1000"  rows="3" class="form-control" :class="{ 'is-invalid': validator.inputs.description.$error}"></textarea>
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-12">
-                <label for="imageUrl" class="form-label required">Image</label>
+                <label for="imageUrl" class="form-label required">
+                    {{ $t("admin.form.image") }}
+                </label>
                 <div class="input-group">
                     <input  id="imageUrl" 
                             name="imageUrl" 
@@ -101,7 +107,7 @@ export default {
                             accept= "image/png,image/gif,image/jpeg"
                             @change="updateFileUpload">
                             <div class="form-text text-danger" v-if="validator.inputs.imageUrl.$error">
-                            Image size must be less than 500ko
+                                {{ $t("common.error2") }}
                             </div>
                 </div>
             </div>
@@ -109,14 +115,18 @@ export default {
         
         <div class="row mb-3">
             <div class="col-12">
-                <label for="location" class="form-label required">Location</label>
+                <label for="location" class="form-label required">
+                    {{ $t("admin.form.location") }}
+                </label>
                 <input v-model.trim="inputs.location" id="location" name="location" type="text" maxlength="100" class="form-control" :class="{ 'is-invalid': validator.inputs.location.$error }">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-12">
-                <label for="linkUrl" class="form-label required">Lien</label>
+                <label for="linkUrl" class="form-label required">
+                    {{ $t("admin.form.linkUrl") }}
+                </label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-link"></i></span>
                     <input v-model.trim="inputs.linkUrl" id="linkUrl" name="linkUrl" type="text" maxlength="100"
@@ -126,12 +136,15 @@ export default {
         </div>
 
         <div class="d-md-flex justify-content-md-end mb-3">
-            <button type="submit" class="btn btn-dark" :disabled="validator.$invalid">Sauvegarder</button>
+            <button type="submit" class="btn btn-dark" :disabled="validator.$invalid">
+                {{ $t("admin.form.save") }}</button>
         </div>
 
         <div class="d-md-flex justify-content-md-end mb-3">
             <button class="btn btn-dark">
-                <router-link :to="{name: 'activities-edit'}" class="text-decoration-none link text-light">Retour sur la liste des activités</router-link>
+                <router-link :to="{name: 'activities-edit'}" class="text-decoration-none link text-light">
+                    {{ $t("admin.form.back") }}
+                </router-link>
             </button>
         </div>
     </form>

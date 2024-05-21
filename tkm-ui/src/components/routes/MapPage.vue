@@ -12,10 +12,12 @@
 
 <template>
 
-<h1 class="text-center m-5">Carte de la Guyane Française</h1>
-<div class="text-center mb-3 d-flex justify-content-end">
-        <button class="btn btn-dark btn-lg">
-            <router-link :to="{name: 'activities'}" class="text-decoration-none link text-light">Retour à la liste</router-link>
+<h1 class="text-center m-5">{{ $t('mapPage.title') }}</h1>
+    <div class="text-center mb-3 d-flex justify-content-end">
+        <button class="btn btn-dark">
+            <router-link :to="{name: 'activities'}" class="text-decoration-none link text-light">
+                {{ $t('mapPage.back') }}
+            </router-link>
         </button>
     </div>
 

@@ -13,27 +13,39 @@ export default {
             const response = await axios.get('/data/homeActivities.json');
             this.homeActivities = response.data;
         } catch (error) {
-            console.error('Une erreur s\'est produite lors de la récupération des données :', error);
+            console.error(this.$t("common.status.failure"), error);
         }
     }
 }
 </script>
 
 <template>
-    <h1 class="text-center m-5">La Guyane Française, un pays au mille visages !</h1>
+    <h1 class="text-center m-5">{{ $t('homePage.title') }}</h1>
 
-    <p class="text-center slogan m-3 "> <span class="medium">Tout Koulèr Mélanjé</span> est une application qui fait référence à la diversité du territoire guyanais. Un pays pluriculturel où se mélange différentes communautés telles que des Amérindiens, des Hmongs, des Brésiliens, des Guyanais, des Businengés... 
+    <p class="text-center slogan m-3 "> 
+        <span class="medium">
+            {{ $t('homePage.intro')}}
+        </span> 
+            {{ $t('homePage.description1') }}
         <br>
-    Ce pays méconnu et ayant parfois une mauvaise réputation se révèle comme une terre accueillante et offrant une expérience exceptionnelle et mémorable.  
+            {{ $t('homePage.description2') }} 
         <br>
         <br>
-    Que vous soyez seul(e), en famille ou entre ami(e)s, <span class="medium">Tout Koulèr Mélanjé</span> a pour objectif de vous faire découvrir ou redécouvrir la richesse de la Guyane Française à travers différentes activités ou enore par la gastronomie guyanaise. 
+            {{ $t('homePage.description3') }} 
+        <span class="medium">
+            {{ $t('homePage.intro')}}
+        </span> 
+            {{ $t('homePage.description4') }} 
         <br>
         <br>
-    Ajouter dans votre carnet de voyage les activités souhaitées et partager vos expériences inoubliables entre abonnés. </p>
+            {{ $t('homePage.description5') }} 
+    </p>
 
     <div class="m-4">
-        <p class="text-center fs-5 fw-bold activity-list"><RouterLink to="/activities" class="link-title"> "Accéder aux activités et restaurants"</RouterLink>
+        <p class="text-center fs-5 fw-bold activity-list">
+            <RouterLink to="/activities" class="link-title"> 
+                "{{ $t('homePage.link') }}" 
+            </RouterLink>
         </p>
     </div>
 
