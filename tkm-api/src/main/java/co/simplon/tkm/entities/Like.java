@@ -39,10 +39,6 @@ public class Like extends AbstractEntity {
 		this.activity = activity;
 	}
 
-<<<<<<< HEAD
-	
-=======
->>>>>>> likes
 	@Override
 	public int hashCode() {
 		return Objects.hash(account, activity);
@@ -64,10 +60,9 @@ public class Like extends AbstractEntity {
 	@Override
 	public String toString() {
 		return "Like [account=" + account + ", activity=" + activity + "]";
-<<<<<<< HEAD
 	}
-=======
-	}    
+
+}    
     
->>>>>>> likes
-}
+
+

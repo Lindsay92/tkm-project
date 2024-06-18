@@ -28,11 +28,7 @@ import co.simplon.tkm.repositories.ActivityRepository;
 @Transactional(readOnly = true)
 public class ActivityServiceImpl implements ActivityService {
 	
-<<<<<<< HEAD
-	private ActivityRepository activityRepository;
-=======
 	private final ActivityRepository activityRepository;
->>>>>>> likes
 	
 	@Value("${tkm.api.uploads.location}")
     private String uploadDir;
@@ -128,19 +124,9 @@ public class ActivityServiceImpl implements ActivityService {
     }
 		
 	@Override
-<<<<<<< HEAD
-	public Set<Activity> getFavorite(){
-		String context = SecurityContextHolder.getContext().getAuthentication().getName();
-		Long userId = Long.valueOf(context); // parseLong
-//		return activities.findActivitiesByLikedByAccountId(account_id);
-//		System.out.println(userId);
-//		System.out.println("test");
-		return activityRepository.findActivitiesByLikedByAccountId(userId);
-=======
 	public Boolean existsByActivityName(String name) {
 		return this.activityRepository
 			.existsByName(name);
->>>>>>> likes
 	}
 	
 }

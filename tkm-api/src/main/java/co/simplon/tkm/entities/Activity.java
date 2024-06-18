@@ -1,18 +1,11 @@
 package co.simplon.tkm.entities;
 
 import java.time.LocalDateTime;
-<<<<<<< HEAD
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
-=======
-import java.util.Objects;
->>>>>>> likes
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-
 
 @Entity
 @Table(name = "activities")
@@ -88,10 +81,6 @@ public class Activity extends AbstractEntity {
 		this.createdAt = createdAt;
 	}
 	
-<<<<<<< HEAD
-
-=======
->>>>>>> likes
 	@Override
 	public int hashCode() {
 		return Objects.hash(name);
@@ -108,11 +97,7 @@ public class Activity extends AbstractEntity {
 		Activity other = (Activity) obj;
 		return Objects.equals(name, other.name);
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> likes
 	@Override
 	public String toString() {
 		return "Activity [name=" + name + ", description=" + description + ", imageUrl=" + imageUrl
