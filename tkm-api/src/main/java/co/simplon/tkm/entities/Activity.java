@@ -1,16 +1,16 @@
 package co.simplon.tkm.entities;
 
 import java.time.LocalDateTime;
+<<<<<<< HEAD
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+=======
+import java.util.Objects;
+>>>>>>> likes
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 
@@ -35,13 +35,6 @@ public class Activity extends AbstractEntity {
 	
 	@Column(name = "created_at", updatable = false)
 	private LocalDateTime createdAt;
-	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name ="likes",
-	joinColumns = @JoinColumn(name = "activity_id"),
-	inverseJoinColumns = @JoinColumn(name = "account_id"))
-//	@ManyToMany(mappedBy = "favoriteActivities")
-	private Set<Account> likedByAccount = new HashSet<>();
 	
 	public Activity() {
 		//Required no-argument constructor
@@ -95,7 +88,10 @@ public class Activity extends AbstractEntity {
 		this.createdAt = createdAt;
 	}
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> likes
 	@Override
 	public int hashCode() {
 		return Objects.hash(name);
@@ -112,14 +108,15 @@ public class Activity extends AbstractEntity {
 		Activity other = (Activity) obj;
 		return Objects.equals(name, other.name);
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> likes
 	@Override
 	public String toString() {
 		return "Activity [name=" + name + ", description=" + description + ", imageUrl=" + imageUrl
 				+ ", location=" + location + ", linkUrl=" + linkUrl + ", createdAt=" + createdAt + "]";
 	}
-
-	
-	
 
 }

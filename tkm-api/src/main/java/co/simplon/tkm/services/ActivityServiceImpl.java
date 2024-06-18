@@ -8,11 +8,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,14 +22,17 @@ import co.simplon.tkm.dtos.ActivityForUpdate;
 import co.simplon.tkm.dtos.ActivityUpdateDto;
 import co.simplon.tkm.dtos.ActivityView;
 import co.simplon.tkm.entities.Activity;
-import co.simplon.tkm.repositories.AccountRepository;
 import co.simplon.tkm.repositories.ActivityRepository;
 
 @Service
-@Transactional(readOnly = true) //toutes mes classes sont en lecture par défaut
+@Transactional(readOnly = true)
 public class ActivityServiceImpl implements ActivityService {
 	
+<<<<<<< HEAD
 	private ActivityRepository activityRepository;
+=======
+	private final ActivityRepository activityRepository;
+>>>>>>> likes
 	
 	@Value("${tkm.api.uploads.location}")
     private String uploadDir;
@@ -82,8 +83,6 @@ public class ActivityServiceImpl implements ActivityService {
 		    store(image, fileName);
 		    oldImage.toFile().delete();
 		}
-//		activity.setImageUrl(inputs.getImageUrl());
-		
 		activity.setLocation(inputs.getLocation());
 		activity.setLinkUrl(inputs.getLinkUrl());
 		LocalDateTime createdAt = LocalDateTime.now();
@@ -99,8 +98,7 @@ public class ActivityServiceImpl implements ActivityService {
 			Files.copy(in, target, StandardCopyOption.REPLACE_EXISTING);	
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
-		}
-		
+		}	
 	}
 	
 	@Override
@@ -128,8 +126,9 @@ public class ActivityServiceImpl implements ActivityService {
     public ActivityDetailView detail(Long id) {
 	return activityRepository.findProjectedDetailById(id);
     }
-	
+		
 	@Override
+<<<<<<< HEAD
 	public Set<Activity> getFavorite(){
 		String context = SecurityContextHolder.getContext().getAuthentication().getName();
 		Long userId = Long.valueOf(context); // parseLong
@@ -137,6 +136,11 @@ public class ActivityServiceImpl implements ActivityService {
 //		System.out.println(userId);
 //		System.out.println("test");
 		return activityRepository.findActivitiesByLikedByAccountId(userId);
+=======
+	public Boolean existsByActivityName(String name) {
+		return this.activityRepository
+			.existsByName(name);
+>>>>>>> likes
 	}
 	
 }

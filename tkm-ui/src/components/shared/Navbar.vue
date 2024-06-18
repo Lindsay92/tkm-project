@@ -52,25 +52,25 @@ export default {
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <router-link to="/" class="lien-menu nav-link active">
-                            Accueil
+                            {{ $t("shared.navbar.homePage") }}
                             <i class="bi bi-dot"></i>
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link to="/activities" class="lien-menu nav-link active">
-                                Liste des activités 
+                            {{ $t("shared.navbar.activities") }} 
                             <i class="bi bi-dot"></i>
                         </router-link>
                     </li>   
                     <li class="nav-item">
                         <router-link to="/map" class="lien-menu nav-link active">
-                            Carte 
+                            {{ $t("shared.navbar.map") }} 
                             <i class="bi bi-dot"></i>
                         </router-link>
                     </li>                     
                     <li class="nav-item">
                         <router-link to="/about" class="lien-menu nav-link active">
-                            Formalités
+                            {{ $t("shared.navbar.formality") }}
                         </router-link>
                     </li>
                 </ul>

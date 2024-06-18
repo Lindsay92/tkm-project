@@ -58,4 +58,21 @@ public class Role extends AbstractEntity {
 		return "Role [codeRole=" + codeRole + ", roleName=" + roleName + "]";
 	}
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(codeRole);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Role)) {
+			return false;
+		}
+		Role other = (Role) obj;
+		return Objects.equals(codeRole, other.codeRole);
+	}
+	
 }

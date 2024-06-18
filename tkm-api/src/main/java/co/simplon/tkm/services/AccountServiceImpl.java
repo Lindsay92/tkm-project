@@ -1,9 +1,11 @@
 package co.simplon.tkm.services;
 
+import java.util.Collection;
 
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
+import co.simplon.tkm.dtos.AccountAdminView;
 import co.simplon.tkm.dtos.Credentials;
 import co.simplon.tkm.dtos.TokenInfo;
 import co.simplon.tkm.entities.Account;
@@ -12,25 +14,26 @@ import co.simplon.tkm.repositories.AccountRepository;
 
 import co.simplon.tkm.repositories.RoleRepository;
 import co.simplon.tkm.utils.AccountHelper;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(readOnly = true)
 public class AccountServiceImpl implements AccountService {
 	
 	private final AccountHelper accountHelper;
 	private final AccountRepository accountRepository;
 	private final RoleRepository roleRepository;
 	
-	
 	public AccountServiceImpl(AccountHelper accountHelper, 
 			AccountRepository accountRepository, 
 			RoleRepository roleRepository) {
 		this.accountHelper = accountHelper;
 		this.accountRepository = accountRepository;
-		this.roleRepository = roleRepository;
-		
+		this.roleRepository = roleRepository;	
 	}
 	
     @Override
+    @Transactional
     public void signUp(Credentials inputs) {
     	Account account = new Account();
     	account.setFirstName(inputs.getFirstName());
@@ -40,10 +43,7 @@ public class AccountServiceImpl implements AccountService {
     	String hashPassword = accountHelper
 		.encode(inputs.getPassword());
 		account.setPassword(hashPassword);
-		
-//		Role role = roleRepository.getReferenceById(2L);
-//		account.setRole(role);
-		
+			
 		if (account.getEmail().endsWith("@tkm.com")) {
 		    Role adminRole = roleRepository
 			    .getReferenceByCodeRole("ROLE_ADMIN");
@@ -58,12 +58,13 @@ public class AccountServiceImpl implements AccountService {
    }
     
     @Override
+    @Transactional
     public TokenInfo signIn(Credentials inputs) {
     	String identifier = inputs.getEmail();
     	String candidate = inputs.getPassword();
     	
-    	Account account = accountRepository.getByEmail(identifier);
-    	
+    	AccountAdminView account = accountRepository.getByEmail(identifier);
+    	//change from Account to AcountView
      	
 	if (account != null) {
 	    boolean match = accountHelper.matches(candidate,
@@ -73,9 +74,7 @@ public class AccountServiceImpl implements AccountService {
 	    	String name = account.getId().toString();
 			String role = account.getRole().getRoleName();
 			
-			//String token = accountHelper.createJWT(role, name);
 			String token = accountHelper.createJWT(role, name);
-			//changement name pourid dans méthode createJWT dans accountHelper
 			
 			
 			TokenInfo tokenInfo = new TokenInfo();
@@ -93,19 +92,21 @@ public class AccountServiceImpl implements AccountService {
 		    "Wrong credentials");
 	}
   }
+    
     @Override
     public Boolean existsByEmail(String email) {
     	return this.accountRepository
     			.existsByEmailIgnoreCase(email.toString());
     }
     
+    @Override
+    public Collection<AccountAdminView> getAllAccounts() {
+    	return accountRepository.findAllAccountsBy();
+    }
     
-//	@Override
-//	public Set<Account> getFavorite(Long activity_id){		
-//		String context = SecurityContextHolder.getContext().getAuthentication().getName();
-//		Long userId = Long.valueOf(context);
-//		return accountRepository.findActivitiesByfavoriteActivitiesId(activity_id);	
-//	}
-	
-
+    @Override
+    @Transactional
+    public void delete(Long id) {
+    	accountRepository.deleteById(id);
+    }
 }

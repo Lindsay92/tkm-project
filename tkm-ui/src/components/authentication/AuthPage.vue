@@ -50,7 +50,8 @@ export default {
                 this.validator.$reset();
                 this.$router.push('login');
             } else {
-                console.log('error');
+                window.scrollTo(0, 0);
+                this.$toast.error('toast-global', this.$t("common.status.failure"));
             }
         }
     }
@@ -61,9 +62,9 @@ export default {
     <section class="row  m-5">
         <div class="d-flex justify-content-center">
             <form novalidate @submit.prevent="submitForm" class=" col-md-6">
-                <legend>S'enregistrer</legend>
+                <legend>{{ $t('formAuth.create') }}</legend>
                 <div class="mb-3">
-                    <label for="firstName" class="form-label required">Prénom*</label>
+                    <label for="firstName" class="form-label required">{{ $t('formAuth.firstName') }}*</label>
                     <input 
                         v-model.trim="inputs.firstName" 
                         id="firstName" 
@@ -72,11 +73,13 @@ export default {
                         class="form-control" 
                         :class="{ 'is-invalid': validator.inputs.firstName.$error }">
                             <span class="invalid-feedback" v-if="validator.inputs.firstName.$error">
-                                <p>Le champ obligatoire</p>
+                                <p>{{ $t('common.error') }}</p>
                             </span> 
                 </div>
                 <div class="mb-3">
-                    <label for="lastName" class="form-label">Nom*</label>
+                    <label for="lastName" class="form-label">
+                        {{ $t('formAuth.name') }}*
+                    </label>
                     <input 
                         v-model.trim="inputs.lastName" 
                         name="lastName"
@@ -85,11 +88,13 @@ export default {
                         class="form-control" 
                         :class="{ 'is-invalid': validator.inputs.lastName.$error }" >
                             <span class="invalid-feedback" v-if="validator.inputs.lastName.$error">
-                                <p>Le champ obligatoire</p>
+                                <p>{{ $t('common.error') }}</p>
                             </span> 
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email*</label>
+                    <label for="email" class="form-label">
+                        {{ $t('formAuth.email') }}*
+                    </label>
                     <input 
                         v-model.trim="inputs.email" 
                         type="email"
@@ -98,11 +103,13 @@ export default {
                         class="form-control" 
                         :class="{ 'is-invalid': validator.inputs.email.$error }">
                             <span class="invalid-feedback" v-if="validator.inputs.email.$error">
-                                <p>Le champ est obligatoire</p>
+                                <p>{{ $t('common.error') }}</p>
                             </span> 
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Mot de passe*</label>
+                    <label for="password" class="form-label">
+                        {{ $t('formAuth.password') }}*
+                    </label>
                     <input 
                         v-model.trim="inputs.password" 
                         type="password" 
@@ -111,11 +118,11 @@ export default {
                         class="form-control" 
                         :class="{ 'is-invalid': validator.inputs.password.$error }">
                             <span class="invalid-feedback" v-if="validator.inputs.password.$error">
-                                <p>Le mot de passe doit être entre 8 - 42 caractères avec au moins une majuscule, au moins un chiffre et un caractère spécial @%*!</p>
+                                <p>{{ $t('common.error1') }}</p>
                             </span> 
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn btn-outline-dark mt-3 mb-3  text-white" :disabled="validator.$invalid">S'enregistrer</button>
+                    <button type="submit" class="btn btn-outline-dark mt-3 mb-3 ":disabled="validator.$invalid">{{ $t('formAuth.create') }}</button>
                 </div>  
             </form>
         </div>

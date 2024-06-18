@@ -30,10 +30,10 @@ export default {
 
 <template>
     <div class=" bg-body-secondary p-5 rounded">
-        <h1>Tout Koulèr Mélanjé - Dashboard</h1>
+        <h1>{{ $t("shared.navbarAdmin.title") }}</h1>
         <p class="lead">
-            Gestion des activités <br>
-            Gestion des comptes utilisateurs 
+            {{ $t("shared.navbarAdmin.intro") }} <br>
+            {{ $t("shared.navbarAdmin.intro2") }} 
         </p>
     </div>
     
@@ -44,35 +44,29 @@ export default {
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse justify-content-center fs-3 text" id="navbarNav">
+                <div class="collapse navbar-collapse justify-content-center fs-3" id="navbarNav">
                     <ul class="navbar-nav navbar-nav-scroll">
                         <li class="nav-item">
                             <router-link to="/admin/activities" class="lien-menu nav-link active">
-                                Dashboard
+                                {{ $t("shared.navbarAdmin.dashboard") }}
                                 <i class="bi bi-dot"></i>
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link to="" class="lien-menu nav-link active">
-                                Profil 
-                                <i class="bi bi-dot"></i>
+                            <router-link to="/admin/accounts" class="lien-menu nav-link active">
+                                {{ $t("shared.navbarAdmin.users") }}
                             </router-link>
-                        </li>   
-                        <li class="nav-item">
-                            <router-link to="" class="lien-menu nav-link active">
-                                Utilisateurs 
-                            </router-link>
-                        </li>                     
+                        </li>                       
                     </ul>
                 </div>
 
                 <div v-if="isAuthenticated && role == 'Administrator'">
-                    <span class="nav-item"> Bienvenue {{ userName }}</span>
+                    <span class="nav-item"> {{ $t("shared.navbarAdmin.welcome") }} {{ userName }}</span>
                     <router-link   
                         :to="{ name: 'login'}"
                         class="lien-menu nav-link active"
                         @click="signOut"><i class="bi bi-box-arrow-right"></i>
-                        Se déconnecter
+                        {{ $t("shared.navbarAdmin.disconnect") }}
                     </router-link>
                 </div>  
                 

@@ -35,15 +35,20 @@ public class AccountHelper {
     	Instant expirationTime = now
     			.plusSeconds(expiration);
     	
-//		String[] rolesAsArray = roles
-//		.toArray(new String[roles.size()]);
-//	// = (String[]) roles.toArray()
+    
+//	return JWT.create().withIssuer(issuer)
+//		.withSubject(name).withIssuedAt(now)
+//		.withExpiresAt(expirationTime)
+//		.sign(algorithm);
+    	var jwt = JWT.create().withIssuer(issuer)
+    			.withSubject(name).withIssuedAt(now);
+    	if(expiration != -1) {
+    		jwt = jwt.withExpiresAt(expirationTime);
+    	}
+    	String createJwt = jwt.withClaim("role", role)
+    			.sign(algorithm);
+    	return createJwt;
     	
-	return JWT.create().withIssuer(issuer)
-		.withSubject(name).withIssuedAt(now)
-		.withExpiresAt(expirationTime)
-//		.withArrayClaim("roles", rolesAsArray)
-		.sign(algorithm);
     }
 
     public static class Builder {

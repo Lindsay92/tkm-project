@@ -1,18 +1,21 @@
 package co.simplon.tkm.repositories;
 
-import java.util.Set;
+import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import co.simplon.tkm.dtos.AccountAdminView;
 import co.simplon.tkm.entities.Account;
-import co.simplon.tkm.entities.Activity;
+
 
 public interface AccountRepository extends JpaRepository<Account, Long>{
 	
-	Account getByEmail(String email); //id or email unique
-
+	AccountAdminView getByEmail(String email); 
+	//id or email unique
+	//change from Account to AcountView
+	
 	Boolean existsByEmailIgnoreCase(String string);
 
-	Set<Account> findActivitiesByfavoriteActivitiesId(Long activityId);
-
+	Collection<AccountAdminView> findAllAccountsBy();
+	
 }

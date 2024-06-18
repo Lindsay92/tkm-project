@@ -31,3 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+application-dev.properties
+application-test.properties
+
+/secrets/
+secrets.properties
+secrets-tests.properties
+
+tkm-business.current.log

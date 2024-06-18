@@ -1,0 +1,4 @@
+method§path§tokenName§json
+
+POST§/sign-in§admin§{ "firstName" : "aaaaa", "lastName" : "aaaaa", "email" : "aaa.aa@tkm.com" }
+POST§/sign-in§user§{ "firstName" : "bbbb", "lastName" : "bbb", "email" : "bbb.bb@bbb.com" }

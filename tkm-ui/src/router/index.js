@@ -88,10 +88,19 @@ const router = createRouter({
       meta: { requiresAuth : true }
     }, 
     {
-      path: '/admin/profile',
-      name: 'profile-admin',
-      component: () => import('../components/user/Profile.vue')
+      path: '/admin/accounts',
+      name: 'accounts',
+      components: {
+        default: () => import('../components/admin/AccountPage.vue'),
+        navbar: () => import('../components/shared/NavbarAdmin.vue')
     },
+      meta: { requiresAuth : true }
+    },
+    // {
+    //   path: '/admin/profile',
+    //   name: 'profile-admin',
+    //   component: () => import('../components/user/Profile.vue')
+    // },
     {
       path:'/user/home',
       name: 'user-home',
@@ -138,7 +147,7 @@ const router = createRouter({
       meta: { requiresAuth : true }
     },
     {
-      path: '/user/activities/user/favorite',
+      path: '/user/all/favorite',
       name: 'profile-user',
       components: {
         default: () => import('../components/user/Profile.vue'),
@@ -146,7 +155,14 @@ const router = createRouter({
       },
       meta: { requiresAuth : true }
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return {top: 300 };
+    }
+  }
 });
 
 router.beforeEach((to, from, next) => {

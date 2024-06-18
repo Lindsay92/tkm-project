@@ -1,15 +1,16 @@
 package co.simplon.tkm.entities;
 
+<<<<<<< HEAD
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+=======
+import java.util.Objects;
+>>>>>>> likes
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -36,14 +37,6 @@ public class Account extends AbstractEntity {
 	@ManyToOne
 	private Role role;
 	
-//	@ManyToMany(fetch = FetchType.LAZY)
-//	@JoinTable(name ="likes",
-//	joinColumns = @JoinColumn(name = "account_id"),
-//	inverseJoinColumns = @JoinColumn(name = "activity_id"))
-	@ManyToMany(mappedBy = "likedByAccount")
-	private Set<Activity> favoriteActivities = new HashSet<>();
-	//association à la cle primaire d'activity
-
     public Account() {
     	super();
     }
@@ -87,14 +80,22 @@ public class Account extends AbstractEntity {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	
-
-	public Set<Activity> getFavoriteActivities() {
-		return favoriteActivities;
+		
+	@Override
+	public int hashCode() {
+		return Objects.hash(email);
 	}
 
-	public void setFavoriteActivities(Set<Activity> favoriteActivities) {
-		this.favoriteActivities = favoriteActivities;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Account)) {
+			return false;
+		}
+		Account other = (Account) obj;
+		return Objects.equals(email, other.email);
 	}
 	
 	@Override

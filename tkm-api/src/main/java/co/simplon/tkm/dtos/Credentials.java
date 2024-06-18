@@ -59,15 +59,6 @@ public class Credentials {
 		this.password = password;
 	}
 
-
-//    public List<String> getRoles() {
-//	return roles;
-//    }
-//
-//    public void setRoles(List<String> roles) {
-//	this.roles = roles;
-//    }
-
 	@Override
 	public String toString() {
 		return "Credentials [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password={protected}"
