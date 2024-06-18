@@ -1,0 +1,22 @@
+2024-06-18T14:43:44.546+02:00  INFO 16056 --- [tkm] [main] co.simplon.tkm.TkmApiApplication         : Starting TkmApiApplication using Java 17.0.5 with PID 16056 (C:\Users\gress\Documents\mesProjets\tkm\tkm-api\target\classes started by gress in C:\Users\gress\Documents\mesProjets\tkm\tkm-api)
+2024-06-18T14:43:44.551+02:00  INFO 16056 --- [tkm] [main] co.simplon.tkm.TkmApiApplication         : The following 1 profile is active: "prod"
+2024-06-18T14:43:46.169+02:00  INFO 16056 --- [tkm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-18T14:43:46.309+02:00  INFO 16056 --- [tkm] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 117 ms. Found 4 JPA repository interfaces.
+2024-06-18T14:43:47.411+02:00  INFO 16056 --- [tkm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
+2024-06-18T14:43:47.431+02:00  INFO 16056 --- [tkm] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-18T14:43:47.432+02:00  INFO 16056 --- [tkm] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-18T14:43:47.565+02:00  INFO 16056 --- [tkm] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-18T14:43:47.566+02:00  INFO 16056 --- [tkm] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2921 ms
+2024-06-18T14:43:47.837+02:00  INFO 16056 --- [tkm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-18T14:43:48.291+02:00  INFO 16056 --- [tkm] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@45c80312
+2024-06-18T14:43:48.294+02:00  INFO 16056 --- [tkm] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-18T14:43:48.389+02:00  INFO 16056 --- [tkm] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-18T14:43:48.559+02:00  INFO 16056 --- [tkm] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-18T14:43:48.652+02:00  INFO 16056 --- [tkm] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-18T14:43:49.361+02:00  INFO 16056 --- [tkm] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-18T14:43:52.169+02:00  INFO 16056 --- [tkm] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-18T14:43:52.175+02:00  INFO 16056 --- [tkm] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-18T14:43:53.031+02:00  INFO 16056 --- [tkm] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-18T14:43:54.534+02:00  INFO 16056 --- [tkm] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@149bdb4e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1f5aac08, org.springframework.security.web.context.SecurityContextHolderFilter@d65ba64, org.springframework.security.web.header.HeaderWriterFilter@5545137d, org.springframework.security.web.authentication.logout.LogoutFilter@4f67d628, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@57596d71, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@64a74723, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@21a14c45, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3747877, org.springframework.security.web.access.ExceptionTranslationFilter@24df4805, org.springframework.security.web.access.intercept.AuthorizationFilter@2cea41ab]
+2024-06-18T14:43:55.228+02:00  INFO 16056 --- [tkm] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path ''
+2024-06-18T14:43:55.243+02:00  INFO 16056 --- [tkm] [main] co.simplon.tkm.TkmApiApplication         : Started TkmApiApplication in 11.512 seconds (process running for 13.035)
