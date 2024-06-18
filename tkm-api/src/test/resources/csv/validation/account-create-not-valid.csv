@@ -1,0 +1,22 @@
+method§path§tokenName§json§error
+
+
+POST§/accounts§admin§{ "firstName" : null, "lastName" : "a", "email" : "aaa.aa@tkm.com" } 
+POST§/accounts§admin§{ "firstName" : "", "lastName" : "a", "email" : "aaa.aa@tkm.com" }
+POST§/accounts§admin§{ "firstName" : " ", "lastName" : "a", "email" : "aaa.aa@tkm.com" }
+POST§/accounts§admin§{ "firstName" : "a", "lastName" : "a", "email" : "aaa.aa@tkm.com" }
+POST§/accounts§admin§{ "firstName" : "a@", "lastName" : "a", "email" : "aaa.aa@tkm.com" }
+POST§/accounts§admin§{ "firstName" : "a@b", "lastName" : "a", "email" : "aaa.aa@tkm.com" }
+POST§/accounts§admin§{ "firstName" : "a@b.c", "lastName" : "a", "email" : "aaa.aa@tkm.com" }
+POST§/accounts§admin§{ "firstName" : "aaa.aa@tkm.com", "lastName" : "a", "email" : "aaa.aa@tkm.com" }
+POST§/accounts§admin§{ "firstName" : "aaaaaaaaaaaaaaaaaaa", "lastName" : "a", "email" : "aaa.aa@aaa.com" }
+
+POST§/accounts§admin§{ "firstName" : "a", "lastName" : null, "email" : "aaa.aa@tkm.com" } 
+POST§/accounts§admin§{ "firstName" : "a", "lastName" : "", "email" : "aaa.aa@tkm.com" }
+POST§/accounts§admin§{ "firstName" : "a", "lastName" : " ", "email" : "aaa.aa@tkm.com" }
+POST§/accounts§admin§{ "firstName" : "a", "lastName" : "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "email" : "aaa.aa@tkm.com" }
+
+POST§/accounts§admin§{ "firstName" : "a", "lastName" : "a", "email" : "aaa@tkm.com" }
+POST§/accounts§admin§{ "firstName" : "a", "lastName" : "a", "email" : "aaa.aa@tkm.co" }
+POST§/accounts§admin§{ "firstName" : "a", "lastName" : "a", "email" : "aaa.aa.tkm.com" }
+POST§/accounts§admin§{ "firstName" : "a", "lastName" : "a", "email" : "aaa.aa@aaa.com" }

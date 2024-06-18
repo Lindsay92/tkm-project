@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
@@ -24,12 +25,18 @@ import co.simplon.tkm.utils.AccountHelper;
 @EnableMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig {
 	
+		@Value("${tkm.cors.enabled}")
+		private boolean corsEnabled;
+	
 	 	@Value("${tkm.auth.rounds}")
 	    private int rounds;
+	 	
 	    @Value("${tkm.auth.issuer}")
 	    private String issuer;
+	    
 	    @Value("${tkm.auth.secret}")
 	    private String secret;
+	    
 	    @Value("${tkm.auth.tokenExpiration}")
 	    private long tokenExpiration;
 
@@ -47,7 +54,7 @@ public class SecurityConfig {
 	    @Bean
 	    SecurityFilterChain securityFilterChain(
 		    HttpSecurity http) throws Exception {
-	    	http.cors(Customizer.withDefaults())
+	    	http.cors(corsCutomizer())
 	        .csrf(csrf -> csrf.disable()).authorizeHttpRequests(authorize -> authorize
 			.requestMatchers(
 				"/sign-in", 
@@ -58,15 +65,17 @@ public class SecurityConfig {
 			.permitAll()
 			.requestMatchers(
 				"/user/all/favorite",
-				"/delete/{activityId}") 
+				"/delete/{activityId}"
+				) 
 			.hasAuthority("ROLE_USER")
 			.requestMatchers(
 				"/{id}/for-update",
 				"/for-edit",
 				"/{id}/for-delete",
 				"/{id}/for-change"
-				//"/accounts/for-view",
-				//"/accounts/{id}/for-delete"
+				//,
+				//accounts/for-view"
+				//"accounts/{id}/for-delete"
 				)
 			.hasAuthority("ROLE_ADMIN").anyRequest()
 			.authenticated())
@@ -75,6 +84,11 @@ public class SecurityConfig {
 	                    .jwt(Customizer
 	                        .withDefaults()));
 		return http.build();
+	    }
+	    
+	    private Customizer<CorsConfigurer<HttpSecurity>> corsCutomizer() {
+	    	return corsEnabled ? Customizer.withDefaults()
+	    			: cors -> cors.disable();
 	    }
 
 	    @Bean
