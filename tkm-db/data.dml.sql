@@ -13,6 +13,9 @@ INSERT INTO accounts
 	VALUES
 	('Lindsay', 'Admin', 'lindsay.admin@tkm.com', '$2a$11$2vDTOYS1/qumqjYE8FToHuIgp4b5EEb.phj6B7UnPRZV1Q/klaSdK', (
 		SELECT id from roles WHERE code_role = 'ROLE_ADMIN')		
+	),
+	('Kevin', 'Saint', 'kevin.user@user.com', '$2a$11$.oj7xFvTJAS1g65vAlTbG.0HE7GwI4K68OmKXTGZoBOj1rEAHZNri', (
+		SELECT id from roles WHERE code_role = 'ROLE_USER')
 	);
 
 INSERT INTO activities
@@ -31,5 +34,5 @@ INSERT INTO activities
 INSERT INTO likes
 	(activity_id, account_id)
 	values
-	((SELECT id FROM activities where id = 12), (SELECT id FROM accounts where id = 4))
+	((SELECT id FROM activities where id = 3), (SELECT id FROM accounts where id = 2))
 	; 

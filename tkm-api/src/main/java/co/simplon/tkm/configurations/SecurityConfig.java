@@ -27,7 +27,7 @@ public class SecurityConfig {
 	
 		@Value("${tkm.cors.enabled}")
 		private boolean corsEnabled;
-	
+		
 	 	@Value("${tkm.auth.rounds}")
 	    private int rounds;
 	 	
@@ -41,7 +41,7 @@ public class SecurityConfig {
 	    private long tokenExpiration;
 
 	    @Bean
-	    public AccountHelper authHelper() {
+	    AccountHelper authHelper() {
 		Algorithm algorithm = Algorithm.HMAC256(secret);
 		PasswordEncoder encoder = new BCryptPasswordEncoder(
 			rounds);
