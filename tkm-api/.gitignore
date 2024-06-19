@@ -36,8 +36,8 @@ application-dev.properties
 application-test.properties
 
 /secrets/
-secrets.properties
+/secrets/secrets.properties
 secrets-tests.properties
 
 /logs/
-tkm-business.current.log
+/logs/tkm-business.current.log
