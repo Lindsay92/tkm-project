@@ -1,5 +1,5 @@
 <script>
-import { useVuelidate } from '@Vuelidate/core';
+import { useVuelidate } from '@vuelidate/core';
 import { required, maxLength, minLength, helpers, email } from '@vuelidate/validators';
 
 export default {

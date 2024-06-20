@@ -1,6 +1,6 @@
 <script>
 import { useRoute } from 'vue-router';
-import { useVuelidate } from '@Vuelidate/core';
+import { useVuelidate } from '@vuelidate/core';
 import { required, maxLength } from "@vuelidate/validators";
 
 export default {
