@@ -34,6 +34,7 @@ export default {
                         this.store.removeFavorite(activity)
                     }                   
                     this.initActivities();
+                    this.$toast.success('toast-global', this.$t('common.status.done'))
                 } 
             } catch(error) {
             window.scrollTo(0, 500);

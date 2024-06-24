@@ -31,7 +31,7 @@ export default {
         async remove(id) {
             const response = await this.$axios.delete(`/likes/delete/${id}`);
             if (response.status === 204) {
-                this.$toast.success('toast-global', this.$t('common.status.done'));
+                this.$toast.success('toast-global', this.$t('common.status.delete'));
                 this.likeActivities();
                 window.scrollTo(0, 500);
             }
