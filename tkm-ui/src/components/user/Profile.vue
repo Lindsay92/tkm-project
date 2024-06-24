@@ -31,7 +31,7 @@ export default {
         async remove(id) {
             const response = await this.$axios.delete(`/likes/delete/${id}`);
             if (response.status === 204) {
-                this.$toast.success('toast-global', this.$t('common.status.delete'));
+                this.$toast.success('toast-global', this.$t('common.status.done'));
                 this.likeActivities();
                 window.scrollTo(0, 500);
             }
@@ -43,8 +43,9 @@ export default {
     beforeMount() {
         this.likeActivities();
     }
-};
+}
 </script>
+
 <template>
     <h1 id="top" class="text-center mt-3 mb-5">
         {{ $t("profil.title") }}

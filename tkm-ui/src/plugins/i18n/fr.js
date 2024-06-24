@@ -106,10 +106,11 @@ const frMessages = {
         },
         status: {
             success: "L'activité a été créée avec succès.",
+            done: "Cette activité a été ajoutée dans votre carnet de favoris",
             failure: "Une erreur s'est produite.",
             delete: "L'activité a bien été supprimée.",
             update: "L'activité a bien été mis à jour.",
-            favory: "Cetta activité est déjà dans vos favoris."
+            favory: "Cetta activité est déjà dans votre carnet de favoris."
         },
         error:"Le champ est obligatoire.",
         error1: "Le mot de passe doit être entre 8 - 42 caractères avec au moins une majuscule, au moins un chiffre et un caractère spécial @%*!",

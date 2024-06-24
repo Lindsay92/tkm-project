@@ -75,18 +75,4 @@ export default {
             </iframe>
         </div>
     </section>
-
-    <!-- <div class="text-end" v-if="isAuthenticated && role == 'User'">
-        <button class="btn btn-dark">
-            <router-link :to="{name: 'user-activities'}" class="text-decoration-none link text-light"
-            href="#top">Retour à la liste</router-link>
-        </button>
-    </div>
-    <div v-else>
-        <button class="btn btn-dark">
-            <router-link :to="{name: 'activities'}" class="text-decoration-none link text-light"
-            href="#top">Retour à la liste</router-link>
-        </button>
-    </div> -->
-
 </template>

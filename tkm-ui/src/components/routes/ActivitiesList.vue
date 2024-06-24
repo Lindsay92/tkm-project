@@ -34,7 +34,6 @@ export default {
                         this.store.removeFavorite(activity)
                     }                   
                     this.initActivities();
-                    console.log(response);
                 } 
             } catch(error) {
             window.scrollTo(0, 500);
@@ -53,13 +52,12 @@ export default {
         {{ $t('activities.title') }}
     </h1>
 
-    <!-- {{ activities }} -->
         <section class="m-5">
             <div class="input-group">
                 <span class="input-group-text" id="basic-addon1">
                     {{ $t('activities.filter') }}
                 </span>
-                <input type="text" class="form-control"> <!--v-model="inputFilter"-->
+                <input type="text" class="form-control">
             </div>
         </section>
         <section class="row">

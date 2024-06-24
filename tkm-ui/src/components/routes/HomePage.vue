@@ -13,7 +13,7 @@ export default {
             const response = await axios.get('/data/homeActivities.json');
             this.homeActivities = response.data;
         } catch (error) {
-            console.error(this.$t("common.status.failure"), error);
+            this.$toast.error('toast-global', this.$t("common.status.failure"));
         }
     }
 }

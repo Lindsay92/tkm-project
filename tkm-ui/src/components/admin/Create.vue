@@ -48,7 +48,6 @@ export default {
                 try {
                     await this.$axios.post('/activities', formData);
                     Object.assign(this.$data.inputs, this.$options.data().inputs);
-                    //console.log(Object.values(formData));
                     this.$router.push('/admin/activities')
                     this.$toast.success('toast-global', this.$t('common.status.success'));
                     window.scrollTo(0, 0);
@@ -66,7 +65,7 @@ export default {
         this.inputs.imageUrl = event.target.files[0]
         }
     }
-};
+}
 </script>
 
 <template>

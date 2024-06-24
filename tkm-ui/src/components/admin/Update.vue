@@ -69,7 +69,7 @@ export default {
     beforeMount() {
         this.getActivities();
     }
-};
+}
 </script>
 
 <template>

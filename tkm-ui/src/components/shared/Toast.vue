@@ -6,7 +6,7 @@ export default {
             default: null,
         },
     },
-};
+}
 </script>
 
 <template>
