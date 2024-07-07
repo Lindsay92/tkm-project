@@ -35,7 +35,6 @@ public class ErrorExceptionHandler extends ResponseEntityExceptionHandler {
 
 	    List<String> errorMessages = new ArrayList<>();
 	    for (FieldError error : ex.getBindingResult().getFieldErrors()) {
-	        //errorMessages.add(error.getField() + ": " + error.getDefaultMessage());
 	    	errorMessages.add(error.getDefaultMessage());
 	    }
 

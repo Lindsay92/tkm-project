@@ -13,9 +13,6 @@ DELETE§/like/0§anonymous§401
 
 GET§/like/user/all/favorite§anonymous§401
 
-GET§/accounts/for-view§admin§403
-DELETE§/accounts/0/for-delete§user§403
-
 POST§/activities§user§403
 PUT§/activities/0/for-change§user§403
 DELETE§/activities/0/for-delete§user§403

@@ -73,9 +73,6 @@ public class SecurityConfig {
 				"/for-edit",
 				"/{id}/for-delete",
 				"/{id}/for-change"
-				//,
-				//accounts/for-view"
-				//"accounts/{id}/for-delete"
 				)
 			.hasAuthority("ROLE_ADMIN").anyRequest()
 			.authenticated())
