@@ -1,5 +1,6 @@
 package co.simplon.tkm.repositories;
 
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +18,6 @@ public interface LikeRepository extends JpaRepository<Like, Long> {
 	void deleteByActivityIdAndAccountId(@Param("activityId") Long activityId, @Param("accountId") Long accountId);
 
 	Set<LikeView> findByAccountId(@Param("accountId") Long accountId);
+	
+	Optional<Like> findByActivityIdAndAccountId(Long activityId, Long accountId);
 }

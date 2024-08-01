@@ -5,6 +5,9 @@ import { RouterLink } from 'vue-router';
 export default {
     data() {
         return {
+            isAuthenticated: localStorage.getItem("isAuthenticated"),
+            role: localStorage.getItem("role"),
+            userName: localStorage.getItem("userName"),
             homeActivities: []
         };
     },
@@ -41,7 +44,14 @@ export default {
             {{ $t('homePage.description5') }} 
     </p>
 
-    <div class="m-4">
+    <div v-if="isAuthenticated && role == 'User'" class="m-4">
+        <p class="text-center fs-5 fw-bold activity-list">
+            <RouterLink to="/user/activities" class="link-title"> 
+                "{{ $t('homePage.link') }}" 
+            </RouterLink>
+        </p>
+    </div>
+    <div v-else class="m-4">
         <p class="text-center fs-5 fw-bold activity-list">
             <RouterLink to="/activities" class="link-title"> 
                 "{{ $t('homePage.link') }}" 

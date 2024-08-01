@@ -2,50 +2,54 @@
 import { useStore } from '../../plugins/store.js';
 
 export default {
-    setup() {
-    const store = useStore(); 
-    return { store };  
+setup() {
+    const store = useStore();
+    return { store };
+},
+data() {
+    return {
+        baseUrl: import.meta.env.VITE_IMG_BASE_URL,
+        isAuthenticated: localStorage.getItem("isAuthenticated"),
+        role: localStorage.getItem("role"),
+        userName: localStorage.getItem("userName"),
+        activities: []
+    };
+},
+methods: {
+    async initActivities() {
+        const response = await this.$axios.get('/activities');
+        this.activities = response.data.map(activity => ({
+            ...activity, 
+            isFavorite: this.store.isFavorite(activity.id)
+        }));
     },
-    data() {
-        return {
-            baseUrl: import.meta.env.VITE_IMG_BASE_URL,
-            isAuthenticated : localStorage.getItem("isAuthenticated"),
-            role : localStorage.getItem("role"),
-            userName : localStorage.getItem("userName"),
-            activities: []
-        }
-    },
-    
-    methods: {
-        async initActivities() {
-            const response = await this.$axios.get('/activities');
-            this.activities = response.data.map(activity => ({
-                ...activity, 
-                isFavorite: this.store.isFavorite(activity.id)
-            }));
-        },
-        async toggleFavorite(id) {
-            try {
-                const response = await this.$axios.post(`/likes/${id}`);
-                if (response && response.status === 204) {
-                    if (!this.store.isFavorite(activity)) {
-                        this.store.addFavorite(activty);
-                    } else  {
-                        this.store.removeFavorite(activity)
-                    }                   
-                    this.initActivities();
-                    this.$toast.success('toast-global', this.$t('common.status.done'))
-                } 
-            } catch(error) {
+    async toggleFavorite(id) {
+        try {
+        const response = await this.$axios.post(`/likes/${id}`);
+        if (response && response.status === 204) {
+            const activity = this.activities.find(activity => activity.id === id);
+
+            if (activity) {
+                if (!this.store.isFavorite(id)) {
+                    this.store.addFavorite(id);
+                } else {
+                    this.store.removeFavorite(id);
+                }
+                activity.isFavorite = !activity.isFavorite;
+            }
+            this.$toast.success('toast-global', this.$t('common.status.done'));
+            }
+        } catch (error) {
+            console.error('Error toggling favorite:', error);
             window.scrollTo(0, 500);
             this.$toast.error('toast-global', this.$t("common.status.favory"));
-            }
         }
-    },
-    beforeMount() {
-        this.initActivities();
     }
-}
+},
+beforeMount() {
+    this.initActivities();
+    }
+};
 </script>
 
 <template>

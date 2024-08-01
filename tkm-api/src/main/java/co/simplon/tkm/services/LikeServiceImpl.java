@@ -1,5 +1,6 @@
 package co.simplon.tkm.services;
 
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,15 +33,32 @@ public class LikeServiceImpl implements LikeService {
 	@Override
 	@Transactional
 	public void like(Long activityId, Long accountId) {
-	    Activity activity = activityRepository.getReferenceById(activityId);
-	    Account account = accountRepository.getReferenceById(accountId);
+        Activity activity = activityRepository.findById(activityId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid activity ID: " + activityId));
+        Account account = accountRepository.findById(accountId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid account ID: " + accountId));
 
-	    Like like = new Like();
-	    like.setAccount(account);
-	    like.setActivity(activity);
+        Optional<Like> existingLike = likeRepository.findByActivityIdAndAccountId(activityId, accountId);
+        if (existingLike.isPresent()) {
+            throw new IllegalStateException("Activity is already liked by the user");
+        }
 
-	    likeRepository.save(like);
-	}
+        Like like = new Like();
+        like.setAccount(account);
+        like.setActivity(activity);
+
+        likeRepository.save(like);
+    }
+//	public void like(Long activityId, Long accountId) {
+//	    Activity activity = activityRepository.getReferenceById(activityId);
+//	    Account account = accountRepository.getReferenceById(accountId);
+//        
+//	    Like like = new Like();
+//	    like.setAccount(account);
+//	    like.setActivity(activity);
+//
+//	    likeRepository.save(like);
+//	}
 	
 	@Transactional
 	public void deleteByActivityIdAndAccountId(Long activityId, Long accountId) {
